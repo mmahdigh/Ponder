@@ -21,13 +21,11 @@ class App extends Component {
     await this.LoadMetadataForFeed(TEST_RSS1)
 
     let tx_id = await this.state.arweaveApi.postPodcastMetadata(1)
-    console.log(`tx_id: ${tx_id}`)
     if (tx_id) {
+      console.log(`tx_id: ${tx_id}`)
       let res = await window.arweave.api.get('/mine')
       console.log(res)
     }
-
-
   }
 
   async LoadMetadataForFeed(feedUrl) {

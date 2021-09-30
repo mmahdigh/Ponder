@@ -80,6 +80,7 @@ class ArweaveApi {
     console.log(window.rssmetadata)
     if (!Object.keys(window.rssmetadata.episodes[podcast_id]).length) {
       // No metadata to update
+      console.log(`Podcast with id ${podcast_id} is already up-to-date on Arweave.`)
       return
     }
 
