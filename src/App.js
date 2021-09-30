@@ -16,10 +16,14 @@ class App extends Component {
     this.setState({ arweaveApi })
     this.setState({ formatter })
 
+    /* fetch all metadata from Arweave for podcast with rss url == TEST_RSS1,
+     * upon which it can be accessed through window.armetadata */
     await this.state.arweaveApi.getNewestPodcastMetadata(TEST_RSS1)
 
-    await this.LoadMetadataForFeed(TEST_RSS1)
+    /* fetch all metadata from RSS and the diff with armetadata is placed in window.rssmetadata */
+    await this.loadMetadataForFeed(TEST_RSS1)
 
+    /* post the metadata of podcast with id 1 from window.rssmetadata to Arweave */
     let tx_id = await this.state.arweaveApi.postPodcastMetadata(1)
     if (tx_id) {
       console.log(`tx_id: ${tx_id}`)
@@ -28,12 +32,8 @@ class App extends Component {
     }
   }
 
-  async LoadMetadataForFeed(feedUrl) {
-    await this.state.formatter.formatMetadataFromFeedURL(feedUrl)
-  }
-
-  parseFeed(url) {
-    this.state.formatter.formatMetadataFromFeedURL(url)
+  async loadMetadataForFeed(feed_url) {
+    await this.state.formatter.formatMetadataFromFeedURL(feed_url)
   }
 
   constructor(props) {
@@ -45,8 +45,8 @@ class App extends Component {
       loading: true
     }
 
-    this.parseFeed = this.parseFeed.bind(this)
-    window.parseFeed = this.parseFeed
+    this.loadMetadataForFeed = this.loadMetadataForFeed.bind(this)
+    window.loadMetadataForFeed = this.loadMetadataForFeed
 
     this.decodeTags = this.decodeTags.bind(this)
     window.decodeTags = this.decodeTags

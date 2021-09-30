@@ -1,5 +1,5 @@
 import Arweave from 'arweave';
-import MetadataFormatter from '../formatting/MetadataFormatter.js'
+// import MetadataFormatter from '../formatting/MetadataFormatter.js'
 
 class ArweaveApi {
   static INIT_METADATA = {
@@ -11,6 +11,7 @@ class ArweaveApi {
     }
   }
 
+  // TestWeave.rootJWK
   static TESTKEY = {
     "kty": "RSA",
     "e": "AQAB",
@@ -47,7 +48,7 @@ class ArweaveApi {
   }
 
   async newTransaction(json_data) {
-    let tx = await this.arweave.createTransaction({data: json_data}, ArweaveApi.TESTKEY) // window.testWeave.rootJWK
+    let tx = await this.arweave.createTransaction({data: json_data}, ArweaveApi.TESTKEY)
     tx.addTag('Content-Type', 'application/json')
     tx.addTag('Unix-Time', ArweaveApi.unixTimestamp())
     tx.addTag('Podner-version', 'v0.02-pre-pre-alpha')
@@ -78,7 +79,7 @@ class ArweaveApi {
 
   async postPodcastMetadata(podcast_id) {
     console.log(window.rssmetadata)
-    if (!Object.keys(window.rssmetadata.episodes[podcast_id]).length) {
+    if (!Object.keys(window.rssmetadata.episodes[podcast_id] || {}).length) {
       // No metadata to update
       console.log(`Podcast with id ${podcast_id} is already up-to-date on Arweave.`)
       return
@@ -143,6 +144,7 @@ class ArweaveApi {
     console.log('edges', edges)
 
     if (edges.length) {
+      // TODO: more checks to verify that the newest transaction actually is the most correct one
       tags = edges[0].node.tags
       let tx_id = edges[0].node.id
       return [tx_id, ArweaveApi.tagsToObject(tags)]
@@ -198,10 +200,23 @@ class ArweaveApi {
   }
   /* @param [<Object>] tags
    * @return [Object] `tags` reformatted from [{name: name_string, value: value_string}] to:
-   *   {name_string => value_string}
+   *   {name_string => value_string} or {name_string => [value_string]}
    */
   static tagsToObject(tags) {
-    return Object.fromEntries(tags.map(t => ([t.name, t.value])))
+    let result = {'Podner-category': [], 'Podner-keyword': []}
+    for (const tag of tags) {
+      switch (tag.name) {
+        case 'Podner-category':
+        case 'Podner-keyword':
+          result[tag.name].push(tag.value)
+          break
+        default:
+          result[tag.name] = tag.value
+      }
+    }
+    result['Podner-category'].sort()
+    result['Podner-keyword'].sort()
+    return result
   }
 
   /* @return [Number] Canonical Unix timestamp in seconds since UTC epoch */
