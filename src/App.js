@@ -6,6 +6,7 @@ import ArweaveApi from './arweave/ArweaveApi.js'
 
 
 class App extends Component {
+  // componentDidMount
   async componentWillMount() {
     const USE_ARLOCAL = true
     const TEST_RSS1 = 'https://feeds.simplecast.com/dHoohVNH'
@@ -13,6 +14,8 @@ class App extends Component {
 
     let arweaveApi = await new ArweaveApi(USE_ARLOCAL)
     let formatter = new MetadataFormatter()
+    this.setState({ loading: true })
+
     this.setState({ arweaveApi })
     this.setState({ formatter })
 
@@ -23,13 +26,14 @@ class App extends Component {
     /* fetch all metadata from RSS and the diff with armetadata is placed in window.rssmetadata */
     await this.loadMetadataForFeed(TEST_RSS1)
 
-    /* post the metadata of podcast with id 1 from window.rssmetadata to Arweave */
-    let tx_id = await this.state.arweaveApi.postPodcastMetadata(1)
+    /* post the metadata of the podcast from window.rssmetadata to Arweave */
+    let tx_id = await this.state.arweaveApi.postPodcastMetadata(TEST_RSS1)
     if (tx_id) {
       console.log(`tx_id: ${tx_id}`)
       let res = await window.arweave.api.get('/mine')
       console.log(res)
     }
+    this.setState({ loading: false })
   }
 
   async loadMetadataForFeed(feed_url) {
@@ -52,6 +56,7 @@ class App extends Component {
     window.decodeTags = this.decodeTags
   }
 
+  // Temp method for debugging
   async decodeTags(tx_id) {
     const tx = window.arweave.transactions.get(tx_id).then(transaction => {
       transaction.get('tags').forEach(tag => {

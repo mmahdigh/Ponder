@@ -25,7 +25,7 @@ class ArweaveApi {
   }
 
   constructor(arlocal) {
-    if (!window.armetadata) // TODO: rename to pondarMetadata
+    if (!window.armetadata)
       window.armetadata = ArweaveApi.INIT_METADATA
 
     this.InitArweave(arlocal)
@@ -44,6 +44,7 @@ class ArweaveApi {
     else {
       this.arweave = Arweave.init({})
     }
+
     window.arweave = this.arweave
   }
 
@@ -65,19 +66,9 @@ class ArweaveApi {
     return tx.id
   }
 
-  // uploadToArweave = async (data, fileType, epObj, event) => {
-  //     const wallet = await window.arweaveWallet.getActiveAddress()
-  //     if (!wallet) { return null } else {
-  //       this.arweave.createTransaction({ data: data }).then((tx) => {
-  //         tx.addTag("Content-Type", fileType);
-  //         tx.reward = (+tx.reward * 2).toString();
-  //         this.arweave.transactions.sign(tx).then(() => {
-  //           this.arweave.transactions.post(tx).then((response) => {
-  //             console.log(response)
-  //             if (response.statusText === "OK") {
-  //             // ... then tell me it's ok
-
   async postPodcastMetadata(podcast_id) {
+    if (!podcast_id || typeof podcast_id !== 'string')
+      return
     console.log(window.rssmetadata)
     if (!Object.keys(window.rssmetadata.episodes[podcast_id] || {}).length) {
       // No metadata to update
@@ -85,7 +76,6 @@ class ArweaveApi {
       return
     }
 
-    podcast_id = String(podcast_id)
     let episodes_json = JSON.stringify(window.rssmetadata.episodes[podcast_id])
     let podcast_metadata = window.rssmetadata.podcasts[podcast_id]
     console.log(window.rssmetadata.episodes[podcast_id])
@@ -102,16 +92,17 @@ class ArweaveApi {
     tx.addTag('Podner-title',         podcast_metadata['title'])
     tx.addTag('Podner-description',   podcast_metadata['description'])
     podcast_metadata['categories'].forEach(category => {
-      tx.addTag('Podner-category',  category)
+      tx.addTag('Podner-category',    category)
     })
     podcast_metadata['keywords'].forEach(keyword => {
-      tx.addTag('Podner-keyword',   keyword)
+      tx.addTag('Podner-keyword',     keyword)
     })
 
     console.log('Signing and posting podcast')
-    return await this.signAndPostTransaction(tx)
+    return this.signAndPostTransaction(tx)
   }
 
+  /* TODOc */
   async getNewestPodcastMetadata(feed_url) {
     let batch_index = '10001'
     do {
@@ -135,17 +126,17 @@ class ArweaveApi {
   }
 
   /* @return [<String, Object>]
+   *   The transaction id and tags for the podcast corresponding to the given `feed_url`
    */
   async getNewestPodcastMetadataBatch(feed_url, batch_index = '10001') {
-    let tags = null
+    let edges = []
     let tag_filter = [['Podner-rss2-feed', feed_url],
                       ['Podner-first-episode', batch_index]]
-    let edges = await this.postGQLQuery(ArweaveApi.gqlQueryPodcast(tag_filter))
-    console.log('edges', edges)
 
+    edges = await this.postGQLQuery(ArweaveApi.gqlQueryPodcast(tag_filter))
     if (edges.length) {
       // TODO: more checks to verify that the newest transaction actually is the most correct one
-      tags = edges[0].node.tags
+      let tags = edges[0].node.tags
       let tx_id = edges[0].node.id
       return [tx_id, ArweaveApi.tagsToObject(tags)]
     }
@@ -163,8 +154,8 @@ class ArweaveApi {
         if (podcast_tags) {
           podcast_id = podcast_tags['Podner-id']
           window.armetadata.podcasts[podcast_id] = {
-            categories:  podcast_tags['Podner-category'], //TODO: multiple categories
-            keywords:    podcast_tags['Podner-keyword'], //TODO: multiple keywords
+            categories:  podcast_tags['Podner-category'],
+            keywords:    podcast_tags['Podner-keyword'],
             description: podcast_tags['Podner-description'],
             rss2_feed:   podcast_tags['Podner-rss2-feed'],
             title:       podcast_tags['Podner-title']
@@ -175,28 +166,27 @@ class ArweaveApi {
             Object.assign({}, window.armetadata.episodes[podcast_id], json)
       }
       catch (error) {
-        console.warn(`Error loading JSON metadata: ${error}. JSON: ${json}`)
+        let error_msg = `Error loading JSON metadata: ${error}. JSON: ${json}`
+        console.warn(error_msg)
+        throw error
       }
     })
   }
 
-  /* @return [Object] nodes */
+  /* @param [{String => String}]
+   *   Object mapping 'query' to the GraphQL string, which is sent to Arweave's `/graphql` endpoint
+   * @return [Object] The edges that match the given GraphQL `query`
+   */
   async postGQLQuery(query) {
-    try {
-      return await this.arweave.api.post('/graphql', query).then((response) => {
-        if (response.status >= 400) {
-          let error_msg =
-              `Error in GraphQL query, got ${response.status} response: ${response.statusText}`
-          console.warn(error_msg)
-          throw new Error(error_msg)
-        }
+    return this.arweave.api.post('/graphql', query).then((response) => {
+      if (response.status >= 400) {
+        let error_msg =
+            `Error in GraphQL query: got response ${response.status}: ${response.statusText}`
+        throw new Error(error_msg)
+      }
 
-        return response.data.data.transactions.edges
-      })
-    }
-    catch (error) {
-      return []
-    }
+      return response.data.data.transactions.edges
+    })
   }
   /* @param [<Object>] tags
    * @return [Object] `tags` reformatted from [{name: name_string, value: value_string}] to:
@@ -228,8 +218,8 @@ class ArweaveApi {
     *   specifying ANDed tag names and values constraints for transactions
     * @param [String] extra_args
     * @param [Number] num Max number of transactions
-    * @return [{'query' => String}] An Object containing the GraphQL query as String, for feeding
-    *   to Arweave's `/graphql` endpoint
+    * @return [{String => String}]
+    *   Object mapping 'query' to the GraphQL string, for sending to Arweave's `/graphql` endpoint
     */
   static gqlQueryPodcast(tag_filter = [], extra_args = '', num = 100) {
     let tag_filter_query = ''
@@ -264,32 +254,6 @@ class ArweaveApi {
     console.log(query.query)
     return query
   }
-
-  // async getNewestPodcastMetadataBatch(tx_ids, batch_index = '10001') {
-  //   let newest_batch = null
-  //   let newest_timestamp = 0
-  //   let batch_tags = null
-
-  //   for (let tx_id of tx_ids) {
-  //     console.log(`tx_id: ${tx_id}`)
-  //     let tx = await this.arweave.transactions.get(tx_id)
-  //     let tags = tx.get('tags').map(tag => {
-  //       let key = tag.get('name', {decode: true, string: true})
-  //       let value = tag.get('value', {decode: true, string: true})
-  //       return [key, value]
-  //     })
-  //     // Convert tags to dictionary format
-  //     tags = Object.fromEntries(tags.map(([k, v]) => [k, v]))
-  //     console.log(tags)
-  //     // Find the newest version of this batch
-  //     if (tags['Podner-first-episode'] === batch_index && tags['Unix-Time'] > newest_timestamp) {
-  //       newest_batch = tx_id
-  //       newest_timestamp = tags['Unix-Time']
-  //       batch_tags = tags
-  //     }
-  //   }
-  //   return batch_tags
-  // }
 }
 
 export default ArweaveApi

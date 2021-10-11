@@ -27,9 +27,9 @@ class MetadataFormatter {
 
   static formatMetadataFromFeed(url, feed) {
     console.log('feed:', feed)
-    window.feed = feed
 
-    let podcast_id = MetadataFormatter.getPodcastID(url)
+    // TODO: hash podcast id's
+    let podcast_id = url
     console.log(`Parsing RSS for podcast id: ${podcast_id}`)
 
     window.rssmetadata.podcasts[podcast_id] = MetadataFormatter.podcastMetadata(feed)
@@ -58,7 +58,7 @@ class MetadataFormatter {
     let episodes = {}
     let index = 0
     let [latest_episode_id, latest_episode] = MetadataFormatter.latestPostedEpisode(podcast_id)
-    console.log(latest_episode_id, latest_episode)
+    console.log(`latest_episode_id=${latest_episode_id}`, latest_episode)
 
     feed.items.reverse().forEach(item => {
       index++
@@ -77,13 +77,13 @@ class MetadataFormatter {
       else {
         let episode_id = `${10000 + index}`
 
-        episode_metadata['date_published'] = item.isoDate
-        episode_metadata['title'] = item.title
-        episode_metadata['image'] = itunes.image
-        episode_metadata['description'] = item.content
-        episode_metadata['short_description'] = itunes.subtitle || item.contentSnippet
-        episode_metadata['url'] = item.link
-        episode_metadata['duration'] = itunes.duration
+        episode_metadata['date_published'] = item.isoDate || ''
+        episode_metadata['title'] = item.title || ''
+        episode_metadata['image'] = itunes.image || ''
+        episode_metadata['description'] = item.content || ''
+        episode_metadata['short_description'] = itunes.subtitle || item.contentSnippet || ''
+        episode_metadata['url'] = item.link || ''
+        episode_metadata['duration'] = itunes.duration || ''
         episode_metadata['categories'] =
             MetadataFormatter.mergeArraysUniq(itunes.categories, item.categories)
         episode_metadata['keywords'] =
@@ -96,27 +96,31 @@ class MetadataFormatter {
     return episodes
   }
 
-  /* If podcast matching feed_url resides in window.armetadata, returns its id;
-   * else returns the first free id starting with 1
-   * TODO: fix podcast id race conditions wrt Arweave */
-  static getPodcastID(feed_url) {
-    let podcasts = Object.entries(window.armetadata.podcasts)
-    for (const [id, podcast] of podcasts) {
-      if (podcast['rss2_feed'] === feed_url)
-        return id
-    }
-    if (podcasts.length)
-      return parseInt(podcasts.slice(-1)[0][0]) + 1
-    else
-      return 1
-  }
+  // /* If podcast matching feed_url resides in window.armetadata, returns its id;
+  //  * else returns the first free id starting with 1
+  //  * TODO: fix podcast id race conditions wrt Arweave */
+  // static getPodcastID(feed_url) {
+  //   // Look for the podcast id in the currently loaded metadata
+  //   let podcasts = Object.entries(window.armetadata.podcasts)
+  //   for (const [id, podcast] of podcasts) {
+  //     if (podcast['rss2_feed'] === feed_url)
+  //       return id
+  //   }
+
+  //   // Podcast not present in currently loaded metadata. TODO: generate new hash key
+  //   // https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto
+  //   if (podcasts.length)
+  //     return parseInt(podcasts.slice(-1)[0][0]) + 1
+  //   else
+  //     return 1
+  // }
 
   /* @return [<String, Object>]
    *   The id and metadata Object of the latest episode residing on Arweave */
   static latestPostedEpisode(podcast_id) {
-    let episodes = window.armetadata.episodes[podcast_id]
-    if (episodes)
-      return Object.entries(episodes).slice(-1)[0]
+    let latest_episode = Object.entries(window.armetadata.episodes[podcast_id] || {}).slice(-1)[0]
+    if (latest_episode)
+      return latest_episode
 
     return ['', null]
   }
