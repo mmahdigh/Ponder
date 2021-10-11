@@ -7,6 +7,7 @@ import CreatePodcastButton from '../components/create-podcast-button';
 function HomePage() {
   const { getNewestPodcastMetadata } = useContext(ArweaveContext);
   const [feedMetadata, setFeedMetadata] = useState(null);
+  console.log(feedMetadata);
 
   useEffect(() => {
     getNewestPodcastMetadata('https://feeds.simplecast.com/dHoohVNH')

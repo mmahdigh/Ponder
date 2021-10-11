@@ -1,7 +1,7 @@
 import { gqlRequest } from './client';
-import NEWEST_PODCAST_METADATA from './queries/newest-podcast-metadata.graphql';
+import NEWEST_PODCAST_METADATA from './newest-podcast-metadata.graphql';
 
-export default async function getNewestPodcastMetadata(setMetadata) {
+export default function getNewestPodcastMetadata(setMetadata) {
   return async (rssUrl, batchIndex = '10001') => gqlRequest({
     query: NEWEST_PODCAST_METADATA,
     variables: {
@@ -17,8 +17,8 @@ export default async function getNewestPodcastMetadata(setMetadata) {
       ],
     },
   })
-    .then(res => res.data.transactions.edges[0]?.node)
-    .then(node => ({
+    .then(res => res.data.data.transactions.edges[0]?.node)
+    .then(node => (!node ? null : ({
       ...node,
       tags: node.tags.reduce(
         (acc, tag) => ({
@@ -32,6 +32,9 @@ export default async function getNewestPodcastMetadata(setMetadata) {
           podnerKeywords: [],
         },
       ),
-    }))
-    .then(setMetadata);
+    })))
+    .then(podcastMetadata => {
+      setMetadata(podcastMetadata);
+      return [];
+    });
 }
