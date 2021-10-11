@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
-export default class MasterErrorBoundary extends Component {
+class MasterErrorBoundary extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    history: PropTypes.shape({
+      goBack: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   constructor(...args) {
@@ -19,14 +24,22 @@ export default class MasterErrorBoundary extends Component {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, history } = this.props;
     const { error, info } = this.state;
 
     return error ? (
       <div>
         <p>{info}</p>
         <pre>{error.toString()}</pre>
+        <Button
+          variant="warn"
+          onClick={() => history.goBack()}
+        >
+          Back
+        </Button>
       </div>
     ) : children;
   }
 }
+
+export default withRouter(MasterErrorBoundary);
