@@ -1,5 +1,5 @@
 import Arweave from 'arweave';
-// import MetadataFormatter from '../formatting/MetadataFormatter.js'
+import MetadataFormatter from '../formatting/MetadataFormatter.js'
 
 class ArweaveApi {
   static INIT_METADATA = {
@@ -69,8 +69,9 @@ class ArweaveApi {
   async postPodcastMetadata(podcast_id) {
     if (!podcast_id || typeof podcast_id !== 'string')
       return
+
     console.log(window.rssmetadata)
-    if (!Object.keys(window.rssmetadata.episodes[podcast_id] || {}).length) {
+    if (!(window.rssmetadata.episodes[podcast_id] || []).length) {
       // No metadata to update
       console.log(`Podcast with id ${podcast_id} is already up-to-date on Arweave.`)
       return
@@ -79,15 +80,15 @@ class ArweaveApi {
     let episodes_json = JSON.stringify(window.rssmetadata.episodes[podcast_id])
     let podcast_metadata = window.rssmetadata.podcasts[podcast_id]
     console.log(window.rssmetadata.episodes[podcast_id])
-    console.log(Object.keys(window.rssmetadata.episodes[podcast_id]))
-    let first_episode_id = Object.keys(window.rssmetadata.episodes[podcast_id])[0]
-    let last_episode_id = Object.keys(window.rssmetadata.episodes[podcast_id]).slice(-1)[0]
+    let first_episode_id = 10001 + MetadataFormatter.numberOfPostedEpisodes(podcast_id)
+    let last_episode_id =
+        first_episode_id - 1 + MetadataFormatter.numberOfUnpostedEpisodes(podcast_id)
 
     let tx = await this.newTransaction(episodes_json)
     tx.addTag('Podner-type',          'Podcast')
     tx.addTag('Podner-id',            podcast_id)
-    tx.addTag('Podner-first-episode', first_episode_id)
-    tx.addTag('Podner-last-episode',  last_episode_id)
+    tx.addTag('Podner-first-episode', String(first_episode_id))
+    tx.addTag('Podner-last-episode',  String(last_episode_id))
     tx.addTag('Podner-rss2-feed',     podcast_metadata['rss2_feed'])
     tx.addTag('Podner-title',         podcast_metadata['title'])
     tx.addTag('Podner-description',   podcast_metadata['description'])
@@ -114,8 +115,13 @@ class ArweaveApi {
           // Metadata starting from episode `batch_index` was not found on Arweave
           return
         }
-        batch_index = String(parseInt(podcast_tags['Podner-last-episode']) + 1)
+        if (batch_index === '10001') {
+          // Metadata found => reinitialize episode metadata array
+          window.armetadata.episodes[feed_url] = []
+        }
         await this.loadMetadataBatch(tx_id, podcast_tags)
+
+        batch_index = String(parseInt(podcast_tags['Podner-last-episode']) + 1)
       }
       catch (error) {
         batch_index = null
@@ -163,7 +169,7 @@ class ArweaveApi {
         }
         // Merge present metadata with metadata from json
         window.armetadata.episodes[podcast_id] =
-            Object.assign({}, window.armetadata.episodes[podcast_id], json)
+            (window.armetadata.episodes[podcast_id] || []).concat(json)
       }
       catch (error) {
         let error_msg = `Error loading JSON metadata: ${error}. JSON: ${json}`
@@ -188,6 +194,7 @@ class ArweaveApi {
       return response.data.data.transactions.edges
     })
   }
+
   /* @param [<Object>] tags
    * @return [Object] `tags` reformatted from [{name: name_string, value: value_string}] to:
    *   {name_string => value_string} or {name_string => [value_string]}
@@ -241,10 +248,6 @@ class ArweaveApi {
                 tags {
                   name
                   value
-                }
-                block {
-                  id
-                  timestamp
                 }
               }
             }

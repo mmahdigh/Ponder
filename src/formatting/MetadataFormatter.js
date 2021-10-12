@@ -55,10 +55,10 @@ class MetadataFormatter {
   }
 
   static episodesMetadata(feed, podcast_id) {
-    let episodes = {}
-    let index = 0
-    let [latest_episode_id, latest_episode] = MetadataFormatter.latestPostedEpisode(podcast_id)
-    console.log(`latest_episode_id=${latest_episode_id}`, latest_episode)
+    let episodes = []
+    let index = 0 // TODO: temp
+    let latest_episode = MetadataFormatter.latestPostedEpisode(podcast_id)
+    console.log('latest_episode', latest_episode)
 
     feed.items.reverse().forEach(item => {
       index++
@@ -71,12 +71,9 @@ class MetadataFormatter {
           console.log('matched')
           // Found match => metadata of subsequent episodes will be added
           latest_episode = null
-          index = parseInt(latest_episode_id) - 10000
         }
       }
       else {
-        let episode_id = `${10000 + index}`
-
         episode_metadata['date_published'] = item.isoDate || ''
         episode_metadata['title'] = item.title || ''
         episode_metadata['image'] = itunes.image || ''
@@ -89,7 +86,7 @@ class MetadataFormatter {
         episode_metadata['keywords'] =
             MetadataFormatter.mergeArraysUniq(itunes.keywords, item.keywords)
 
-        episodes[episode_id] = episode_metadata
+        episodes.push(episode_metadata)
       }
     })
 
@@ -115,14 +112,23 @@ class MetadataFormatter {
   //     return 1
   // }
 
-  /* @return [<String, Object>]
-   *   The id and metadata Object of the latest episode residing on Arweave */
+  /* @return [Object] The metadata Object of the latest episode residing on Arweave */
   static latestPostedEpisode(podcast_id) {
-    let latest_episode = Object.entries(window.armetadata.episodes[podcast_id] || {}).slice(-1)[0]
-    if (latest_episode)
-      return latest_episode
+    return (window.armetadata.episodes[podcast_id] || []).slice(-1)[0]
+  }
 
-    return ['', null]
+  /* @return [Number] The number of episodes for the given `podcast_id` that are waiting to be
+   *   posted on the Arweave blockchain
+   * @param [String] podcast_id */
+  static numberOfUnpostedEpisodes(podcast_id) {
+    return (window.rssmetadata.episodes[podcast_id] || []).length
+  }
+
+  /* @return [Number] The number of episodes for the given `podcast_id` that are currently present
+   *   on the Arweave blockchain
+   * @param [String] podcast_id */
+  static numberOfPostedEpisodes(podcast_id) {
+    return (window.armetadata.episodes[podcast_id] || []).length
   }
 
   /* Returns the two arrays concatenated and stripped of empty and duplicate values */

@@ -21,13 +21,13 @@ class App extends Component {
 
     /* fetch all metadata from Arweave for podcast with rss url == TEST_RSS1,
      * upon which it can be accessed through window.armetadata */
-    await this.state.arweaveApi.getNewestPodcastMetadata(TEST_RSS1)
+    await this.state.arweaveApi.getNewestPodcastMetadata(TEST_RSS2)
 
     /* fetch all metadata from RSS and the diff with armetadata is placed in window.rssmetadata */
-    await this.loadMetadataForFeed(TEST_RSS1)
+    await this.loadMetadataForFeed(TEST_RSS2)
 
     /* post the metadata of the podcast from window.rssmetadata to Arweave */
-    let tx_id = await this.state.arweaveApi.postPodcastMetadata(TEST_RSS1)
+    let tx_id = await this.state.arweaveApi.postPodcastMetadata(TEST_RSS2)
     if (tx_id) {
       console.log(`tx_id: ${tx_id}`)
       let res = await window.arweave.api.get('/mine')
