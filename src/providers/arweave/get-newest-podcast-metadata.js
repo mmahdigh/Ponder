@@ -3,23 +3,27 @@ import NEWEST_PODCAST_METADATA from './newest-podcast-metadata.graphql';
 
 export default function getNewestPodcastMetadata(setMetadata) {
   return async (rssUrl, batchIndex = '10001') => {
-    const podcasts = await gqlRequest({
-      query: NEWEST_PODCAST_METADATA,
-      variables: {
-        tags: [
-          {
-            name: 'Podner-rss2-feed',
-            values: [rssUrl],
-          },
-          {
-            name: 'Podner-first-episode',
-            values: [batchIndex],
-          },
-        ],
-      },
-    })
-      .then(res => res.data.data.transactions.edges[0]?.node || []);
+    async function fetchMetadata(acc = []) {
+      return gqlRequest({
+        query: NEWEST_PODCAST_METADATA,
+        variables: {
+          tags: [
+            {
+              name: 'Podner-rss2-feed',
+              values: [rssUrl],
+            },
+            {
+              name: 'Podner-first-episode',
+              values: [batchIndex],
+            },
+          ],
+        },
+      })
+        .then(res => res.data.data.transactions.edges[0]?.node || [])
+        .then(podcasts => (podcasts.length ? fetchMetadata(acc.concat(podcasts)) : acc));
+    }
 
+    const podcasts = await fetchMetadata();
     const metadata = podcasts.map(podcast => ({
       ...podcast,
       tags: podcast.tags.reduce(
