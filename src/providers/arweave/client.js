@@ -13,6 +13,50 @@ export async function gqlRequest(payload) {
   return client.api.post('/graphql', payload);
 }
 
+async function loadMetadataBatch(trxId, podcastTags) {
+  const res = await client.transactions.getData(trxId, {
+    decode: true,
+    string: true,
+  })
+    .then(JSON.parse);
+
+  return {
+    podcastId: podcastTags['Podner-id'],
+    categories: podcastTags['Podner-category'],
+    keywords: podcastTags['Podner-keyword'],
+    description: podcastTags['Podner-description'],
+    rss2Feed:  podcastTags['Podner-rss2-feed'],
+    title: podcastTags['Podner-title'],
+  };
+
+  podcastId = podcastTags[]
+    let podcast_id = null
+    let json = null
+    try {
+      let json = JSON.parse(res)
+      console.log(json)
+      if (podcastTags) {
+        podcast_id = podcastTags['Podner-id']
+        window.armetadata.podcasts[podcast_id] = {
+          categories:  podcastTags['Podner-category'],
+          keywords:    podcastTags['Podner-keyword'],
+          description: podcastTags['Podner-description'],
+          rss2_feed:   podcastTags['Podner-rss2-feed'],
+          title:       podcastTags['Podner-title']
+        }
+      }
+      // Merge present metadata with metadata from json
+      window.armetadata.episodes[podcast_id] =
+      Object.assign({}, window.armetadata.episodes[podcast_id], json)
+    }
+    catch (error) {
+      let error_msg = `Error loading JSON metadata: ${error}. JSON: ${json}`
+      console.warn(error_msg)
+      throw error
+    }
+  }
+}
+
 export async function sendTransaction(data, fn) {
   const trx = await client.createTransaction({ data: JSON.stringify(data) }, key);
   trx.addTag('Content-Type', 'application/json');

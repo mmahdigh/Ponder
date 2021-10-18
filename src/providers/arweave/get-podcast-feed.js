@@ -6,20 +6,18 @@ function mergeItunesData(items, itunes) {
     .sort((a, b) => a.localeCompare(b));
 }
 
-export default function getPodcastFeed(setPodcasts) {
+export default async function getPodcastFeed(url) {
   const rssParser = new RssParser();
-
-  return async url => {
-    const feed = await rssParser.parseURL(url);
-    setPodcasts(prev => prev.podcasts.concat({
-      title: feed.title,
+  return rssParser.parseURL(url).then(res => res.podcasts
+    .map(podcast => ({
+      title: podcast.title,
       url: new URL(url),
-      description: feed.description || feed.itunes?.summary,
-      rssFeed: new URL(feed.feedUrl),
-      image: new URL(feed.image.url),
-      categories: mergeItunesData(feed.categories, feed.itunes?.categories),
-      keywords: mergeItunesData(feed.keywords, feed.itunes?.categories),
-      episodes: feed.episodes
+      description: podcast.description || podcast.itunes?.summary,
+      rssFeed: new URL(podcast.feedUrl),
+      image: new URL(podcast.image.url),
+      categories: mergeItunesData(podcast.categories, podcast.itunes?.categories),
+      keywords: mergeItunesData(podcast.keywords, podcast.itunes?.categories),
+      episodes: podcast.episodes
         .map(episode => ({
           ...episode,
           url: new URL(episode.url),
@@ -28,6 +26,6 @@ export default function getPodcastFeed(setPodcasts) {
           keywords: mergeItunesData(episode.keywords, episode.itunes?.keywords),
         }))
         .sort((a, b) => a.published - b.published),
-    }));
-  };
+    }))
+    .sort((a, b) => a.title.localeCompare(b.title)));
 }

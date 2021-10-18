@@ -5,11 +5,12 @@ import Loading from '../components/loading';
 import CreatePodcastButton from '../components/create-podcast-button';
 
 function HomePage() {
-  const { getNewestPodcastMetadata } = useContext(ArweaveContext);
+  const { feed, getNewestPodcastMetadata } = useContext(ArweaveContext);
   const [feedMetadata, setFeedMetadata] = useState(null);
   console.log(feedMetadata);
 
   useEffect(() => {
+    feed();
     getNewestPodcastMetadata('https://feeds.simplecast.com/dHoohVNH')
       .then(setFeedMetadata);
   }, []);
