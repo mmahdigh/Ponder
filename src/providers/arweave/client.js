@@ -1,4 +1,5 @@
 import Arweave from 'arweave';
+import getPodcastFeed from './get-podcast-feed';
 import key from './key.json';
 
 export const client = Arweave.init({
@@ -11,6 +12,34 @@ export const client = Arweave.init({
 
 export async function gqlRequest(payload) {
   return client.api.post('/graphql', payload);
+}
+
+export async function loadMetadataBatch(trxId, podcastTags) {
+  const episodes = await client.transactions.getData(trxId, {
+    decode: true,
+    string: true,
+  })
+    .then(JSON.parse)
+    .then(xs => xs.map(a => ({
+      ...a,
+      url: new URL(a.url),
+      published: new Date(a.published),
+    })));
+
+  return {
+    episodes,
+    podcastId: podcastTags['Podner-id'],
+    categories: podcastTags['Podner-category'],
+    keywords: podcastTags['Podner-keyword'],
+    description: podcastTags['Podner-description'],
+    rss2Feed: podcastTags['Podner-rss2-feed'],
+    title: podcastTags['Podner-title'],
+  };
+}
+
+export async function subscribeToPodcast(rssUrl) {
+  Promise.all([getPodcastFeed(rssUrl), loadMetadataBatch(rssUrl)])
+    .then(([podcasts, metadata]) => podcasts);
 }
 
 export async function sendTransaction(data, fn) {

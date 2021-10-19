@@ -4,8 +4,7 @@ export default async function createPodcastMetadata(podcast) {
   return sendTransaction(null, trx => {
     trx.addTag('Podner-type', 'Podcast');
     trx.addTag('Podner-id', podcast.id);
-    trx.addTag('Podner-first-episode', podcast.firstEpisode);
-    trx.addTag('Podner-last-episode', podcast.lastEpisode);
+    trx.addTag('Podner-total-episodes', podcast.totalEpisodes);
     trx.addTag('Podner-rss2-feed', podcast.rssFeed);
     trx.addTag('Podner-title', podcast.title);
     trx.addTag('Podner-description', podcast.description);
