@@ -10,3 +10,7 @@ export async function getNewPodcasts(url) {
   const newPodcasts = rssPodcasts.filter(podcast => !arweavePodcastUrls.includes(podcast.url));
   return newPodcasts;
 }
+
+export async function addUrl(url) {
+  return url;
+}
