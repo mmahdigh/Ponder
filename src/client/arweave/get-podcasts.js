@@ -34,7 +34,8 @@ export default function createGetPodcasts(client) {
       return transactions.length ? fetchBatch(acc.concat(transactions)) : acc;
     }
 
-    return fetchBatch().then(podcasts => podcasts.map(podcast => ({
+    const podcasts = await fetchBatch();
+    return podcasts.map(podcast => ({
       ...podcast,
       tags: podcast.tags.reduce(
         (acc, tag) => ({
@@ -48,6 +49,6 @@ export default function createGetPodcasts(client) {
           podnerKeywords: [],
         },
       ),
-    })));
+    }));
   };
 }
