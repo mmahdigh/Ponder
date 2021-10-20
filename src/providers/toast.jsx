@@ -28,11 +28,16 @@ export const ToastContext = createContext();
 function ToastProvider({ children }) {
   const [messages, setMessages] = useState([]);
 
-  function dispatchToastMessage(message) {
+  function dispatchToastMessage(text, options) {
     setMessages(prev => prev.concat({
+      ...options,
+      text,
       id: uuid(),
-      ...message,
     }));
+  }
+
+  function handleClose(messageId) {
+    setMessages(prev => prev.filter(a => a.id !== messageId));
   }
 
   return (
@@ -43,10 +48,10 @@ function ToastProvider({ children }) {
           <li key={message.id}>
             <Toast
               autohide
-              onClose={() => setMessages(prev => prev.filter(a => a.id !== message.id))}
+              onClose={() => handleClose(message.id)}
             >
               <Toast.Header closeButton>
-                {message.header || 'Alert'}
+                {message.header}
               </Toast.Header>
               <Toast.Body>
                 {message.text}
