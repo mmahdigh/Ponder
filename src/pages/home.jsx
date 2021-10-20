@@ -1,14 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
-import { getNewPodcasts } from '../client';
+import { ToastContext } from '../providers/toast';
+import { searchPodcasts } from '../client';
 import Loading from '../components/loading';
 import CreatePodcastButton from '../components/create-podcast-button';
 
 function HomePage() {
+  const toast = useContext(ToastContext);
   const [podcasts, setPodcasts] = useState(null);
 
   useEffect(() => {
-    getNewPodcasts().then(setPodcasts);
+    searchPodcasts('https://feeds.simplecast.com/dHoohVNH')
+      .then(setPodcasts)
+      .catch(ex => {
+        console.error(ex);
+        toast('Could not search for podcasts.', {
+          variant: 'danger',
+        });
+      });
   }, []);
 
   return (

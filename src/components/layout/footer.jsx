@@ -10,6 +10,11 @@ import {
 } from 'react-icons/fa';
 import NavButton from './nav-button';
 
+const Footer = styled.footer`
+  background-color: #545454;
+  box-shadow: 1, 1, 1, rgba(6, 6, 6, .4);
+`;
+
 const NavList = styled.ul`
   display: flex;
   align-items: center;
@@ -23,7 +28,7 @@ const NavList = styled.ul`
 
 function LayoutFooter() {
   return (
-    <footer>
+    <Footer>
       <Container as="nav">
         <NavList>
           <NavButton to="/">
@@ -43,7 +48,7 @@ function LayoutFooter() {
           </NavButton>
         </NavList>
       </Container>
-    </footer>
+    </Footer>
   );
 }
 

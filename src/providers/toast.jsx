@@ -48,6 +48,7 @@ function ToastProvider({ children }) {
           <li key={message.id}>
             <Toast
               autohide
+              variant={message.variant || 'primary'}
               onClose={() => handleClose(message.id)}
             >
               <Toast.Header closeButton>

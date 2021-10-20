@@ -1,7 +1,7 @@
 import * as arweave from './arweave';
 import * as rss from './rss';
 
-export async function getNewPodcasts(url) {
+export async function searchPodcasts(url) {
   const [rssPodcasts, arweavePodcasts] = await Promise.all([
     rss.getPodcasts(url),
     arweave.getPodcasts(url),

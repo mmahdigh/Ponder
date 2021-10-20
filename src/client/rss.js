@@ -8,7 +8,7 @@ function mergeItunesData(items, itunes) {
 const rssParser = new RssParser();
 
 export async function getPodcasts(url) {
-  return rssParser.parseURL(url).then(res => res.podcasts.map(podcast => ({
+  return rssParser.parseURL(url).then(res => (res.podcasts || []).map(podcast => ({
     ...podcast,
     url,
     description: podcast.description || podcast.itunes?.summary,
