@@ -1,5 +1,5 @@
-import * as arweave from './arweave-client';
-import * as rss from './rss-client';
+import * as arweave from './arweave';
+import * as rss from './rss';
 
 export async function getNewPodcasts(url) {
   const [rssPodcasts, arweavePodcasts] = await Promise.all([
@@ -8,4 +8,5 @@ export async function getNewPodcasts(url) {
   ]);
   const arweavePodcastUrls = arweavePodcasts.map(podcast => podcast.url);
   const newPodcasts = rssPodcasts.filter(podcast => !arweavePodcastUrls.includes(podcast.url));
+  return newPodcasts;
 }

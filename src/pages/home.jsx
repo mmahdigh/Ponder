@@ -1,27 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
+import { getNewPodcasts } from '../client';
 import Loading from '../components/loading';
 import CreatePodcastButton from '../components/create-podcast-button';
 
 function HomePage() {
-  // const { feed, getNewestPodcastMetadata } = useContext(ArweaveContext);
-  const [feedMetadata, setFeedMetadata] = useState(null);
-  console.log(feedMetadata);
+  const [podcasts, setPodcasts] = useState(null);
 
   useEffect(() => {
-    // feed();
-    // getNewestPodcastMetadata('https://feeds.simplecast.com/dHoohVNH')
-    //   .then(setFeedMetadata);
+    getNewPodcasts().then(setPodcasts);
   }, []);
 
   return (
     <Container>
       <h1>Home Page!</h1>
-      {!feedMetadata ? (
+      {podcasts === null ? (
         <Loading />
       ) : (
         <>
-          {feedMetadata.length ? (
+          {podcasts.length ? (
             <div />
           ) : (
             <>

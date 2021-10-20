@@ -1,7 +1,7 @@
 import Arweave from 'arweave';
 import { v4 as uuid } from 'uuid';
 import createGetPodcasts from './get-podcasts';
-import key from '../../providers/arweave/key.json';
+import key from './key.json';
 
 const client = Arweave.init({
   host: 'localhost',
@@ -29,7 +29,9 @@ export async function createPodcast({
   ...podcast
 }) {
   return sendTransaction(podcast, [
+    ['id', uuid()],
     ['rssUrl', rssUrl],
     ['type', type],
-  ].concat(keywords.map(keyword => ['keyword', keyword])));
+    ...keywords.map(keyword => ['keyword', keyword]),
+  ]);
 }
