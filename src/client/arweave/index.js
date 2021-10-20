@@ -12,7 +12,7 @@ const client = Arweave.init({
   logging: true,
 });
 
-export const getPodcasts = createGetPodcasts(client);
+export const searchPodcastFeed = createGetPodcasts(client);
 
 async function sendTransaction(contents, tags) {
   const trx = await client.createTransaction(JSON.stringify(contents));

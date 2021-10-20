@@ -1,13 +1,15 @@
 import * as arweave from './arweave';
 import * as rss from './rss';
 
-export async function searchPodcasts(url) {
-  const [rssPodcasts, arweavePodcasts] = await Promise.all([
-    rss.getPodcasts(url),
-    arweave.getPodcasts(url),
+export async function searchPodcastFeed(url) {
+  const [rssPodcast, arweavePodcasts] = await Promise.all([
+    rss.searchPodcastFeed(url),
+    arweave.searchPodcastFeed(url),
   ]);
+  console.log(rssPodcast);
   const arweavePodcastUrls = arweavePodcasts.map(podcast => podcast.url);
-  const newPodcasts = rssPodcasts.filter(podcast => !arweavePodcastUrls.includes(podcast.url));
+  const newPodcasts = rssPodcast.episodes
+    .filter(podcast => !arweavePodcastUrls.includes(podcast.url));
   return newPodcasts;
 }
 

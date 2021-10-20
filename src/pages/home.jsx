@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { ToastContext } from '../providers/toast';
-import { searchPodcasts } from '../client';
+import { searchPodcastFeed } from '../client';
 import Loading from '../components/loading';
 import SearchPodcasts from '../components/search-podcasts';
 import CreatePodcastButton from '../components/create-podcast-button';
@@ -12,7 +12,7 @@ function HomePage() {
   console.log(podcasts);
 
   async function search({ query }) {
-    return searchPodcasts(query)
+    return searchPodcastFeed(query)
       .then(setPodcasts)
       .catch(ex => {
         console.error(ex);
