@@ -3,14 +3,16 @@ import { Container } from 'react-bootstrap';
 import { ToastContext } from '../providers/toast';
 import { searchPodcasts } from '../client';
 import Loading from '../components/loading';
+import SearchPodcasts from '../components/search-podcasts';
 import CreatePodcastButton from '../components/create-podcast-button';
 
 function HomePage() {
   const toast = useContext(ToastContext);
   const [podcasts, setPodcasts] = useState(null);
+  console.log(podcasts);
 
-  useEffect(() => {
-    searchPodcasts('https://feeds.simplecast.com/dHoohVNH')
+  async function search({ query }) {
+    return searchPodcasts(query)
       .then(setPodcasts)
       .catch(ex => {
         console.error(ex);
@@ -18,11 +20,22 @@ function HomePage() {
           variant: 'danger',
         });
       });
-  }, []);
+  }
+
+  // useEffect(() => {
+  //   searchPodcasts('https://feeds.simplecast.com/dHoohVNH')
+  //     .then(setPodcasts)
+  //     .catch(ex => {
+  //       console.error(ex);
+  //       toast('Could not search for podcasts.', {
+  //         variant: 'danger',
+  //       });
+  //     });
+  // }, []);
 
   return (
     <Container>
-      <h1>Home Page!</h1>
+      <SearchPodcasts onSubmit={search} />
       {podcasts === null ? (
         <Loading />
       ) : (

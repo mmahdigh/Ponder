@@ -20,11 +20,11 @@ export default function createGetPodcasts(client) {
         variables: {
           tags: [
             {
-              name: 'rssFeed',
+              name: `${process.env.TAG_PREFIX}-rss2-feed`,
               values: [url],
             },
             {
-              name: 'Podner-first-episode',
+              name: `${process.env.TAG_PREFIX}-first-episode`,
               values: [(acc.length + 1).toString()],
             },
           ],
