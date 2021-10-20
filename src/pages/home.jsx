@@ -1,18 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
-import { ArweaveContext } from '../providers/arweave';
 import Loading from '../components/loading';
 import CreatePodcastButton from '../components/create-podcast-button';
 
 function HomePage() {
-  const { feed, getNewestPodcastMetadata } = useContext(ArweaveContext);
+  // const { feed, getNewestPodcastMetadata } = useContext(ArweaveContext);
   const [feedMetadata, setFeedMetadata] = useState(null);
   console.log(feedMetadata);
 
   useEffect(() => {
-    feed();
-    getNewestPodcastMetadata('https://feeds.simplecast.com/dHoohVNH')
-      .then(setFeedMetadata);
+    // feed();
+    // getNewestPodcastMetadata('https://feeds.simplecast.com/dHoohVNH')
+    //   .then(setFeedMetadata);
   }, []);
 
   return (

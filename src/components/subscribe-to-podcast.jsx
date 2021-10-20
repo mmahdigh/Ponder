@@ -1,16 +1,14 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { ArweaveContext } from '../providers/arweave';
 
 function SubscribeToPodcast() {
-  const { subscribeToPodcast } = useContext(ArweaveContext);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await subscribeToPodcast(e.target.rssUrl);
+      // await subscribeToPodcast(e.target.rssUrl);
     } finally {
       setIsSubmitting(false);
     }

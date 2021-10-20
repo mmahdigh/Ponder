@@ -14,6 +14,12 @@ const base = {
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
+    fallback: {
+      timers: require.resolve('timers-browserify'),
+      https: require.resolve('https-browserify'),
+      http: require.resolve('stream-http'),
+      stream: require.resolve('stream-browserify'),
+    },
   },
   module: {
     strictExportPresence: true,
@@ -66,6 +72,7 @@ const environments = {
     },
     devtool: 'source-map',
     devServer: {
+      https: true,
       compress: false,
       port: 8080,
       historyApiFallback: true,

@@ -22,7 +22,7 @@ export default function createGetPodcasts(client) {
         variables: {
           tags: [
             {
-              name: 'Podner-rss2-feed',
+              name: 'rssFeed',
               values: [url],
             },
             {
