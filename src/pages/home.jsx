@@ -26,16 +26,16 @@ function HomePage() {
           <thead>
             <tr>
               <th>Title</th>
-              <th>Last Released On</th>
+              <th>First Released</th>
+              <th>Last Released</th>
             </tr>
           </thead>
           <tbody>
             {subscriptions.map(subscription => (
               <tr key={subscription.subscribeUrl}>
                 <th>{subscription.title}</th>
-                <td>
-                  {subscription.episodes.at(-1)?.publishedAt?.toLocaleString()}
-                </td>
+                <td>{subscription.firstPublishedAt.toLocaleString()}</td>
+                <td>{subscription.lastPublishedAt.toLocaleString()}</td>
               </tr>
             ))}
           </tbody>
