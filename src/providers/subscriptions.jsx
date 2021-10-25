@@ -1,25 +1,41 @@
 import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { searchPodcastFeed } from '../client/rss';
+import formatPodcast from '../formatters/podcast';
 
 export const SubscriptionsContext = createContext();
 
+function readCachedPodcasts() {
+  const podcasts = JSON.parse(localStorage.getItem('podcasts')) || [];
+  return podcasts.map(formatPodcast);
+}
+
 function SubscriptionsProvider({ children }) {
-  const [subscriptions, setSubscriptions] = useState([]);
+  const [subscriptions, setSubscriptions] = useState(readCachedPodcasts());
 
   async function subscribe(rssUrl) {
     if (subscriptions.some(subscription => subscription.subscribeUrl === rssUrl)) {
       throw new Error('Already subscribed');
     }
-    const podcast = await searchPodcastFeed(rssUrl);
-    setSubscriptions(prev => prev.concat(podcast));
+    const newPodcast = await searchPodcastFeed(rssUrl);
+    setSubscriptions(prev => prev.concat(newPodcast));
+    localStorage.setItem('podcasts', JSON.stringify(readCachedPodcasts().concat(newPodcast)));
   }
 
   return (
     <SubscriptionsContext.Provider
       value={{
-        subscriptions,
         subscribe,
+        subscriptions: subscriptions
+          .map(subscription => ({
+            ...subscription,
+            episodes: subscription.episodes.slice().sort((a, b) => a.publishedAt - b.publishedAt),
+          }))
+          .map(subscription => ({
+            ...subscription,
+            firstPublishedAt: subscription.episodes.at(0).publishedAt,
+            lastPublishedAt: subscription.episodes.at(-1).publishedAt,
+          })),
       }}
     >
       {children}

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Table } from 'react-bootstrap';
 import { SubscriptionsContext } from '../providers/subscriptions';
 import { ToastContext } from '../providers/toast';
 import SearchPodcasts from '../components/search-podcasts';
@@ -22,7 +22,24 @@ function HomePage() {
     <Container>
       <SearchPodcasts onSubmit={search} />
       {subscriptions.length ? (
-        <p>{subscriptions.length}</p>
+        <Table striped bordered>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Last Released On</th>
+            </tr>
+          </thead>
+          <tbody>
+            {subscriptions.map(subscription => (
+              <tr key={subscription.subscribeUrl}>
+                <th>{subscription.title}</th>
+                <td>
+                  {subscription.episodes.at(-1)?.publishedAt?.toLocaleString()}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       ) : (
         <p>There are no podcasts to display&hellip;</p>
       )}
