@@ -8,6 +8,9 @@ export async function searchPodcastFeed(subscribeUrl) {
   return formatPodcast({
     ...podcast,
     subscribeUrl,
-    episodes: items,
+    episodes: items.map(item => ({
+      ...item,
+      publishedAt: item.isoDate || item.pubDate,
+    })),
   });
 }

@@ -4,7 +4,6 @@ function mergeItunesData(items, itunes) {
 }
 
 export default function formatPodcast(podcast) {
-  console.log(podcast);
   return {
     title: podcast.title,
     subscribeUrl: podcast.subscribeUrl,
@@ -18,7 +17,7 @@ export default function formatPodcast(podcast) {
     episodes: podcast.episodes.map(episode => ({
       title: episode.title,
       url: episode.enclosure?.url || episode.link,
-      publishedAt: episode.isoDate && new Date(episode.isoDate),
+      publishedAt: episode.publishedAt,
       imageUrl: episode.image?.url || episode.itunes?.image,
       categories: mergeItunesData(episode.categories, episode.itunes?.categories),
       keywords: mergeItunesData(episode.keywords, episode.itunes?.keywords),

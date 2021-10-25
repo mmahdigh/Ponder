@@ -29,7 +29,12 @@ function SubscriptionsProvider({ children }) {
         subscriptions: subscriptions
           .map(subscription => ({
             ...subscription,
-            episodes: subscription.episodes.slice().sort((a, b) => a.publishedAt - b.publishedAt),
+            episodes: subscription.episodes
+              .map(episode => ({
+                ...episode,
+                publishedAt: episode.publishedAt && new Date(episode.publishedAt),
+              }))
+              .sort((a, b) => b.publishedAt - a.publishedAt),
           }))
           .map(subscription => ({
             ...subscription,
