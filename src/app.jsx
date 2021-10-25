@@ -6,21 +6,24 @@ import Layout from './components/layout';
 import MasterErrorBoundary from './components/master-error-boundary';
 import Routes from './routes';
 import ToastProvider from './providers/toast';
+import SubscriptionsProvider from './providers/subscriptions';
 
 const history = createBrowserHistory();
 
 function App() {
   return (
-    <MasterErrorBoundary>
-      <ToastProvider>
+    <ToastProvider>
+      <SubscriptionsProvider>
         <Router history={history}>
-          <GlobalStyles />
-          <Layout>
-            <Routes />
-          </Layout>
+          <MasterErrorBoundary>
+            <GlobalStyles />
+            <Layout>
+              <Routes />
+            </Layout>
+          </MasterErrorBoundary>
         </Router>
-      </ToastProvider>
-    </MasterErrorBoundary>
+      </SubscriptionsProvider>
+    </ToastProvider>
   );
 }
 

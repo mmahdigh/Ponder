@@ -11,6 +11,7 @@ export async function searchPodcastFeed(url) {
   const feed = await rssParser.parseURL(url);
   return {
     title: feed.title,
+    subscribeUrl: url,
     rssUrl: feed.feedUrl,
     description: feed.description || feed.itunes?.summary,
     imageUrl: feed.image?.url || feed.itunes?.image,
