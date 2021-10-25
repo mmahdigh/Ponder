@@ -8,22 +8,6 @@ function mergeItunesData(items, itunes) {
 const rssParser = new RssParser();
 
 export async function searchPodcastFeed(url) {
-  // rssParser.parseURL(url).then(console.log);
-  // return rssParser.parseURL(url).then(res => (res.podcasts || []).map(podcast => ({
-  //   ...podcast,
-  //   url,
-  //   description: podcast.description || podcast.itunes?.summary,
-  //   image: podcast.image?.url,
-  //   categories: mergeItunesData(podcast.categories, podcast.itunes?.categories),
-  //   keywords: mergeItunesData(podcast.keywords, podcast.itunes?.categories),
-  //   episodes: podcast.episodes.map(episode => ({
-  //     ...episode,
-  //     published: new Date(episode.published),
-  //     categories: mergeItunesData(episode.categories, episode.itunes?.categories),
-  //     keywords: mergeItunesData(episode.keywords, episode.itunes?.keywords),
-  //   })),
-  // })));
-
   const feed = await rssParser.parseURL(url);
   return {
     title: feed.title,

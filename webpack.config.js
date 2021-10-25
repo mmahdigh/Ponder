@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const Html = require('html-webpack-plugin');
 const MiniCssExtract = require('mini-css-extract-plugin');
+const Brotli = require('brotli-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 const base = {
@@ -87,6 +88,9 @@ const environments = {
       filename: 'main.[contenthash].js',
       publicPath: '/',
     },
+    plugins: [
+      new Brotli(),
+    ],
   },
 };
 

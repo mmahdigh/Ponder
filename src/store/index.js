@@ -1,15 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import podcastsReducer from './podcasts/podcasts.reducer';
+import podcastsSlice from './podcasts';
 
-export default function createPonderStore() {
+export default function createStore() {
   return configureStore({
     reducer: {
-      podcasts: podcastsReducer,
-    },
-    middleware(getDefaultMiddleware) {
-      return {
-        thunk: {},
-      };
+      podcasts: podcastsSlice,
     },
   });
 }
