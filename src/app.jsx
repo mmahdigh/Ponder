@@ -11,16 +11,16 @@ const history = createBrowserHistory();
 
 function App() {
   return (
-    <Router history={history}>
-      <MasterErrorBoundary>
-        <ToastProvider>
+    <MasterErrorBoundary>
+      <ToastProvider>
+        <Router history={history}>
           <GlobalStyles />
           <Layout>
             <Routes />
           </Layout>
-        </ToastProvider>
-      </MasterErrorBoundary>
-    </Router>
+        </Router>
+      </ToastProvider>
+    </MasterErrorBoundary>
   );
 }
 
