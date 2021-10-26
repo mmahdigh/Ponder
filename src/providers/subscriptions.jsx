@@ -1,12 +1,13 @@
 import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import useRerenderEffect from '../hooks/use-rerender-effect';
 import { searchPodcastFeed } from '../client/rss';
 import formatPodcast from '../formatters/podcast';
 
 export const SubscriptionsContext = createContext();
 
 function readCachedPodcasts() {
-  const podcasts = JSON.parse(localStorage.getItem('podcasts')) || [];
+  const podcasts = JSON.parse(localStorage.getItem('subscriptions')) || [];
   return podcasts.map(formatPodcast);
 }
 
@@ -19,8 +20,11 @@ function SubscriptionsProvider({ children }) {
     }
     const newPodcast = await searchPodcastFeed(rssUrl);
     setSubscriptions(prev => prev.concat(newPodcast));
-    localStorage.setItem('podcasts', JSON.stringify(readCachedPodcasts().concat(newPodcast)));
   }
+
+  useRerenderEffect(() => {
+    localStorage.setItem('subscriptions', JSON.stringify(subscriptions));
+  }, [subscriptions]);
 
   return (
     <SubscriptionsContext.Provider

@@ -14,6 +14,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     'react/jsx-no-bind': 0,
     'react/static-property-placement': [2, 'static public field'],
+    'consistent-return': 0,
     'no-console': 0,
   },
   overrides: [
