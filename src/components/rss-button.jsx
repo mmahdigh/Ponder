@@ -18,12 +18,18 @@ const MinusIcon = styled(FaMinus)`
   font-size: .7rem;
 `;
 
-function RssButton({ className, removeButton, ...props }) {
+function RssButton({
+  className,
+  removeButton,
+  onClick,
+  ...props
+}) {
   return (
     <Button
       className={className}
-      type="submit"
+      type={onClick ? 'button' : 'submit'}
       variant={removeButton ? 'danger' : 'info'}
+      onClick={onClick}
       {...props}
     >
       <FaRss />
@@ -39,11 +45,13 @@ function RssButton({ className, removeButton, ...props }) {
 RssButton.propTypes = {
   className: PropTypes.string,
   removeButton: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 RssButton.defaultProps = {
   className: null,
   removeButton: false,
+  onClick: null,
 };
 
 export default RssButton;

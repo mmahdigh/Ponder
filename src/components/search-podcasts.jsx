@@ -25,13 +25,18 @@ const validationSchema = Yup.object().shape({
 }).required();
 
 function SearchPodcasts({ onSubmit }) {
+  async function handleSubmit(values, { resetForm }) {
+    await onSubmit(values);
+    resetForm();
+  }
+
   return (
     <Formik
       validationSchema={validationSchema}
       initialValues={{
         query: '',
       }}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
     >
       {({ submitting }) => (
         <FormikForm>

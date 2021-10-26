@@ -4,10 +4,11 @@ import { SubscriptionsContext } from '../providers/subscriptions';
 import { ToastContext } from '../providers/toast';
 import SearchPodcasts from '../components/search-podcasts';
 import CreatePodcastButton from '../components/create-podcast-button';
+import RssButton from '../components/rss-button';
 
 function HomePage() {
   const toast = useContext(ToastContext);
-  const { subscriptions, subscribe } = useContext(SubscriptionsContext);
+  const { subscriptions, subscribe, unsubscribe } = useContext(SubscriptionsContext);
 
   async function search({ query }) {
     return subscribe(query).catch(ex => {
@@ -28,6 +29,7 @@ function HomePage() {
               <th>Title</th>
               <th>First Released</th>
               <th>Last Released</th>
+              <th aria-label="Row controls" />
             </tr>
           </thead>
           <tbody>
@@ -36,6 +38,13 @@ function HomePage() {
                 <th>{subscription.title}</th>
                 <td>{subscription.firstPublishedAt.toLocaleString()}</td>
                 <td>{subscription.lastPublishedAt.toLocaleString()}</td>
+                <td>
+                  <RssButton
+                    aria-label="Unsubscribe"
+                    removeButton
+                    onClick={() => unsubscribe(subscription.subscribeUrl)}
+                  />
+                </td>
               </tr>
             ))}
           </tbody>

@@ -22,6 +22,13 @@ function SubscriptionsProvider({ children }) {
     setSubscriptions(prev => prev.concat(newPodcast));
   }
 
+  async function unsubscribe(rssUrl) {
+    if (subscriptions.every(subscription => subscription.subscribeUrl !== rssUrl)) {
+      throw new Error('Not subscribed.');
+    }
+    setSubscriptions(prev => prev.filter(subscription => subscription.subscribeUrl !== rssUrl));
+  }
+
   useRerenderEffect(() => {
     localStorage.setItem('subscriptions', JSON.stringify(subscriptions));
   }, [subscriptions]);
@@ -30,6 +37,7 @@ function SubscriptionsProvider({ children }) {
     <SubscriptionsContext.Provider
       value={{
         subscribe,
+        unsubscribe,
         subscriptions: subscriptions
           .map(subscription => ({
             ...subscription,
