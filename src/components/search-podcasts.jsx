@@ -40,9 +40,8 @@ function SearchPodcasts({ onSubmit }) {
       }}
       onSubmit={onSubmit}
     >
-      {({ submitting, errors }) => (
+      {({ submitting }) => (
         <FormikForm>
-          {console.log(errors)}
           <Form.Group controlId="query">
             <InputGroup>
               <Field name="query" disabled={submitting} placeholder="RSS URL" />

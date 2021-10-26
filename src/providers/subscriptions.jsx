@@ -44,7 +44,8 @@ function SubscriptionsProvider({ children }) {
             ...subscription,
             firstPublishedAt: subscription.episodes.at(0).publishedAt,
             lastPublishedAt: subscription.episodes.at(-1).publishedAt,
-          })),
+          }))
+          .sort((a, b) => a.title.localeCompare(b.title)),
       }}
     >
       {children}
