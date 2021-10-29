@@ -42,7 +42,7 @@ function SearchPodcasts({ onSubmit }) {
         <FormikForm>
           <Form.Group controlId="query">
             <InputGroup>
-              <Field name="query" disabled={submitting} placeholder="RSS URL" />
+              <Field name="query" disabled={submitting} placeholder="RSS URL" component={Form.Control} />
               <SearchButton>
                 <RssButton />
               </SearchButton>

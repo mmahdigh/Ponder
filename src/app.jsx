@@ -7,22 +7,25 @@ import MasterErrorBoundary from './components/master-error-boundary';
 import Routes from './routes';
 import ToastProvider from './providers/toast';
 import SubscriptionsProvider from './providers/subscriptions';
+import ArweaveSyncProvider from './providers/arweave-sync';
 
 const history = createBrowserHistory();
 
 function App() {
   return (
     <ToastProvider>
-      <SubscriptionsProvider>
-        <Router history={history}>
-          <MasterErrorBoundary>
-            <GlobalStyles />
-            <Layout>
-              <Routes />
-            </Layout>
-          </MasterErrorBoundary>
-        </Router>
-      </SubscriptionsProvider>
+      <ArweaveSyncProvider>
+        <SubscriptionsProvider>
+          <Router history={history}>
+            <MasterErrorBoundary>
+              <GlobalStyles />
+              <Layout>
+                <Routes />
+              </Layout>
+            </MasterErrorBoundary>
+          </Router>
+        </SubscriptionsProvider>
+      </ArweaveSyncProvider>
     </ToastProvider>
   );
 }

@@ -3,7 +3,6 @@ import { Container, Table } from 'react-bootstrap';
 import { SubscriptionsContext } from '../providers/subscriptions';
 import { ToastContext } from '../providers/toast';
 import SearchPodcasts from '../components/search-podcasts';
-import CreatePodcastButton from '../components/create-podcast-button';
 import RssButton from '../components/rss-button';
 
 function HomePage() {
@@ -52,7 +51,6 @@ function HomePage() {
       ) : (
         <p>There are no podcasts to display&hellip;</p>
       )}
-      <CreatePodcastButton />
     </Container>
   );
 }
