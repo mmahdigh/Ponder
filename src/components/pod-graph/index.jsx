@@ -5,6 +5,7 @@ import klay from 'cytoscape-klay';
 import panzoom from 'cytoscape-panzoom';
 import normalizeData from './normalize-data';
 import styles from './styles';
+import Legend from './legend';
 
 // TODO: Move to provider
 cytoscape.use(klay);
@@ -94,17 +95,20 @@ function PodGraph() {
   }
 
   return (
-    <Cytoscape
-      elements={elements}
-      layout={LAYOUT}
-      stylesheet={stylesheet}
-      cy={applyCy}
-      style={{
-        minWidth: '100%',
-        minHeight: 600,
-        backgroundCOlor: '#202022',
-      }}
-    />
+    <>
+      <Cytoscape
+        elements={elements}
+        layout={LAYOUT}
+        stylesheet={stylesheet}
+        cy={applyCy}
+        style={{
+          minWidth: '100%',
+          minHeight: 600,
+          backgroundCOlor: '#202022',
+        }}
+      />
+      <Legend />
+    </>
   );
 }
 
