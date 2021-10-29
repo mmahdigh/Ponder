@@ -26,15 +26,14 @@ function AddUrlForm() {
     return addUrl(rssUrl, isPublic)
       .then(() => {
         toast({
-          header: 'Success!',
-          text: 'Ayyo it worked!',
+          text: 'Subscribed',
+          variant: 'success',
         });
       })
       .catch(ex => {
         console.error(ex);
         toast({
-          header: 'Failure!',
-          text: 'Ayyo it dit not work!',
+          text: 'Unsubscribed',
           variant: 'danger',
         });
       });

@@ -22,6 +22,18 @@ const SyncOverlay = styled.div`
   transition: opacity .35s ease-in-out;
 `;
 
+const SyncIcon = styled(FaSync)`
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  animation: spin 1s infinite;
+`;
+
 function ArweaveSync() {
   const [isSyncing, setIsSyncing] = useState(false);
   const { subscriptions } = useContext(SubscriptionsContext);
@@ -35,7 +47,7 @@ function ArweaveSync() {
     <>
       <SyncOverlay active={isSyncing} />
       <SyncButton disabled={isSyncing} onClick={sync}>
-        <FaSync />
+        <SyncIcon />
       </SyncButton>
     </>
   );
