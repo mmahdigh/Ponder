@@ -3,14 +3,17 @@ import styled from 'styled-components';
 import { AiOutlineLine, AiOutlineSmallDash, AiOutlineStar } from 'react-icons/ai';
 
 const LegendNav = styled.nav`
-  margin-left: auto;
-  width: 10.5rem;
+  /* margin-left: auto;
+  width: 10.5rem; */
 
   ul {
     list-style: none;
-    margin-left: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
   }
 
   li {
@@ -18,6 +21,9 @@ const LegendNav = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    width: 50%;
     color: var(--color-label);
     text-transform: lowercase;
   }
