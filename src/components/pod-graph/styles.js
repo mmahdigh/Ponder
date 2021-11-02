@@ -1,36 +1,34 @@
-const styles = () => {
-  const nodeStyle = {
-    shape: 'octagon',
-    'background-color': 'data(NodesBg)',
-    'background-opacity': 0.6,
-    'background-image': 'data(bgImg)',
-    'background-fit': 'cover cover',
-    'background-image-opacity': 0.1,
-    width: 250,
-    height: 250,
-    avoidOverlap: true, // if true, prevents overlap of node bounding boxes
-    // whether labels should be included in determining the space used by a node
-    nodeDimensionsIncludeLabels: true,
-    'text-outline-width': 1,
-    padding: 20,
-    'padding-relative-to': 'width',
-    color: 'white',
-    'font-family': 'Helvetica',
-    'font-weight': 400,
-    'font-size': 20,
-    label: 'data(label)',
-    'text-halign': 'center',
-    'text-valign': 'center',
-    'text-max-width': '200px',
-    'text-wrap': 'wrap',
-    'text-overflow-wrap': 'anywhere',
-    'text-justification': 'center',
-    'line-height': 1.5,
-  };
-
-  return [{
+const styles = [
+  {
     selector: 'node',
-    style: nodeStyle,
+    style: {
+      shape: 'octagon',
+      'background-color': 'data(NodesBg)',
+      'background-opacity': 0.6,
+      'background-image': 'data(bgImg)',
+      'background-fit': 'cover cover',
+      'background-image-opacity': 0.1,
+      width: 250,
+      height: 250,
+      avoidOverlap: true, // if true, prevents overlap of node bounding boxes
+      // whether labels should be included in determining the space used by a node
+      nodeDimensionsIncludeLabels: true,
+      'text-outline-width': 1,
+      padding: 20,
+      'padding-relative-to': 'width',
+      color: 'white',
+      'font-family': 'Helvetica',
+      'font-weight': 400,
+      'font-size': 20,
+      label: 'data(label)',
+      'text-halign': 'center',
+      'text-valign': 'center',
+      'text-max-width': '200px',
+      'text-wrap': 'wrap',
+      'text-overflow-wrap': 'anywhere',
+      'text-justification': 'center',
+      'line-height': 1.5,
+    },
   },
   {
     selector: 'edge',
@@ -62,7 +60,6 @@ const styles = () => {
       'line-style': 'data(EdgeStyle)',
     },
   },
-  ];
-};
+];
 
 export default styles;
