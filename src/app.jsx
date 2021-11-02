@@ -8,6 +8,7 @@ import Routes from './routes';
 import ToastProvider from './providers/toast';
 import SubscriptionsProvider from './providers/subscriptions';
 import ArweaveSyncProvider from './providers/arweave-sync';
+import CytoscapeProvider from './providers/cytoscape';
 
 const history = createBrowserHistory();
 
@@ -18,10 +19,12 @@ function App() {
         <SubscriptionsProvider>
           <Router history={history}>
             <MasterErrorBoundary>
-              <GlobalStyles />
-              <Layout>
-                <Routes />
-              </Layout>
+              <CytoscapeProvider>
+                <GlobalStyles />
+                <Layout>
+                  <Routes />
+                </Layout>
+              </CytoscapeProvider>
             </MasterErrorBoundary>
           </Router>
         </SubscriptionsProvider>
