@@ -1,11 +1,12 @@
 import cytoscape from 'cytoscape';
 import klay from 'cytoscape-klay';
 import panzoom from 'cytoscape-panzoom';
+import applyEvents from './events';
 
 cytoscape.use(klay);
 panzoom(cytoscape);
 
-export default function applyCytoscape(setCytoscape) {
+export default function applyCytoscape(setCytoscape, deps) {
   return cy => {
     cy.panzoom({
       zoomFactor: 0.05, // zoom factor per zoom tick
@@ -37,6 +38,8 @@ export default function applyCytoscape(setCytoscape) {
       zoomOutIcon: 'fa fa-minus',
       resetIcon: 'fa fa-expand',
     });
+
+    applyEvents(cy, deps);
     setCytoscape(cy);
   };
 }
