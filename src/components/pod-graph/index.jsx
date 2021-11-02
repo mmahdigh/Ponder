@@ -44,7 +44,7 @@ const DEFAULTS = {
 
 const LAYOUT = {
   fit: true, // whether to fit the viewport to the graph
-  padding: 10, // the padding on fit
+  padding: 4, // the padding on fit
   name: 'klay',
   nodeSep: undefined, // the separation between adjacent nodes in the same rank
   edgeSep: undefined, // the separation between adjacent edges in the same rank
@@ -57,16 +57,10 @@ const LAYOUT = {
   edgeWeight(edge) {
     return 1;
   }, // higher weight edges are generally made shorter and straighter than lower weight edges
-
-  // general layout options
-  // Applies a multiplicative factor (>0) to expand or
-  // compress the overall area that the nodes take up
   spacingFactor: 5,
   // whether labels should be included in determining the space used by a node
   nodeDimensionsIncludeLabels: true,
   animate: true, // whether to transition the node positions
-  // whether to animate specific nodes when animation is on; non-animated nodes
-  // immediately go to their final positions
   animateFilter() {
     return true;
   },

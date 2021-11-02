@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 export default function getCustomStuff() {
   return FAKE_DATA;
 }
@@ -23,6 +24,43 @@ const FAKE_DATA = {
   },
   {
     nodeID: '8',
+    'rss2-feed': 'https://feeds.megaphone.fm/the-daily-show',
+    title: 'The Daily Show With Trevor Noah: Ears Edition',
+    description: 'Listen to highlights and extended interviews in the Ears Edition  of The Daily Show with Trevor Noah. From Comedy Central’s Podcast Network.',
+    categories: ['News', 'Daily News', 'Comedy', 'News'],
+    keywords: ['news', 'daily news', 'comedy', 'trevoh noah'],
+    bgImg: 'https://megaphone.imgix.net/podcasts/34814bf8-e860-11e8-8bb2-6f3e1a98c859/image/uploads_2F1553887433220-tm6mswb02ve-81b991f0edef1e2d49524f20aaa20a8f_2FTDS_EARS_EDITION_COVER_ART_2019.jpg?ixlib=rails-2.1.2&max-w=3000&max-h=3000&fit=crop&auto=format,compress',
+  },
+  {
+    nodeID: '9',
+    'rss2-feed': 'https://audioboom.com/channels/4954758.rss',
+    title: 'Duncan Trussell Family Hour',
+    description: 'A weekly salon-style supershow, where comedian Duncan Trussell and guests explore the outer reaches of the multiverse. And on April 20th 2020, the Duncan Trussell Family Hour podcast will be coming to Netflix in the form of &quot;The Midnight Gospel&quot;, created by Duncan Trussell and Pendleton Ward. The adult animated Netflix series is set in a fantastical universe and will use interview clips from the podcast',
+    categories: ['6969', 'Society', 'Culture', 'Comedy', 'Religion'],
+    keywords: ['comedy', 'dore', 'humor', 'Trussel'],
+    bgImg: 'https://megaphone.imgix.net/podcasts/34814bf8-e860-11e8-8bb2-6f3e1a98c859/image/uploads_2F1553887433220-tm6mswb02ve-81b991f0edef1e2d49524f20aaa20a8f_2FTDS_EARS_EDITION_COVER_ART_2019.jpg?ixlib=rails-2.1.2&max-w=3000&max-h=3000&fit=crop&auto=format,compress',
+  },
+  {
+    nodeID: '10',
+    'rss2-feed': 'https://feeds.megaphone.fm/the-daily-show',
+    title: 'The Daily Show With Trevor Noah: Ears Edition',
+    description: 'Listen to highlights and extended interviews in the Ears Edition  of The Daily Show with Trevor Noah. From Comedy Central’s Podcast Network.',
+    categories: ['News', 'Daily News', 'Comedy', 'News'],
+    keywords: ['news', 'daily news', 'comedy', 'trevoh noah'],
+    bgImg: 'https://megaphone.imgix.net/podcasts/34814bf8-e860-11e8-8bb2-6f3e1a98c859/image/uploads_2F1553887433220-tm6mswb02ve-81b991f0edef1e2d49524f20aaa20a8f_2FTDS_EARS_EDITION_COVER_ART_2019.jpg?ixlib=rails-2.1.2&max-w=3000&max-h=3000&fit=crop&auto=format,compress',
+  },
+
+  {
+    nodeID: '4',
+    'rss2-feed': 'https://audioboom.com/channels/4954758.rss',
+    title: 'Duncan Trussell Family Hour',
+    description: 'A weekly salon-style supershow, where comedian Duncan Trussell and guests explore the outer reaches of the multiverse. And on April 20th 2020, the Duncan Trussell Family Hour podcast will be coming to Netflix in the form of &quot;The Midnight Gospel&quot;, created by Duncan Trussell and Pendleton Ward. The adult animated Netflix series is set in a fantastical universe and will use interview clips from the podcast',
+    categories: ['6969', 'Society', 'Culture', 'Comedy', 'Religion'],
+    keywords: ['comedy', 'dore', 'humor', 'Trussel'],
+    bgImg: 'https://megaphone.imgix.net/podcasts/34814bf8-e860-11e8-8bb2-6f3e1a98c859/image/uploads_2F1553887433220-tm6mswb02ve-81b991f0edef1e2d49524f20aaa20a8f_2FTDS_EARS_EDITION_COVER_ART_2019.jpg?ixlib=rails-2.1.2&max-w=3000&max-h=3000&fit=crop&auto=format,compress',
+  },
+  {
+    nodeID: '5',
     'rss2-feed': 'https://feeds.megaphone.fm/the-daily-show',
     title: 'The Daily Show With Trevor Noah: Ears Edition',
     description: 'Listen to highlights and extended interviews in the Ears Edition  of The Daily Show with Trevor Noah. From Comedy Central’s Podcast Network.',
@@ -126,28 +164,27 @@ const FAKE_DATA = {
     },
     ],
   },
-  subscriptions: [
-    {
-      name: 'user1',
-      pods: [
-        { podcastID: '6' },
-        { podcastID: '7' },
-      ],
-    },
-    {
-      name: 'user2',
-      pods: [
-        { podcastID: '6' },
-        { podcastID: '8' },
-      ],
-    },
-    {
-      name: 'user3',
-      pods: [
-        { podcastID: '8' },
-        { podcastID: '7' },
-      ],
-    },
+  subscriptions: [{
+    name: 'user1',
+    pods: [
+      { podcastID: '6' },
+      { podcastID: '7' },
+    ],
+  },
+  {
+    name: 'user2',
+    pods: [
+      { podcastID: '6' },
+      { podcastID: '8' },
+    ],
+  },
+  {
+    name: 'user3',
+    pods: [
+      { podcastID: '8' },
+      { podcastID: '7' },
+    ],
+  },
   ],
   edges: [
     {
@@ -158,6 +195,50 @@ const FAKE_DATA = {
 
     {
       edgeID: 'edge2',
+      fromID: '6',
+      toID: '8',
+    },
+    {
+      edgeID: 'edge3',
+      fromID: '6',
+      toID: '9',
+    },
+
+    {
+      edgeID: 'edge4',
+      fromID: '4',
+      toID: '5',
+    },
+    {
+      edgeID: 'edge5',
+      fromID: '5',
+      toID: '7',
+    },
+
+    {
+      edgeID: 'edge6',
+      fromID: '6',
+      toID: '9',
+    },
+    {
+      edgeID: 'edge7',
+      fromID: '6',
+      toID: '7',
+    },
+
+    {
+      edgeID: 'edge8',
+      fromID: '6',
+      toID: '8',
+    },
+    {
+      edgeID: 'edge9',
+      fromID: '8',
+      toID: '10',
+    },
+
+    {
+      edgeID: 'edge10',
       fromID: '6',
       toID: '8',
     },

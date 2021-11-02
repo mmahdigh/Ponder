@@ -11,9 +11,9 @@ export default function normalizeData() {
   }
 
   const { pods } = userSubscriptions.find(userPodcasts);
-
+  // NOTE: this function is currently 'useless' TODO:i should refactor it with an ICON inside the nodes
   function customPodcastBg(id) {
-    return (pods.find(({ podcastID }) => (podcastID === id))) ? 'green' : 'grey';
+    return (pods.find(({ podcastID }) => (podcastID === id))) ? 'grey' : 'grey';
   }
   // TODO customize the edges styling to users subscription
   function customEdgesStyle(toID) {
