@@ -3,7 +3,7 @@ import formatPodcast from '../formatters/podcast';
 
 const rssParser = new RssParser();
 
-export async function searchPodcastFeed(subscribeUrl) {
+export async function getPodcastFeed(subscribeUrl) {
   const { items, ...podcast } = await rssParser.parseURL(subscribeUrl);
   return formatPodcast({
     ...podcast,

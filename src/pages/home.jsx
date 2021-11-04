@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
-import { Container, Table } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { SubscriptionsContext } from '../providers/subscriptions';
 import { ToastContext } from '../providers/toast';
 import PodGraph from '../components/pod-graph';
 import SearchPodcasts from '../components/search-podcasts';
-import RssButton from '../components/rss-button';
 
 function HomePage() {
   const toast = useContext(ToastContext);
@@ -22,7 +21,7 @@ function HomePage() {
   return (
     <Container>
       <SearchPodcasts onSubmit={search} />
-      <PodGraph />
+      <PodGraph subscriptions={subscriptions} />
       {/* {subscriptions.length ? (
         <Table striped bordered>
           <thead>
