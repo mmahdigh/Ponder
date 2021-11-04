@@ -12,6 +12,7 @@ const base = {
   context: path.resolve('src'),
   entry: [
     'bootstrap/dist/css/bootstrap.min.css',
+    'core-js',
     './index.jsx',
   ],
   resolve: {
