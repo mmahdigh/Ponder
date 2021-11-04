@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import useRerenderEffect from '../hooks/use-rerender-effect';
-import { searchPodcastFeed } from '../client/rss';
+import { getPodcastFeed } from '../client/rss';
 import formatPodcast from '../formatters/podcast';
 
 export const SubscriptionsContext = createContext();
@@ -18,7 +18,7 @@ function SubscriptionsProvider({ children }) {
     if (subscriptions.some(subscription => subscription.subscribeUrl === rssUrl)) {
       throw new Error('Already subscribed');
     }
-    const newPodcast = await searchPodcastFeed(rssUrl);
+    const newPodcast = await getPodcastFeed(rssUrl);
     setSubscriptions(prev => prev.concat(newPodcast));
   }
 
