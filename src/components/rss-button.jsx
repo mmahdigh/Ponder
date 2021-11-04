@@ -21,6 +21,7 @@ const MinusIcon = styled(FaMinus)`
 function RssButton({
   className,
   removeButton,
+  disabled,
   onClick,
   ...props
 }) {
@@ -45,12 +46,14 @@ function RssButton({
 RssButton.propTypes = {
   className: PropTypes.string,
   removeButton: PropTypes.bool,
+  disabled: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
 RssButton.defaultProps = {
   className: null,
   removeButton: false,
+  disabled: false,
   onClick: null,
 };
 

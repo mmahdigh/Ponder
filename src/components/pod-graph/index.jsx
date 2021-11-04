@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 import Cytoscape from 'react-cytoscapejs';
 import applyCytoscape from './cytoscape';
 import { CytoscapeContext } from '../../providers/cytoscape';
@@ -7,13 +8,13 @@ import layout from './layout';
 import styles from './styles';
 import Legend from './legend';
 import PodcastDetails from '../podcast-details';
+import { podcastPropType } from '../../prop-types';
 
-function PodGraph() {
+function PodGraph({ subscriptions }) {
   const { setCytoscape } = useContext(CytoscapeContext);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [selectedPodcast, setSelectedPodcast] = useState(null);
   const elements = Cytoscape.normalizeElements(normalizeData());
-  console.log(selectedPodcast);
 
   return (
     <>
@@ -35,5 +36,13 @@ function PodGraph() {
     </>
   );
 }
+
+PodGraph.propTypes = {
+  subscriptions: PropTypes.arrayOf(podcastPropType),
+};
+
+PodGraph.defaultProps = {
+  subscriptions: [],
+};
 
 export default PodGraph;

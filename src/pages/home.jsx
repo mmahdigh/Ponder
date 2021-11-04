@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { Container } from 'react-bootstrap';
+import { Table, Container } from 'react-bootstrap';
 import { SubscriptionsContext } from '../providers/subscriptions';
 import { ToastContext } from '../providers/toast';
 import PodGraph from '../components/pod-graph';
 import SearchPodcasts from '../components/search-podcasts';
+import RssButton from '../components/rss-button';
 
 function HomePage() {
   const toast = useContext(ToastContext);
@@ -22,8 +23,8 @@ function HomePage() {
     <Container>
       <SearchPodcasts onSubmit={search} />
       <PodGraph subscriptions={subscriptions} />
-      {/* {subscriptions.length ? (
-        <Table striped bordered>
+      {subscriptions.length ? (
+        <Table variant="dark" striped bordered>
           <thead>
             <tr>
               <th>Title</th>
@@ -51,7 +52,7 @@ function HomePage() {
         </Table>
       ) : (
         <p>There are no podcasts to display&hellip;</p>
-      )} */}
+      )}
     </Container>
   );
 }

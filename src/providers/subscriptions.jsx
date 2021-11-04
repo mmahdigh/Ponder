@@ -18,6 +18,7 @@ function SubscriptionsProvider({ children }) {
     if (subscriptions.some(subscription => subscription.subscribeUrl === rssUrl)) {
       throw new Error('Already subscribed');
     }
+    console.log(rssUrl);
     const newPodcast = await getPodcastFeed(rssUrl);
     setSubscriptions(prev => prev.concat(newPodcast));
   }
