@@ -1,6 +1,7 @@
 function mergeItunesData(items, itunes) {
   return (items || []).concat(itunes || [])
-    .filter((a, i, xs) => xs.indexOf(a) === i);
+    .filter((a, i, xs) => xs.indexOf(a) === i)
+    .map(a => a.toLowerCase());
 }
 
 export default function formatPodcast(podcast) {

@@ -16,15 +16,16 @@ function PodGraph({ subscriptions }) {
   const elements = Cytoscape.normalizeElements({
     nodes: subscriptions.map(({ episodes, ...podcast }) => ({ data: podcast })),
     edges: subscriptions.reduce((acc, podcast, i, xs) => {
+      console.log(podcast);
       const matches = xs.filter(({ categories, keywords }) => categories
         .some(category => podcast.categories.includes(category))
         || keywords.some(keyword => podcast.keywords.includes(keyword)));
       if (!matches.length) return acc;
 
       return acc.concat(matches.map(match => ({
-        edgeID: `${podcast.rssUrl}_${match.rssUrl}`,
-        fromID: podcast.rssUrl,
-        toID: match.rssUrl,
+        edgeID: `${podcast.subscribeUrl}_${match.subscribeUrl}`,
+        fromID: podcast.subscribeUrl,
+        toID: match.subscribeUrl,
       })));
     }, []),
   });

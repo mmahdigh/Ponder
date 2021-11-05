@@ -14,20 +14,20 @@ function readCachedPodcasts() {
 function SubscriptionsProvider({ children }) {
   const [subscriptions, setSubscriptions] = useState(readCachedPodcasts());
 
-  async function subscribe(rssUrl) {
-    if (subscriptions.some(subscription => subscription.subscribeUrl === rssUrl)) {
+  async function subscribe(subscribeUrl) {
+    if (subscriptions.some(subscription => subscription.subscribeUrl === subscribeUrl)) {
       throw new Error('Already subscribed');
     }
-    console.log(rssUrl);
-    const newPodcast = await getPodcastFeed(rssUrl);
+    const newPodcast = await getPodcastFeed(subscribeUrl);
     setSubscriptions(prev => prev.concat(newPodcast));
   }
 
-  async function unsubscribe(rssUrl) {
-    if (subscriptions.every(subscription => subscription.subscribeUrl !== rssUrl)) {
+  async function unsubscribe(subscribeUrl) {
+    if (subscriptions.every(subscription => subscription.subscribeUrl !== subscribeUrl)) {
       throw new Error('Not subscribed.');
     }
-    setSubscriptions(prev => prev.filter(subscription => subscription.subscribeUrl !== rssUrl));
+    setSubscriptions(prev => prev
+      .filter(subscription => subscription.subscribeUrl !== subscribeUrl));
   }
 
   useRerenderEffect(() => {
