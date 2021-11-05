@@ -16,16 +16,25 @@ function PodGraph({ subscriptions }) {
   const elements = Cytoscape.normalizeElements({
     nodes: subscriptions.map(({ episodes, ...podcast }) => ({ data: podcast })),
     edges: subscriptions.reduce((acc, podcast, i, xs) => {
-      console.log(podcast);
+      // A match is any other podcast that has one same category or keyword
       const matches = xs.filter(({ categories, keywords }) => categories
         .some(category => podcast.categories.includes(category))
         || keywords.some(keyword => podcast.keywords.includes(keyword)));
+
+      // If there are no matches there is nothing to add
       if (!matches.length) return acc;
 
+      // Remove duplicates
+      // matches = matches.filter((match, i, xs) => xs.map(a ));
+
+      // Tack dat on
       return acc.concat(matches.map(match => ({
-        edgeID: `${podcast.subscribeUrl}_${match.subscribeUrl}`,
-        fromID: podcast.subscribeUrl,
-        toID: match.subscribeUrl,
+        source: podcast.subscribeUrl,
+        target: match.subscribeUrl,
+        label: podcast.categories.filter(category => match.categories.includes(category))
+          .concat(podcast.keywords.filter(keyword => match.keywords.includes(keyword)))
+          .join(', '),
+        isMatch: true, // There will be three different edge styles
       })));
     }, []),
   });

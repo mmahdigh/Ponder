@@ -9,7 +9,7 @@ export const episodePropType = PropTypes.shape({
 });
 
 export const podcastPropType = PropTypes.shape({
-  rssUrl: PropTypes.string.isRequired,
+  subscribeUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   language: PropTypes.string,
