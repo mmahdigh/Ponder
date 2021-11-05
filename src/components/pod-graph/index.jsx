@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Cytoscape from 'react-cytoscapejs';
 import applyCytoscape from './cytoscape';
 import { CytoscapeContext } from '../../providers/cytoscape';
-import normalizeData from './normalize-data';
 import layout from './layout';
 import styles from './styles';
 import Legend from './legend';
@@ -12,9 +11,23 @@ import { podcastPropType } from '../../prop-types';
 
 function PodGraph({ subscriptions }) {
   const { setCytoscape } = useContext(CytoscapeContext);
-  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [selectedPodcast, setSelectedPodcast] = useState(null);
-  const elements = Cytoscape.normalizeElements(normalizeData());
+
+  const elements = Cytoscape.normalizeElements({
+    nodes: subscriptions.map(({ episodes, ...podcast }) => ({ data: podcast })),
+    edges: subscriptions.reduce((acc, podcast, i, xs) => {
+      const matches = xs.filter(({ categories, keywords }) => categories
+        .some(category => podcast.categories.includes(category))
+        || keywords.some(keyword => podcast.keywords.includes(keyword)));
+      if (!matches.length) return acc;
+
+      return acc.concat(matches.map(match => ({
+        edgeID: `${podcast.rssUrl}_${match.rssUrl}`,
+        fromID: podcast.rssUrl,
+        toID: match.rssUrl,
+      })));
+    }, []),
+  });
 
   return (
     <>
@@ -28,11 +41,11 @@ function PodGraph({ subscriptions }) {
         style={{
           minWidth: '100%',
           minHeight: 600,
-          backgroundCOlor: '#202022',
+          backgroundColor: '#202022',
         }}
       />
       <Legend />
-      <PodcastDetails isOpen={isDetailsOpen} close={() => setIsDetailsOpen(false)} />
+      <PodcastDetails isOpen={!!selectedPodcast} close={() => setSelectedPodcast(null)} />
     </>
   );
 }

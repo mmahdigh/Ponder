@@ -18,9 +18,9 @@ export default function formatPodcast(podcast) {
       title: episode.title,
       url: episode.enclosure?.url || episode.link,
       publishedAt: episode.publishedAt,
-      imageUrl: episode.image?.url || episode.itunes?.image,
-      categories: mergeItunesData(episode.categories, episode.itunes?.categories),
-      keywords: mergeItunesData(episode.keywords, episode.itunes?.keywords),
+      imageUrl: episode.image?.url || episode?.itunes?.image,
+      categories: mergeItunesData(episode.categories, episode?.itunes?.categories),
+      keywords: mergeItunesData(episode.keywords, episode?.itunes?.keywords),
     })),
   };
 }
