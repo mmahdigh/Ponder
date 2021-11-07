@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import 'cytoscape-panzoom/cytoscape.js-panzoom.css';
 
 export default createGlobalStyle`
   :root {

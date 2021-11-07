@@ -25,7 +25,7 @@ export default function normalizeData() {
 
   const cytoscapeNodes = customNodes.map(
     ({
-      nodeID, title, categories, type, bgImg,
+      nodeID, title, categories, type, bgImg, description,
     }) => ({
       data: {
         id: nodeID,
@@ -33,6 +33,7 @@ export default function normalizeData() {
         categories: categories.join(',\n'),
         type,
         bgImg,
+        description,
         NodesBg: customPodcastBg(nodeID),
       },
     }),

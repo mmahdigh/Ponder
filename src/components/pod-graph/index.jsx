@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useContext, useState } from 'react';
 import Cytoscape from 'react-cytoscapejs';
 import applyCytoscape from './cytoscape';
@@ -11,10 +12,14 @@ import PodcastDetails from '../podcast-details';
 function PodGraph() {
   const { setCytoscape } = useContext(CytoscapeContext);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
-  const [selectedPodcast, setSelectedPodcast] = useState(null);
+  const [selectedPodcast, setSelectedPodcast] = useState({});
   const elements = Cytoscape.normalizeElements(normalizeData());
-  console.log(selectedPodcast);
 
+  const { label: title, bgImg: imageUrl, description } = selectedPodcast;
+
+  function toggleModal() {
+    setIsDetailsOpen(!isDetailsOpen);
+  }
   return (
     <>
       <Cytoscape
@@ -23,6 +28,7 @@ function PodGraph() {
         stylesheet={styles}
         cy={applyCytoscape(setCytoscape, {
           setSelectedPodcast,
+          toggleModal,
         })}
         style={{
           minWidth: '100%',
@@ -31,7 +37,13 @@ function PodGraph() {
         }}
       />
       <Legend />
-      <PodcastDetails isOpen={isDetailsOpen} close={() => setIsDetailsOpen(false)} />
+      <PodcastDetails
+        title={title}
+        imageUrl={imageUrl}
+        isOpen={isDetailsOpen}
+        description={description}
+        close={() => setIsDetailsOpen(false)}
+      />
     </>
   );
 }
