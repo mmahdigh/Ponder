@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useContext, useState } from 'react';
 import Cytoscape from 'react-cytoscapejs';
 import applyCytoscape from './cytoscape';
@@ -75,7 +76,13 @@ function PodGraph() {
         }}
       />
       <Legend />
-      <PodcastDetails isOpen={!!selectedPodcast} close={() => setSelectedPodcast(null)} />
+      <PodcastDetails
+        title={selectedPodcast.title}
+        imageUrl={selectedPodcast.bgImg}
+        description={selectedPodcast.description}
+        isOpen={!!selectedPodcast}
+        close={() => setSelectedPodcast(null)}
+      />
     </>
   );
 }
