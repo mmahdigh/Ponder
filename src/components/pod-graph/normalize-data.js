@@ -2,7 +2,9 @@
 import getCustomStuff from './data';
 
 export default function normalizeData() {
-  const { podcasts: customNodes, edges: customEdges, subscriptions: userSubscriptions } = getCustomStuff();
+  const {
+    podcasts: customNodes, episodes: customEpisodes, edges: customEdges, subscriptions: userSubscriptions,
+  } = getCustomStuff();
   const loggedUser = 'user2';
 
   // function to get my logged user subscriptions
@@ -23,6 +25,10 @@ export default function normalizeData() {
     return pods.map(checkSubscription);
   }
 
+  // function to check episodes for a single podcast
+  const epis = customEpisodes.map(e => e);
+  console.log('LONG epis', epis);
+
   const cytoscapeNodes = customNodes.map(
     ({
       nodeID, title, categories, type, bgImg, description,
@@ -35,6 +41,7 @@ export default function normalizeData() {
         bgImg,
         description,
         NodesBg: customPodcastBg(nodeID),
+        // episodes:customEpisodes.find(e => a=== nodeID);
       },
     }),
   );
