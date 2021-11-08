@@ -1,8 +1,10 @@
+import gql from 'fake-tag';
+
 export default function createGetPodcasts(client) {
   return async url => {
     async function fetchBatch(acc = []) {
       const transactions = await client.api.post('/graphql', {
-        query: `
+        query: gql`
           query GetPodcasts($tags: [TagFilter!]!) {
             transactions(tags: $tags, first: 100, sort: HEIGHT_DESC) {
               edges {

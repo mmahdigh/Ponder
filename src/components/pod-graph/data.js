@@ -5,7 +5,7 @@ export default function getCustomStuff() {
 const FAKE_DATA = {
   podcasts: [{
     nodeID: '6',
-    'rss2-feed': 'https://thejimmydoreshow.libsyn.com/rss',
+    'rss2-feed': '  ',
     title: 'The Jimmy Dore Show',
     description: '“ Jimmy Dore is outrageous and outraged, bothersome and bothered, a crucial, profane, passionate voice for progressives and freethinkers in 21st century America.” -Patton Oswalt',
     categories: ['111', 'Arts', 'awesome', 'Comedy', 'News'],

@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Formik, Form as FormikForm, Field } from 'formik';
 import { InputGroup, Form } from 'react-bootstrap';
-import * as Yup from 'yup';
+import { ToastContext } from '../providers/toast';
 import RssButton from './rss-button';
 
 const SearchButton = styled(InputGroup.Text)`
@@ -20,37 +19,43 @@ const SearchButton = styled(InputGroup.Text)`
   }
 `;
 
-const validationSchema = Yup.object().shape({
-  query: Yup.string().url().required().trim(),
-}).required();
-
 function SearchPodcasts({ onSubmit }) {
-  async function handleSubmit(values, { resetForm }) {
-    await onSubmit(values);
-    resetForm();
+  const toast = useContext(ToastContext);
+  const [isSearching, setIsSearching] = useState(false);
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const fd = new FormData(event.target);
+    const query = fd.get('query');
+    if (query) {
+      setIsSearching(true);
+      try {
+        await onSubmit({ query });
+        event.target.reset();
+      } catch (ex) {
+        console.error(ex);
+        toast('Could not find podcast.', { variant: 'danger' });
+      } finally {
+        setIsSearching(false);
+      }
+    }
   }
 
   return (
-    <Formik
-      validationSchema={validationSchema}
-      initialValues={{
-        query: '',
-      }}
-      onSubmit={handleSubmit}
-    >
-      {({ submitting }) => (
-        <FormikForm>
-          <Form.Group controlId="query">
-            <InputGroup>
-              <Field name="query" disabled={submitting} placeholder="RSS URL" component={Form.Control} />
-              <SearchButton>
-                <RssButton />
-              </SearchButton>
-            </InputGroup>
-          </Form.Group>
-        </FormikForm>
-      )}
-    </Formik>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group controlId="query">
+        <InputGroup>
+          <Form.Control
+            name="query"
+            disabled={isSearching}
+            placeholder="https://feeds.simplecast.com/dHoohVNH"
+          />
+          <SearchButton>
+            <RssButton disabled={isSearching} />
+          </SearchButton>
+        </InputGroup>
+      </Form.Group>
+    </Form>
   );
 }
 

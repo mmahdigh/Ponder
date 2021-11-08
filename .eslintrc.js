@@ -2,7 +2,7 @@
 
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   extends: ['airbnb'],
   env: {
     browser: true,
@@ -41,9 +41,6 @@ module.exports = {
       plugins: ['jest'],
       env: {
         jest: true,
-      },
-      rules: {
-        'react/prop-types': 0,
       },
     },
   ],

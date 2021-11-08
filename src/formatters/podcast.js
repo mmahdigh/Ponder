@@ -1,6 +1,7 @@
 function mergeItunesData(items, itunes) {
   return (items || []).concat(itunes || [])
-    .filter((a, i, xs) => xs.indexOf(a) === i);
+    .filter((a, i, xs) => xs.indexOf(a) === i)
+    .map(a => a.toLowerCase());
 }
 
 export default function formatPodcast(podcast) {
@@ -18,9 +19,9 @@ export default function formatPodcast(podcast) {
       title: episode.title,
       url: episode.enclosure?.url || episode.link,
       publishedAt: episode.publishedAt,
-      imageUrl: episode.image?.url || episode.itunes?.image,
-      categories: mergeItunesData(episode.categories, episode.itunes?.categories),
-      keywords: mergeItunesData(episode.keywords, episode.itunes?.keywords),
+      imageUrl: episode.image?.url || episode?.itunes?.image,
+      categories: mergeItunesData(episode.categories, episode?.itunes?.categories),
+      keywords: mergeItunesData(episode.keywords, episode?.itunes?.keywords),
     })),
   };
 }

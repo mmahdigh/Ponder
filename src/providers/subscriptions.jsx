@@ -1,32 +1,38 @@
 import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import useRerenderEffect from '../hooks/use-rerender-effect';
-import { searchPodcastFeed } from '../client/rss';
-import formatPodcast from '../formatters/podcast';
+import { getPodcastFeed } from '../client/rss';
 
 export const SubscriptionsContext = createContext();
 
 function readCachedPodcasts() {
   const podcasts = JSON.parse(localStorage.getItem('subscriptions')) || [];
-  return podcasts.map(formatPodcast);
+  return podcasts.map(podcast => ({
+    ...podcast,
+    episodes: podcast.episodes.map(episode => ({
+      episode,
+      publishedAt: episode.publishedAt && new Date(episode.publishedAt),
+    })),
+  }));
 }
 
 function SubscriptionsProvider({ children }) {
   const [subscriptions, setSubscriptions] = useState(readCachedPodcasts());
 
-  async function subscribe(rssUrl) {
-    if (subscriptions.some(subscription => subscription.subscribeUrl === rssUrl)) {
+  async function subscribe(subscribeUrl) {
+    if (subscriptions.some(subscription => subscription.subscribeUrl === subscribeUrl)) {
       throw new Error('Already subscribed');
     }
-    const newPodcast = await searchPodcastFeed(rssUrl);
+    const newPodcast = await getPodcastFeed(subscribeUrl);
     setSubscriptions(prev => prev.concat(newPodcast));
   }
 
-  async function unsubscribe(rssUrl) {
-    if (subscriptions.every(subscription => subscription.subscribeUrl !== rssUrl)) {
+  async function unsubscribe(subscribeUrl) {
+    if (subscriptions.every(subscription => subscription.subscribeUrl !== subscribeUrl)) {
       throw new Error('Not subscribed.');
     }
-    setSubscriptions(prev => prev.filter(subscription => subscription.subscribeUrl !== rssUrl));
+    setSubscriptions(prev => prev
+      .filter(subscription => subscription.subscribeUrl !== subscribeUrl));
   }
 
   useRerenderEffect(() => {

@@ -1,5 +1,6 @@
 import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { createPodcast } from '../client';
 
 export const ArweaveSyncContext = createContext();
 
@@ -7,8 +8,8 @@ function ArweaveSyncProvider({ children }) {
   const [isSyncing, setIsSyncing] = useState(false);
 
   async function sync() {
-    const cachedSubscriptions = JSON.parse(localStorage.getItem('subscriptions')) || [];
-    return '';
+    setIsSyncing(true);
+    const newPodcasts = await getNewPodcasts();
   }
 
   return (
