@@ -1,5 +1,4 @@
 import Arweave from 'arweave';
-import { v4 as uuid } from 'uuid';
 import createGetPodcasts from './get-podcasts';
 import { unixTimestamp } from '../../utils';
 import key from './key.json';
@@ -27,7 +26,7 @@ async function sendTransaction(contents, tags) {
 }
 
 export async function getNewestPodcast(url) {
-  
+
 }
 
 export async function createPodcast({
@@ -38,7 +37,6 @@ export async function createPodcast({
   ...podcast
 }) {
   return sendTransaction(podcast, [
-    ['id', uuid()],
     ['rss2-feed', rssUrl],
     ['type', type],
     ['title', podcast.title],

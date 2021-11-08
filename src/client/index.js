@@ -3,14 +3,16 @@ import * as rss from './rss';
 
 export { createPodcast } from './arweave';
 
-export async function getNewEpisodes(url) {
+export async function getNewEpisodes(subscribeUrl) {
   const [rssPodcast, arweavePodcasts] = await Promise.all([
-    rss.getPodcastFeed(url),
-    arweave.getPodcastFeed(url),
+    rss.getPodcastFeed(subscribeUrl),
+    arweave.getPodcastFeed(subscribeUrl),
   ]);
-  const urls = arweavePodcasts.map(podcast => podcast.url);
-  const newEpisodes = rssPodcast.episodes.filter(podcast => !urls.includes(podcast.url));
-  return newEpisodes;
+
+  // Episodes don't get an ID from RSS feeds so we use the title and date to determine uniqueness
+  return rssPodcast.episodes.filter(rssEpisode => arweavePodcasts
+    .every(arweaveEpisode => arweaveEpisode.title !== rssEpisode.title
+      && arweaveEpisode.publishedAt !== rssEpisode.publishedAt));
 }
 
 export async function getPodcasts(urls) {

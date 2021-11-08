@@ -1,15 +1,26 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
-import { createPodcast } from '../client';
+import { ToastContext } from './toast';
+import { getNewEpisodes } from '../client';
 
 export const ArweaveSyncContext = createContext();
 
 function ArweaveSyncProvider({ children }) {
+  const toast = useContext(ToastContext);
   const [isSyncing, setIsSyncing] = useState(false);
 
   async function sync() {
     setIsSyncing(true);
-    const newPodcasts = await getNewPodcasts();
+    try {
+      const newPodcasts = await getNewEpisodes();
+      console.log(newPodcasts);
+      toast('Sync Complete', { variant: 'success' });
+    } catch (ex) {
+      console.error(ex);
+      toast('Failed to sync to Arweave.', { variant: 'danger' });
+    } finally {
+      setIsSyncing(true);
+    }
   }
 
   return (

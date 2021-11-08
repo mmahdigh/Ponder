@@ -1,10 +1,27 @@
 import React, { useContext } from 'react';
+import styled from 'styled-components';
 import { Table, Container } from 'react-bootstrap';
 import { SubscriptionsContext } from '../providers/subscriptions';
 import { ToastContext } from '../providers/toast';
 import PodGraph from '../components/pod-graph';
 import SearchPodcasts from '../components/search-podcasts';
 import RssButton from '../components/rss-button';
+import SyncButton from '../components/sync-button';
+import RefreshButton from '../components/refresh-button';
+
+const ArweaveButtons = styled.div`
+  position: fixed;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 1em;
+  right: 1em;
+
+  button:not(:last-of-type) {
+    margin-right: .7em;
+  }
+`;
 
 function HomePage() {
   const toast = useContext(ToastContext);
@@ -23,6 +40,7 @@ function HomePage() {
     <Container>
       <SearchPodcasts onSubmit={search} />
       <PodGraph />
+
       {subscriptions.length ? (
         <Table variant="dark" striped bordered>
           <thead>
@@ -53,6 +71,11 @@ function HomePage() {
       ) : (
         <p>There are no podcasts to display&hellip;</p>
       )}
+
+      <ArweaveButtons>
+        <SyncButton />
+        <RefreshButton />
+      </ArweaveButtons>
     </Container>
   );
 }
