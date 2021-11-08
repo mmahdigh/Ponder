@@ -1,5 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { ToastContext } from './toast';
 import useRerenderEffect from '../hooks/use-rerender-effect';
 import { getPodcastFeed } from '../client/rss';
 
@@ -17,7 +18,9 @@ function readCachedPodcasts() {
 }
 
 function SubscriptionsProvider({ children }) {
+  const toast = useContext(ToastContext);
   const [subscriptions, setSubscriptions] = useState(readCachedPodcasts());
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   async function subscribe(subscribeUrl) {
     if (subscriptions.some(subscription => subscription.subscribeUrl === subscribeUrl)) {
@@ -35,6 +38,20 @@ function SubscriptionsProvider({ children }) {
       .filter(subscription => subscription.subscribeUrl !== subscribeUrl));
   }
 
+  async function refresh() {
+    setIsRefreshing(true);
+    try {
+      const subs = await Promise.all(subscriptions
+        .map(subscription => getPodcastFeed(subscription.subscribeUrl)));
+      setSubscriptions(subs);
+    } catch (ex) {
+      console.error(ex);
+      toast('Failed to refresh subscriptions.', { variant: 'danger' });
+    } finally {
+      setIsRefreshing(false);
+    }
+  }
+
   useRerenderEffect(() => {
     localStorage.setItem('subscriptions', JSON.stringify(subscriptions));
   }, [subscriptions]);
@@ -44,6 +61,8 @@ function SubscriptionsProvider({ children }) {
       value={{
         subscribe,
         unsubscribe,
+        refresh,
+        isRefreshing,
         subscriptions: subscriptions
           .map(subscription => ({
             ...subscription,
