@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ToastContext } from './toast';
 import useRerenderEffect from '../hooks/use-rerender-effect';
-import { getPodcastFeed } from '../client/rss';
+import { getAllPodcasts } from '../client';
 
 export const SubscriptionsContext = createContext();
 
@@ -26,7 +26,7 @@ function SubscriptionsProvider({ children }) {
     if (subscriptions.some(subscription => subscription.subscribeUrl === subscribeUrl)) {
       throw new Error('Already subscribed');
     }
-    const newPodcast = await getPodcastFeed(subscribeUrl);
+    const newPodcast = await getRssPodcastFeed(subscribeUrl);
     setSubscriptions(prev => prev.concat(newPodcast));
   }
 
@@ -41,9 +41,9 @@ function SubscriptionsProvider({ children }) {
   async function refresh() {
     setIsRefreshing(true);
     try {
-      const subs = await Promise.all(subscriptions
-        .map(subscription => getPodcastFeed(subscription.subscribeUrl)));
-      setSubscriptions(subs);
+      const podcasts = await getAllPodcasts(subscriptions);
+      setSubscriptions(podcasts);
+      toast('Refresh Success!', { variant: 'success' });
     } catch (ex) {
       console.error(ex);
       toast('Failed to refresh subscriptions.', { variant: 'danger' });

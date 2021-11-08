@@ -22,11 +22,11 @@ export default function createGetPodcasts(client) {
         variables: {
           tags: [
             {
-              name: `${process.env.TAG_PREFIX}-rss2-feed`,
+              name: `${process.env.TAG_PREFIX}-subscribeUrl`,
               values: [url],
             },
             {
-              name: `${process.env.TAG_PREFIX}-first-episode`,
+              name: `${process.env.TAG_PREFIX}-firstEpisode`,
               values: [(acc.length + 1).toString()],
             },
           ],
@@ -37,20 +37,26 @@ export default function createGetPodcasts(client) {
     }
 
     const podcasts = await fetchBatch();
-    return podcasts.map(podcast => ({
-      ...podcast,
-      tags: podcast.tags.reduce(
-        (acc, tag) => ({
-          ...acc,
-          [tag.name]: Array.isArray(acc[tag.name])
-            ? acc[tag.name].concat(tag.value)
-            : tag.value,
-        }),
-        {
-          podnerCategory: [],
-          podnerKeywords: [],
-        },
-      ),
-    }));
+    return podcasts
+      .map(podcast => ({
+        ...podcast,
+        tags: podcast.tags.reduce(
+          (acc, tag) => ({
+            ...acc,
+            [tag.name]: Array.isArray(acc[tag.name])
+              ? acc[tag.name].concat(tag.value)
+              : tag.value,
+          }),
+          {
+            category: [],
+            keyword: [],
+          },
+        ),
+      }))
+      .map(({ category, keyword, ...podcast }) => ({
+        ...podcast,
+        categories: category,
+        keywords: keyword,
+      }));
   };
 }

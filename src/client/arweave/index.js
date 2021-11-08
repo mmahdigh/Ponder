@@ -14,34 +14,30 @@ const client = Arweave.init({
 export const getPodcastFeed = createGetPodcasts(client);
 
 async function sendTransaction(contents, tags) {
-  const trx = await client.createTransaction(JSON.stringify(contents));
+  const trx = await client.createTransaction({ data: JSON.stringify(contents) }, key);
   trx.addTag('Content-Type', 'application/json');
   trx.addTag('Unix-Time', unixTimestamp());
   trx.addTag(`${process.env.TAG_PREFIX}-version`, process.env.VERSION);
   tags.forEach(([k, v]) => {
     trx.addTag(k, v);
   });
+  console.log(tags);
   await client.transactions.sign(trx, key);
   return client.transactions.post(trx);
-}
-
-export async function getNewestPodcast(url) {
-
 }
 
 export async function createPodcast({
   keywords,
   categories,
-  rssUrl,
-  type,
+  subscribeUrl,
   ...podcast
 }) {
   return sendTransaction(podcast, [
-    ['rss2-feed', rssUrl],
-    ['type', type],
+    ['subscribeUrl', subscribeUrl],
     ['title', podcast.title],
     ['description', podcast.description],
     ...categories.map(category => ['category', category]),
     ...keywords.map(keyword => ['keyword', keyword]),
-  ].map(([k, v]) => [`${process.env.TAG_PREFIX}-${k}`, v]));
+  ]
+    .map(([k, v]) => [`${process.env.TAG_PREFIX}-${k}`, v]));
 }

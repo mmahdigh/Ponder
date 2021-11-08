@@ -15,8 +15,8 @@ const history = createBrowserHistory();
 function App() {
   return (
     <ToastProvider>
-      <ArweaveSyncProvider>
-        <SubscriptionsProvider>
+      <SubscriptionsProvider>
+        <ArweaveSyncProvider>
           <Router history={history}>
             <MasterErrorBoundary>
               <CytoscapeProvider>
@@ -27,8 +27,8 @@ function App() {
               </CytoscapeProvider>
             </MasterErrorBoundary>
           </Router>
-        </SubscriptionsProvider>
-      </ArweaveSyncProvider>
+        </ArweaveSyncProvider>
+      </SubscriptionsProvider>
     </ToastProvider>
   );
 }
