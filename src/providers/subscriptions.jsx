@@ -2,13 +2,18 @@ import React, { createContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import useRerenderEffect from '../hooks/use-rerender-effect';
 import { getPodcastFeed } from '../client/rss';
-import formatPodcast from '../formatters/podcast';
 
 export const SubscriptionsContext = createContext();
 
 function readCachedPodcasts() {
   const podcasts = JSON.parse(localStorage.getItem('subscriptions')) || [];
-  return podcasts.map(formatPodcast);
+  return podcasts.map(podcast => ({
+    ...podcast,
+    episodes: podcast.episodes.map(episode => ({
+      episode,
+      publishedAt: episode.publishedAt && new Date(episode.publishedAt),
+    })),
+  }));
 }
 
 function SubscriptionsProvider({ children }) {

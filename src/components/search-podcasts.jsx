@@ -28,8 +28,8 @@ function SearchPodcasts({ onSubmit }) {
     const fd = new FormData(event.target);
     const query = fd.get('query');
     if (query) {
+      setIsSearching(true);
       try {
-        setIsSearching(true);
         await onSubmit({ query });
         event.target.reset();
       } catch (ex) {

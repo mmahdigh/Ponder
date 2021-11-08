@@ -22,7 +22,7 @@ function HomePage() {
   return (
     <Container>
       <SearchPodcasts onSubmit={search} />
-      <PodGraph subscriptions={subscriptions} />
+      <PodGraph />
       {subscriptions.length ? (
         <Table variant="dark" striped bordered>
           <thead>

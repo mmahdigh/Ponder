@@ -1,20 +1,28 @@
 import React, { useContext, useState } from 'react';
-import PropTypes from 'prop-types';
 import Cytoscape from 'react-cytoscapejs';
 import applyCytoscape from './cytoscape';
 import { CytoscapeContext } from '../../providers/cytoscape';
 import layout from './layout';
 import styles from './styles';
 import Legend from './legend';
+import { SubscriptionsContext } from '../../providers/subscriptions';
 import PodcastDetails from '../podcast-details';
-import { podcastPropType } from '../../prop-types';
 
-function PodGraph({ subscriptions }) {
+function PodGraph() {
   const { setCytoscape } = useContext(CytoscapeContext);
+  const { subscriptions } = useContext(SubscriptionsContext);
   const [selectedPodcast, setSelectedPodcast] = useState(null);
 
   const elements = Cytoscape.normalizeElements({
-    nodes: subscriptions.map(({ episodes, ...podcast }) => ({ data: podcast })),
+    nodes: subscriptions.map(({ episodes, ...podcast }) => ({
+      data: {
+        id: podcast.subscribeUrl,
+        label: podcast.title,
+        categories: podcast.categories.join(',\n'),
+        bgImg: podcast.imageUrl,
+        NodesBg: 'green', // TODO: Make 'grey' if not subscribed podcast
+      },
+    })),
     edges: subscriptions.reduce((acc, podcast, i, xs) => {
       // A match is any other podcast that has one same category or keyword
       const matches = xs.filter(({ categories, keywords }) => categories
@@ -59,13 +67,5 @@ function PodGraph({ subscriptions }) {
     </>
   );
 }
-
-PodGraph.propTypes = {
-  subscriptions: PropTypes.arrayOf(podcastPropType),
-};
-
-PodGraph.defaultProps = {
-  subscriptions: [],
-};
 
 export default PodGraph;
