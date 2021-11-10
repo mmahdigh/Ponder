@@ -1,4 +1,5 @@
 import Arweave from 'arweave';
+import gql from 'fake-tag';
 import createGetPodcasts from './get-podcasts';
 import { unixTimestamp } from '../../utils';
 import key from './key.json';
@@ -11,7 +12,49 @@ const client = Arweave.init({
   logging: true,
 });
 
-export const getPodcastFeed = createGetPodcasts(client);
+// export const getPodcastFeed = createGetPodcasts(client);
+
+export async function getPodcastFeed(subscribeUrl) {
+  const [transaction] = await client.api.post('/graphql', {
+    query: gql`
+      query GetPodcast($tags: [TagFilter!]!) {
+        transactions(tags: $tags, first: 100, sort: HEIGHT_DESC) {
+          edges {
+            node {
+              id
+              tags {
+                name
+                value
+              }
+            }
+          }
+        }
+      }
+    `,
+    variables: {
+      tags: [
+        {
+          name: `${process.env.TAG_PREFIX}-subscribeUrl`,
+          values: [subscribeUrl],
+        },
+      ],
+    },
+  })
+    .then(res => res.data.data.transactions.edges[0]?.node || []);
+
+  if (!transaction) return null;
+  const { tags, ...podcast } = transaction;
+
+  function extractTag(name) {
+    return tags.filter(tag => tag.name === name).map(tag => tag.value);
+  }
+
+  return {
+    ...podcast,
+    categories: extractTag('category'),
+    keywords: extractTag('keyword'),
+  };
+}
 
 async function sendTransaction(contents, tags) {
   const trx = await client.createTransaction({ data: JSON.stringify(contents) }, key);

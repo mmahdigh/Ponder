@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ToastContext } from './toast';
 import useRerenderEffect from '../hooks/use-rerender-effect';
-import { getAllPodcasts } from '../client';
+import { getPodcast, getAllPodcasts } from '../client';
 
 export const SubscriptionsContext = createContext();
 
@@ -11,7 +11,7 @@ function readCachedPodcasts() {
   return podcasts.map(podcast => ({
     ...podcast,
     episodes: podcast.episodes.map(episode => ({
-      episode,
+      ...episode,
       publishedAt: episode.publishedAt && new Date(episode.publishedAt),
     })),
   }));
@@ -26,7 +26,7 @@ function SubscriptionsProvider({ children }) {
     if (subscriptions.some(subscription => subscription.subscribeUrl === subscribeUrl)) {
       throw new Error('Already subscribed');
     }
-    const newPodcast = await getRssPodcastFeed(subscribeUrl);
+    const newPodcast = await getPodcast(subscribeUrl);
     setSubscriptions(prev => prev.concat(newPodcast));
   }
 
