@@ -1,5 +1,4 @@
 import RssParser from 'rss-parser/dist/rss-parser.min';
-import formatPodcast from '../formatters/podcast';
 
 const rssParser = new RssParser();
 
@@ -11,8 +10,9 @@ function mergeItunesData(items, itunes) {
 
 export async function getPodcastFeed(subscribeUrl) {
   const { items, ...podcast } = await rssParser.parseURL(subscribeUrl);
-  return formatPodcast({
-    id: subscribeUrl,
+  return {
+    subscribeUrl,
+    title: podcast.title,
     description: podcast.description || podcast.itunes?.summary,
     imageUrl: podcast.image?.url || podcast.itunes?.image,
     imageTitle: podcast.image?.title,
@@ -30,5 +30,5 @@ export async function getPodcastFeed(subscribeUrl) {
         keywords: mergeItunesData(episode.keywords, episode.itunes?.keywords),
       };
     }),
-  });
+  };
 }

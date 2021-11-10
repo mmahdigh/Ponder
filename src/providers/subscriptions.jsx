@@ -1,7 +1,8 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { ToastContext } from './toast';
 import useRerenderEffect from '../hooks/use-rerender-effect';
-import { getPodcastFeed } from '../client/rss';
+import { getPodcast, getAllPodcasts } from '../client';
 
 export const SubscriptionsContext = createContext();
 
@@ -10,20 +11,22 @@ function readCachedPodcasts() {
   return podcasts.map(podcast => ({
     ...podcast,
     episodes: podcast.episodes.map(episode => ({
-      episode,
+      ...episode,
       publishedAt: episode.publishedAt && new Date(episode.publishedAt),
     })),
   }));
 }
 
 function SubscriptionsProvider({ children }) {
+  const toast = useContext(ToastContext);
   const [subscriptions, setSubscriptions] = useState(readCachedPodcasts());
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   async function subscribe(subscribeUrl) {
     if (subscriptions.some(subscription => subscription.subscribeUrl === subscribeUrl)) {
       throw new Error('Already subscribed');
     }
-    const newPodcast = await getPodcastFeed(subscribeUrl);
+    const newPodcast = await getPodcast(subscribeUrl);
     setSubscriptions(prev => prev.concat(newPodcast));
   }
 
@@ -35,6 +38,20 @@ function SubscriptionsProvider({ children }) {
       .filter(subscription => subscription.subscribeUrl !== subscribeUrl));
   }
 
+  async function refresh() {
+    setIsRefreshing(true);
+    try {
+      const podcasts = await getAllPodcasts(subscriptions);
+      setSubscriptions(podcasts);
+      toast('Refresh Success!', { variant: 'success' });
+    } catch (ex) {
+      console.error(ex);
+      toast('Failed to refresh subscriptions.', { variant: 'danger' });
+    } finally {
+      setIsRefreshing(false);
+    }
+  }
+
   useRerenderEffect(() => {
     localStorage.setItem('subscriptions', JSON.stringify(subscriptions));
   }, [subscriptions]);
@@ -44,6 +61,8 @@ function SubscriptionsProvider({ children }) {
       value={{
         subscribe,
         unsubscribe,
+        refresh,
+        isRefreshing,
         subscriptions: subscriptions
           .map(subscription => ({
             ...subscription,

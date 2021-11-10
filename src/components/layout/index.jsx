@@ -11,6 +11,7 @@ const Page = styled.div`
 
   > main {
     flex-grow: 1;
+    padding-top: 1rem;
   }
 `;
 
