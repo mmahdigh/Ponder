@@ -20,6 +20,7 @@ function PodcastDetails({
   description,
   imageUrl,
   imageTitle,
+  id,
   language,
   categories,
   keywords,
@@ -40,11 +41,12 @@ function PodcastDetails({
           {/* TODO: <EpisodeDetails {...episode} /> */}
           {episodes.map(episode => (
             <li key={episode.title}>
+
               <a href={episode.url}>{episode.title}</a>
             </li>
           ))}
         </EpisodeList>
-
+        {console.log('PASSED PROPS IN SELECTED POD>>>>', episodes)}
       </Modal.Body>
       <Modal.Footer>
         <Button type="button" variant="warning" onClick={close}>Close</Button>

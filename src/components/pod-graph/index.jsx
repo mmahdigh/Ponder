@@ -13,15 +13,24 @@ function PodGraph() {
   const { setCytoscape } = useContext(CytoscapeContext);
   const { subscriptions } = useContext(SubscriptionsContext);
   const [selectedPodcast, setSelectedPodcast] = useState(null);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);// advised to remove by matt
+
+  console.log('SUBSKRIPTIONZZ', subscriptions);
+  console.log('SELEKTED POD NODE', selectedPodcast);
 
   const elements = Cytoscape.normalizeElements({
-    nodes: subscriptions.map(({ episodes, ...podcast }) => ({
+    nodes: subscriptions.map(({
+      episodes, description, imageUrl, ...podcast
+    }) => ({
       data: {
         id: podcast.subscribeUrl,
         label: podcast.title,
         categories: podcast.categories.join(',\n'),
-        bgImg: podcast.imageUrl,
+        bgImg: imageUrl,
         NodesBg: 'green', // TODO: Make 'grey' if not subscribed podcast
+        episodes,
+        description,
+
       },
     })),
     edges: subscriptions.reduce((acc, podcast, i, xs) => {
@@ -48,8 +57,7 @@ function PodGraph() {
     }, []),
   });
 
-  const { label: title, bgImg: imageUrl, description } = selectedPodcast;
-
+  // advised to remove this fn by Matt
   function toggleModal() {
     setIsDetailsOpen(!isDetailsOpen);
   }
@@ -70,7 +78,8 @@ function PodGraph() {
         }}
       />
       <Legend />
-      <PodcastDetails isOpen={!!selectedPodcast} close={() => setSelectedPodcast(null)} />
+      {/* // advised to remove this close fn by Matt */}
+      <PodcastDetails {...selectedPodcast} isOpen={isDetailsOpen} close={toggleModal} />
     </>
   );
 }

@@ -7,10 +7,11 @@ export const SubscriptionsContext = createContext();
 
 function readCachedPodcasts() {
   const podcasts = JSON.parse(localStorage.getItem('subscriptions')) || [];
+  console.log('STORAGE SUBSCRIPTIONS', podcasts);
   return podcasts.map(podcast => ({
     ...podcast,
     episodes: podcast.episodes.map(episode => ({
-      episode,
+      ...episode,
       publishedAt: episode.publishedAt && new Date(episode.publishedAt),
     })),
   }));

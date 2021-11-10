@@ -16,7 +16,7 @@ EpisodeDetails.propTypes = {
 
 EpisodeDetails.defaultProps = {
   publishedAt: null,
-  imageUrl: null,
+  imageUrl: 'string',
   categories: [],
   keywords: [],
 };

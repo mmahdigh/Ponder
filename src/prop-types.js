@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 export const episodePropType = PropTypes.shape({
   url: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
+  imageTitle: PropTypes.string,
   publishedAt: PropTypes.instanceOf(Date),
   keywords: PropTypes.arrayOf(PropTypes.string).isRequired,
   categories: PropTypes.arrayOf(PropTypes.string).isRequired,

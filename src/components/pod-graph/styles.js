@@ -2,7 +2,7 @@ const styles = [
   {
     selector: 'node',
     style: {
-      shape: 'octagon',
+      shape: 'roundrectangle',
       'background-color': 'data(NodesBg)',
       'background-opacity': 0.6,
       'background-image': 'data(bgImg)',

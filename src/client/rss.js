@@ -11,6 +11,7 @@ function mergeItunesData(items, itunes) {
 
 export async function getPodcastFeed(subscribeUrl) {
   const { items, ...podcast } = await rssParser.parseURL(subscribeUrl);
+  console.log('FROM SEARCHING EPISODES===', items, 'FROM SEARCHING PODKAST===', podcast);
   return formatPodcast({
     id: subscribeUrl,
     description: podcast.description || podcast.itunes?.summary,
