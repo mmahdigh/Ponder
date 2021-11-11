@@ -15,9 +15,6 @@ function PodGraph() {
   const [selectedPodcast, setSelectedPodcast] = useState(null);
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);// advised to remove by matt
 
-  console.log('SUBSKRIPTIONZZ', subscriptions);
-  console.log('SELEKTED POD NODE', selectedPodcast);
-
   const elements = Cytoscape.normalizeElements({
     nodes: subscriptions.map(({
       episodes, description, imageUrl, ...podcast
@@ -25,14 +22,17 @@ function PodGraph() {
       data: {
         id: podcast.subscribeUrl,
         label: podcast.title,
-        categories: podcast.categories.join(',\n'),
+        categories: podcast.categories,
         bgImg: imageUrl,
         NodesBg: 'green', // TODO: Make 'grey' if not subscribed podcast
         episodes,
         description,
-
+        title: podcast.title,
+        imageUrl,
+        imageTitle: podcast.title,
       },
     })),
+
     edges: subscriptions.reduce((acc, podcast, i, xs) => {
       // A match is any other podcast that has one same category or keyword
       const matches = xs.filter(({ categories, keywords }) => categories
@@ -56,6 +56,7 @@ function PodGraph() {
       })));
     }, []),
   });
+  console.log('NIBBAS ELEMENTS>>>>', elements);
 
   // advised to remove this fn by Matt
   function toggleModal() {

@@ -41,8 +41,5 @@ export default function applyCytoscape(setCytoscape, deps) {
 
     applyEvents(cy, deps);
     setCytoscape(cy);
-    // Andy trial custom styling
-    // // cy.layout().run();
-    // cy.fit();
   };
 }
