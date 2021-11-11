@@ -27,8 +27,19 @@ export async function getPodcast(subscribeUrl) {
   };
 }
 
-export async function getAllPodcasts(podcasts) {
-  return Promise.all(podcasts.map(podcast => getPodcast(podcast.subscribeUrl)));
+async function getDiff(subscription) {
+  const feeds = await fetchFeeds(subscription.subscribeUrl);
+  if (!feeds.arweave) return arweave.createPodcast(subscription);
+
+  const existingIds = feeds.arweave.flatMap(podcast => podcast.episodes.map(episodeId));
+  const newEpisodes = feeds.rss.episodes
+    .filter(episode => !existingIds.includes(episodeId(episode)));
+
+  return newEpisodes.length ? arweave.createEpisodeBatch(
+    subscription.subscribeUrl,
+    newEpisodes,
+    feeds.arweave.episodes.length,
+  ) : null;
 }
 
 export async function getNewEpisodes(subscriptions) {

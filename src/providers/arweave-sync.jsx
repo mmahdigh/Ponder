@@ -14,8 +14,9 @@ function ArweaveSyncProvider({ children }) {
   async function sync() {
     setIsSyncing(true);
     try {
-      const newEpisodes = await getNewEpisodes(subscriptions);
-      await Promise.all(subscriptions.map(createPodcast));
+      const podcastsToSync = await getNewEpisodes(subscriptions);
+      podcastsToSync
+      await Promise.all(podcastsWithNewEpisodes.map(podcast => createPodcast()));
       toast('Sync Complete', { variant: 'success' });
     } catch (ex) {
       console.error(ex);

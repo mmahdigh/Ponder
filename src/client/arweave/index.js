@@ -1,7 +1,6 @@
 import Arweave from 'arweave';
-import gql from 'fake-tag';
-import createGetPodcasts from './get-podcasts';
 import { unixTimestamp } from '../../utils';
+import getPodcastQuery from './get-podcast.graphql';
 import key from './key.json';
 
 const client = Arweave.init({
@@ -12,41 +11,51 @@ const client = Arweave.init({
   logging: true,
 });
 
-// export const getPodcastFeed = createGetPodcasts(client);
+function toTag(name) {
+  return `${process.env.TAG_PREFIX}-${name}`;
+}
+
+function getEpisodeCount(episode) {
+  return parseInt(episode.tags.find(tag => tag.name === toTag('count')), 10);
+}
 
 export async function getPodcastFeed(subscribeUrl) {
-  const [transaction] = await client.api.post('/graphql', {
-    query: gql`
-      query GetPodcast($tags: [TagFilter!]!) {
-        transactions(tags: $tags, first: 100, sort: HEIGHT_DESC) {
-          edges {
-            node {
-              id
-              tags {
-                name
-                value
-              }
-            }
-          }
-        }
-      }
-    `,
+  const transaction = await client.api.post('/graphql', {
+    query: getPodcastQuery,
     variables: {
-      tags: [
+      podcastTags: [
         {
-          name: `${process.env.TAG_PREFIX}-subscribeUrl`,
+          name: toTag('subscribeUrl'),
+          values: [subscribeUrl],
+        },
+      ],
+      episodeTags: [
+        {
+          name: toTag('podcastSubscribeUrl'),
           values: [subscribeUrl],
         },
       ],
     },
   })
-    .then(res => res.data.data.transactions.edges[0]?.node || []);
+    .then(res => ({
+      // Podcasts will still contain the episodes that existed on the RSS feed at the time
+      // of this record's creation
+      podcast: res.data.data.podcast.edges[0]?.node || [],
+      // For all subsequent records we tack them on using these
+      episodes: res.data.data.episodes.edges || [],
+    }))
+    .then(({ podcast, episodes }) => ({
+      ...podcast,
+      episodes: podcast.episodes.concat(episodes
+        .sort((a, b) => getEpisodeCount(a) - getEpisodeCount(b))
+        .flat()),
+    }));
 
   if (!transaction) return null;
   const { tags, ...podcast } = transaction;
 
   function extractTag(name) {
-    return tags.filter(tag => tag.name === name).map(tag => tag.value);
+    return tags.filter(tag => tag.name === toTag(name)).map(tag => tag.value);
   }
 
   return {
@@ -60,11 +69,10 @@ async function sendTransaction(contents, tags) {
   const trx = await client.createTransaction({ data: JSON.stringify(contents) }, key);
   trx.addTag('Content-Type', 'application/json');
   trx.addTag('Unix-Time', unixTimestamp());
-  trx.addTag(`${process.env.TAG_PREFIX}-version`, process.env.VERSION);
+  trx.addTag(toTag('version'), process.env.VERSION);
   tags.forEach(([k, v]) => {
-    trx.addTag(k, v);
+    trx.addTag(toTag(k), v);
   });
-  console.log(tags);
   await client.transactions.sign(trx, key);
   return client.transactions.post(trx);
 }
@@ -81,6 +89,12 @@ export async function createPodcast({
     ['description', podcast.description],
     ...categories.map(category => ['category', category]),
     ...keywords.map(keyword => ['keyword', keyword]),
-  ]
-    .map(([k, v]) => [`${process.env.TAG_PREFIX}-${k}`, v]));
+  ]);
+}
+
+export async function createEpisodes(podcastSubscribeUrl, episodes, prevCount = 0) {
+  return sendTransaction(episodes, [
+    ['podcastSubscribeUrl', podcastSubscribeUrl],
+    ['count', prevCount + episodes.length],
+  ]);
 }
