@@ -7,7 +7,6 @@ import styles from './styles';
 import Legend from './legend';
 import { SubscriptionsContext } from '../../providers/subscriptions';
 import PodcastDetails from '../podcast-details';
-// import { isFirstInstance } from '../../utils';
 
 function PodGraph() {
   const { setCytoscape } = useContext(CytoscapeContext);
