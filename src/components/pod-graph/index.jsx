@@ -7,33 +7,33 @@ import styles from './styles';
 import Legend from './legend';
 import { SubscriptionsContext } from '../../providers/subscriptions';
 import PodcastDetails from '../podcast-details';
+import { isFirstInstance } from '../../utils';
 
 function PodGraph() {
   const { setCytoscape } = useContext(CytoscapeContext);
   const { subscriptions } = useContext(SubscriptionsContext);
   const [selectedPodcast, setSelectedPodcast] = useState(null);
 
-  const elements = Cytoscape.normalizeElements({
-    nodes: subscriptions.map(({ episodes, ...podcast }) => ({
-      data: {
-        id: podcast.subscribeUrl,
-        label: podcast.title,
-        categories: podcast.categories.join(',\n'),
-        bgImg: podcast.imageUrl,
-        NodesBg: 'green', // TODO: Make 'grey' if not subscribed podcast
-      },
-    })),
-    edges: subscriptions.reduce((acc, podcast, i, xs) => {
+  const nodes = subscriptions.map(podcast => ({
+    data: {
+      id: podcast.subscribeUrl,
+      label: podcast.title,
+      categories: podcast.categories.join(',\n'),
+      bgImg: podcast.imageUrl,
+      NodesBg: 'green', // TODO: Make 'grey' if not subscribed podcast
+    },
+  }));
+
+  const edges = subscriptions
+    .reduce((acc, podcast, _, xs) => {
       // A match is any other podcast that has one same category or keyword
-      const matches = xs.filter(({ categories, keywords }) => categories
-        .some(category => podcast.categories.includes(category))
-        || keywords.some(keyword => podcast.keywords.includes(keyword)));
+      const matches = xs.filter(({ categories, keywords }) => (
+        podcast.categories.some(category => categories.includes(category))
+        || podcast.keywords.some(keyword => keywords.includes(keyword))
+      ));
 
       // If there are no matches there is nothing to add
       if (!matches.length) return acc;
-
-      // Remove duplicates
-      // matches = matches.filter((match, i, xs) => xs.map(a ));
 
       // Tack dat on
       return acc.concat(matches.map(match => ({
@@ -41,11 +41,19 @@ function PodGraph() {
         target: match.subscribeUrl,
         label: podcast.categories.filter(category => match.categories.includes(category))
           .concat(podcast.keywords.filter(keyword => match.keywords.includes(keyword)))
+          .filter(isFirstInstance)
           .join(', '),
         isMatch: true, // There will be three different edge styles
       })));
-    }, []),
-  });
+    }, [])
+    .reduce((acc, edge) => (
+      acc.some(a => a.target === edge.source && a.source === edge.target)
+        ? acc
+        : acc.concat(edge)
+    ), [])
+    .filter(edge => edge.target !== edge.source);
+
+  const elements = Cytoscape.normalizeElements({ nodes, edges });
 
   return (
     <>
