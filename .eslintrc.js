@@ -24,12 +24,14 @@ module.exports = {
         'babel.config.js',
         'webpack.config.js',
         'jest.config.js',
+        'seeder.js',
       ],
       parserOptions: {
         sourceType: 'script',
       },
       rules: {
         strict: [2, 'global'],
+        'import/no-extraneous-dependencies': [2, { devDependencies: true }],
       },
     },
     {
