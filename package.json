@@ -9,6 +9,7 @@
     "build": "NODE_ENV=production webpack",
     "devserver": "NODE_ENV=development webpack-dev-server",
     "arlocal": "arlocal",
+    "seed": "node ./seeder",
     "test": "npm run lint && npm run jest",
     "lint": "eslint .",
     "jest": "NODE_ENV=test jest -i"
@@ -56,6 +57,7 @@
     "brotli-webpack-plugin": "^1.1.0",
     "concurrently": "^6.3.0",
     "css-loader": "^6.3.0",
+    "dotenv": "^10.0.0",
     "dotenv-webpack": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
