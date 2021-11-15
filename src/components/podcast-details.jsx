@@ -37,11 +37,8 @@ function PodcastDetails({
         )}
 
         <EpisodeList>
-          {/* TODO: <EpisodeDetails {...episode} /> */}
           {episodes.map(episode => (
-            <li key={episode.title}>
-              <a href={episode.url}>{episode.title}</a>
-            </li>
+            <EpisodeDetails key={episode.title} {...episode} />
           ))}
         </EpisodeList>
 

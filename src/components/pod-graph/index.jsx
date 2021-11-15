@@ -7,7 +7,7 @@ import styles from './styles';
 import Legend from './legend';
 import { SubscriptionsContext } from '../../providers/subscriptions';
 import PodcastDetails from '../podcast-details';
-import { isFirstInstance } from '../../utils';
+// import { isFirstInstance } from '../../utils';
 
 function PodGraph() {
   const { setCytoscape } = useContext(CytoscapeContext);
@@ -44,7 +44,7 @@ function PodGraph() {
           target: match.subscribeUrl,
           label: podcast.categories.filter(category => match.categories.includes(category))
             .concat(podcast.keywords.filter(keyword => match.keywords.includes(keyword)))
-            .filter(isFirstInstance)
+            // .filter(isFirstInstance)
             .join(', '),
         };
       }));
