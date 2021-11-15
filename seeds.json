@@ -1618,11 +1618,840 @@
           }
         ]
       },
-      "tags": [
-        ["subscribeUrl", "https://feeds.simplecast.com/dHoohVNH"],
-        ["title", "Conan O’Brien Needs A Friend"],
-        ["categories", "comedy"]
-      ]
+      "tags": {
+        "subscribeUrl": "https://feeds.simplecast.com/dHoohVNH",
+        "title": "Conan O’Brien Needs A Friend",
+        "categories": [
+          "comedy"
+        ],
+        "keywords": []
+      }
+    },
+    {
+      "contents": {
+        "description": "“ Jimmy Dore is outrageous and outraged, bothersome and bothered, a crucial, profane, passionate voice for progressives and freethinkers in 21st century America.” -Patton Oswalt",
+        "imageUrl": "https://ssl-static.libsyn.com/p/assets/a/7/5/6/a756a3fe5cfb3d10/JDPodLogo.jpg",
+        "imageTitle": "The Jimmy Dore Show",
+        "language": "en",
+        "episodes": [
+          {
+            "title": "Pfizer Whistleblower Exposes Vaccine Research!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_11102021_PODCAST.mp3?dest-id=19460",
+            "publishedAt": "2021-11-11T05:04:38.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/1/d/7/e/1d7e1b07361cfb90a04421dee9605cbd/saddasqwsdwqxazx.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Workers Rebelling Against Vaxx Mandates!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20211103_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-11-04T05:04:42.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/a/7/7/3/a773d61d8e46b30c88c4a68c3ddbc4f2/dsfxzcefew.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "The End Of Fauci!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20211027_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-10-28T05:59:09.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/f/9/5/0/f9502db6da7ece855f2e77a3093c12a1/cascassadadFAUCI_TWO.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Colin Powell, War Criminal",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20211020_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-10-21T04:51:02.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/7/b/1/2/7b1283f1864bf00ae55e3c100dce7605/dsjdfewwqfqf.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Biden's Approval Ratings Plummet!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20211013_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-10-14T04:15:43.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/7/f/c/c/7fcc8cd6cb907a22e5bbc093207a2619/dsawq21asd12e2e1e2.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "EXPLOSIVE Truth About Vaccines & Covid!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20211006_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-10-07T05:48:39.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/6/1/d/1/61d1cd62dd55721e27a2322813b393ee/assaddsfsgw.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Russell Brand and CIA's Assassination Plots",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210929_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-09-30T13:55:35.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/3/7/0/0/3700c47c33823370a04421dee9605cbd/qdasdhjggj.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Hillary Clinton Lawyer Indicted For RussiaGate Lying!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210921_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-09-23T04:28:15.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/f/4/9/2/f49252b12ae8c39c40be95ea3302a6a1/2eqwdqwd3re23wfsd.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "AOC's Stunts Are No Threat To Estsablishment",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210916_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-09-16T05:47:38.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/c/0/b/5/c0b5d709b7a86aa7e55e3c100dce7605/2e1easaswqdwq.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Bill Maher's Dumbest Rant Yet!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210908_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-09-09T05:04:11.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/3/c/8/8/3c8836d903d026b45f2e77a3093c12a1/asdasBILL_MAHEREED.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Dems Still Blaming Susan Sarandon!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210901_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-09-02T12:53:04.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/a/0/f/4/a0f4c37beca15df8a04421dee9605cbd/hgfr56.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Truth, Censorship, and America",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210825_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-08-26T03:25:29.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/4/5/e/f/45ef0d18b7fd70f8e5bbc093207a2619/live_stresmeddd.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Secret Documents Predicted Afghan Disaster",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210818_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-08-19T05:08:38.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/2/7/9/7/27976580a7a32019e5bbc093207a2619/ihuhhhi.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Olbermann Wants Jimmy Censored!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210811_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-08-12T04:45:50.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/5/4/f/2/54f2641db3f6fb38bafc7308ab683e82/sdsdffweolbermann_thumb.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Report Shows Cuomo Guilty!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210805_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-08-05T20:33:33.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/5/4/9/5/54952447d1019fc127a2322813b393ee/eqweqwqdwasc.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Biden's Bizarre Town Hall!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210728_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-07-29T05:51:00.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/d/9/f/8/d9f8d5bf2df3fd40e5bbc093207a2619/2dqwwdq.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Biden Drug Hypocrisy! ",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210722_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-07-22T06:18:08.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/0/9/2/b/092ba7f855031e8e16c3140a3186d450/2wqdsdq.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Blackmailers Contradict Each Other!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210715_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-07-15T16:09:40.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/a/6/8/b/a68b8d69dc2d8c2b5f2e77a3093c12a1/qwdsac.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Biden Wants You To Snitch On Family & Friends!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210708_podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-07-08T21:31:14.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/e/e/2/b/ee2baae7e9bdef0e16c3140a3186d450/amosm22.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "GLENN GREENWALD - Rachel Maddow Court Ruling!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210701_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-07-01T08:17:56.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/7/0/0/9/70098b08af2811c9e5bbc093207a2619/qwwfdsc.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "\"BuzzSaw\" Aaron Mate Strikes Again!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210624_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-06-24T18:27:10.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/2/c/f/5/2cf51359007203295f2e77a3093c12a1/21ewssdf.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "The Young Turks EXPOSED!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210617_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-06-17T03:05:01.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/3/4/e/2/34e20dc0356dd90ee55e3c100dce7605/dsflsdkfwe.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Creepy Biden Does It Again!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210609_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-06-10T05:47:54.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/4/d/5/7/4d579291c61125d0e55e3c100dce7605/wjsnksdfs.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "TYT Slanders Real Journalists!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210603_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-06-03T10:37:31.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/8/d/7/b/8d7b9e7919e53562e55e3c100dce7605/4ddfsds.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "COVID Fact Checkers Wrong Again!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210526_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-05-27T05:52:21.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/2/3/d/6/23d6ca122eefff7c40be95ea3302a6a1/238sdsdd.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Delay & Distract",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210520_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-05-20T06:22:14.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/c/2/5/a/c25aa6031c9e09b85f2e77a3093c12a1/dsfnsdj.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Biden Administration Neutral On Child Murder",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210512_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-05-13T04:10:48.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/a/2/9/f/a29f46a445e44b1927a2322813b393ee/dfefwersd.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "AOC Swindles Her Own Donors!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210505_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-05-06T06:14:44.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/3/a/7/0/3a701835dde0d172e55e3c100dce7605/sdkfjnsdfsd.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "AOC Gaslights Progressives Defending Biden",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210429_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-04-29T05:16:32.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/6/c/b/6/6cb6f1eb51404ef1e55e3c100dce7605/dsjfsdhwewe.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Nancy Pelosi's Human Sacrifices!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210422_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-04-22T06:19:20.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/1/d/7/3/1d73df593bbe19dae55e3c100dce7605/podcast.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Biden Re-Hires Trump's Ambassador to RUSSIA!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210415_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-04-15T06:24:09.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/e/e/5/4/ee5440e433743bb4d959afa2a1bf1c87/dcsdswer233r.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Bernie Is A Bust!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210407_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-04-08T05:02:42.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/8/f/9/4/8f94cc06f38f140840be95ea3302a6a1/weesdf.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "AOC Calls Biden Critics \"Bad Faith Actors\"!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210331_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-04-01T06:22:23.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/4/e/2/9/4e2901bb89a6c7a6/qdjnqwdq.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Biden Fires Staffers For Using Pot!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210324_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-03-24T22:48:52.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/d/6/0/3/d6031329355a33f3/askasdj.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "AOC's Epic Gaslighting Session",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210317_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-03-18T07:10:28.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/f/2/3/2/f232dca4ada534da/dr24f.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Squad Tweets Rather Than Fight For Workers!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210311_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-03-11T06:45:13.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/0/b/f/9/0bf918c7b24f217e/sdjasndas.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Democrats Fail On Purpose!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210303_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-03-04T06:36:08.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/6/a/b/a/6abadfa64a320a41/ewfw3.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Biden's Weapon Deals!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210224_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-02-25T07:51:33.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/d/f/8/f/df8f25620d7afdb8/bidens.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Capitol Protests & Economic Despair.",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210218_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-02-18T15:49:44.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/e/1/9/7/e197c03f217d3bed/asjnascwefq.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Will Bernie Confirm Enemy of Progressives?",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210211_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-02-11T16:37:19.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/e/3/1/8/e3186a34dcb1d558/confirm.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Glenn Greenwald on Free Speech & The Left!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210203_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-02-04T18:51:22.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/c/a/6/f/ca6f2dbe96e9c14c/amskjdhvn_.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Facebook Censors The Left!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210127_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-01-28T03:26:11.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/0/a/2/6/0a26fa0b45dca1c5/dsfwer3.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "INAUGURATION DAY -- The Biden Era Begins",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210121_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-01-21T14:58:34.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/f/4/4/1/f441a72734a44935/DCEQWD.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "AOC Endorses #ForceTheVote!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210113_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-01-14T09:00:29.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/3/6/d/b/36dbe403b6affd5f/dfgergergssd.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Fraud Squad!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20210107_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2021-01-07T09:25:35.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/7/7/c/5/77c584a4e6b7713a/dfsdjfnw.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Force The Vote is Now or Never!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_12312020_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-12-31T08:25:12.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/b/7/8/3/b7836a0373984e57/sddwe.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Dr. Cornel West -- Xmas Podcast!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20201225_XmasPodcast.mp3?dest-id=19460",
+            "publishedAt": "2020-12-24T15:59:32.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/d/2/b/f/d2bff5097a800f02/cxsd.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Jimmy Responds To AOC!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20201216_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-12-17T08:55:22.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/1/6/8/7/16876c4cc94422f8/dsdfwe23e3aasdf33ed.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Hunter Biden Under Investigation!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20201210_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-12-10T15:10:05.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/9/c/d/e/9cded0d31181cbb8/aded3.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "NEERA TANDEN: Perfect Choice For BIDEN Administration!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20201203_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-12-03T08:35:11.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/6/e/3/7/6e371813ec423e22/arCalt_DCADQWdcdsd.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Biden's Cabinet Of Lobbyists!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20201125-Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-11-26T16:10:30.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/d/1/b/4/d1b4c1d7be3f5a27/cwed23.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "CNN's Shameless War Propaganda!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20201119_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-11-19T15:09:04.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/6/a/a/4/6aa4b57235fd6e51/dsjsdjasdad.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Biden's Cabinet -- Worse Than Expected!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20201112_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-11-12T10:15:18.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/4/5/e/5/45e516bde5a749a9/asdmkasddssd.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "The Election: How Did This Happen?!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20201105_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-11-05T09:46:25.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/7/6/4/b/764bc5cd0359da58/sdfsdfwe3322sdf.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Kamala Harris Weirdness!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20201028_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-10-29T07:38:08.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/9/e/5/0/9e50aab92bd4f6d2/dsdfwe3asdasdas.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Jimmy's Prophecy!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20201022_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-10-22T07:08:03.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/3/8/9/f/389f6944ca0c23f4/sdsdfvsw34.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Nancy Pelosi Melt Down!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20201015_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-10-15T14:09:50.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/b/8/2/7/b827e31a84b1ed8e/art_alternative_alt_altSASDcvcv.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Nobody Wants To See BERNIE Campaign For BIDEN!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20201008_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-10-08T14:48:11.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/9/8/a/2/98a281899c472cce/jsdjkfsdoadcdc.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "TRUMP-BIDEN Debate Reaction!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20201001_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-10-01T14:21:26.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/9/c/e/9/9ce92dd51e48311b/presdjsd.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "BIDEN Blasts BERNIE In Attempt To Get Votes!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200924_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-09-24T15:33:32.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/c/9/1/3/c91363e2b8fc428c/biden_blasted_podcast.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Democrat Party Kicks Green Party Off Ballots!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200917_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-09-17T15:29:06.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/c/2/3/3/c233ea8ea100f7e0/prodas.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "BIDEN's Public Positions & WALL STREET Positions!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200910_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-09-10T12:27:39.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/2/8/f/d/28fdfaba075a9946/bideeeennkmffddf.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Joy Reid Exposes Herself Again!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200903_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-09-03T11:51:19.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/a/5/5/2/a552cf86dd70c4ba/joy_reid.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Obama says \"Nobody Above The Law\" Except War Criminals!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200827_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-08-27T14:45:52.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/0/d/2/c/0d2c3a6b807a34e3/prodcast.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "BIDEN Losing Lead Over TRUMP!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200820_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-08-20T13:02:02.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/3/2/6/5/32650620cad4ad62/biden_losing_losuig.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Biden Picks His VP -- Kamala Is A Cop!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200813_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-08-13T14:39:29.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/b/b/e/7/bbe7ffbf660ff9c1/Kamala_Cop_podcast.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Insider Exposes Corruption Inside MSNBC!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200806_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-08-06T15:19:42.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/6/6/b/c/66bc00e04df38a1c/podcast_msnbc.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "AOC Puts Biden & Party Ahead of The People!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200729_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-07-30T05:39:42.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/d/c/0/b/dc0b5bc8c682fd52/aoced.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Democrats Enable The Police State!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200723_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-07-23T15:10:34.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/2/5/3/2/253204b09f38b23a/police_statesad_podcast.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Young Black Voters Don't Want JOE BIDEN!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200716_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-07-16T11:58:03.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/6/e/7/7/6e7766af11db7c19/NOJOEBI.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Herman Cain has Covid-19!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200708_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-07-09T05:48:40.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/2/a/b/7/2ab7dc92ae6bdd23/CAIN_HERMAN.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "How Governments End!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200701_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-07-02T04:24:01.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/b/c/f/1/bcf10a8ad7b12a4a/chrhedgesdd.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Dr. Fauci is a Liar!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200624_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-06-25T05:02:44.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/3/1/b/3/31b3a8268893064b/faucidsfds.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Snowflake Cops!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200618_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-06-18T13:48:16.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/5/3/2/0/532051d2e3fd4136/snowflakecops.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "BONUS! Corona-Money Talk with Dylan Ratigan!  Episode 9",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/BONUS_Corona-Money_Talk_with_Dylan_Ratigan_Episode_Nine.mp3?dest-id=19460",
+            "publishedAt": "2020-06-17T05:17:10.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/6/a/1/c/6a1c20ca181250d2/Untitled-1hihi.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "BONUS! Corona-Money Talk with Dylan Ratigan! Episode 8",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/BONUS_Corona-Money_Talk_with_Dylan_Ratigan_Episode_Eight.mp3?dest-id=19460",
+            "publishedAt": "2020-06-12T17:05:24.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/3/e/6/1/3e6163efca9892c1/Untitled-1xswe2.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Jesse Ventura running for President?",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200611_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-06-11T13:21:23.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/e/a/5/e/ea5eb24399a43da8/jessseventuraaaa.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Cops and Riots!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200604_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-06-04T14:03:42.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/6/b/3/c/6b3cbd8dd64a6839/podcasss.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "BONUS! Corona-Money Talk with Dylan Ratigan! Episode 7",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/BONUS_Corona-Money_Talk_with_Dylan_Ratigan_Episode_Seven.mp3?dest-id=19460",
+            "publishedAt": "2020-06-03T06:44:12.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/c/1/4/a/c14a3508f7a1eee3/Untitled-1zzxcc.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Biden says \"You Ain't Black!\"",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200528_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-05-28T14:56:00.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/7/1/f/1/71f1be16fb27b7a2/BIDEEEN.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "BONUS!  Corona-Money Talk with Dylan Ratigan! Episode 6",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/BONUS_Corona-Money_Talk_with_Dylan_Ratigan_Episode_Six.mp3?dest-id=19460",
+            "publishedAt": "2020-05-27T03:41:20.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/8/5/5/e/855ec816bc4c69f1/six.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Biden's Meaningless \"Task Forces\"!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200521_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-05-21T14:04:18.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/6/9/b/5/69b5aec1746eefd0/task.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "BONUS! Corona-Money Talk with Dylan Ratigan! Episode 5",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/BONUS_Corona-Money_Talk_with_Dylan_Ratigan_Episode_Five.mp3?dest-id=19460",
+            "publishedAt": "2020-05-20T07:30:27.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/e/d/2/2/ed22f05b2c2a331d/bonss.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "BONUS! Corona-Money Talk with Dyaln Ratigan! Episode 4",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/BONUS_Corona-Money_Talk_with_Dylan_Ratigan_Episode_Four.mp3?dest-id=19460",
+            "publishedAt": "2020-05-16T19:14:57.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/8/4/0/7/8407ded5fa571d7e/Bonus_4.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Jimmy vs. Anand Giridharadas!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200514_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-05-14T13:57:45.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/7/1/6/d/716d53a1718ee2cd/ananad.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "BONUS Corona-Money Talk with Dylan Ratigan Episode 3",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/BONUS_Corona_Money_Talk_with_Dylan_Ratigan_Episode_3.mp3?dest-id=19460",
+            "publishedAt": "2020-05-13T05:58:18.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/9/7/4/d/974d633e265aa610/corona.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "JOE BIDEN IS YOUR ENEMY!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200507_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-05-07T13:24:19.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/a/b/c/e/abcea94db55973d6/biden_is_your_enemy_podcast.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "BONUS! Corona-Money Talk with Dylan Ratigan! Episode 2",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/BONUS_Corona-Money_Talk_with_Dylan_Ratigan_Episode_2.mp3?dest-id=19460",
+            "publishedAt": "2020-05-06T05:37:53.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/4/e/9/f/4e9f5b51f8183a34/cosp.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Pelosi tells people to Calm Down!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200430_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-04-30T13:36:16.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/f/7/f/4/f7f4769925f3a969/PELOSI_PUSH_BACK.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "BONUS!  Corona-Money Talk with Dylan Ratigan!  Episode One",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/BONUS__Corona-Money_Talk__Episode_1.mp3?dest-id=19460",
+            "publishedAt": "2020-04-29T19:19:48.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/7/5/a/4/75a487ca0c0b8a6d/corona-money_talk.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Pelosi Sucks!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200423_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-04-23T06:51:44.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/1/3/a/3/13a368fb02beec4e/Pelosi_sucks_podcast.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Debunked Reporting about AOC's Voting!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200415_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-04-16T07:19:14.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/3/d/3/6/3d36cebc57546f4d/aoc_votes.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Bernie Drops Out!   What Happened?",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200409_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-04-09T08:32:12.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/f/a/9/b/fa9ba82c8557a2f8/bernie_drops.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "GENERAL STRIKE NOW!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200402_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-04-02T16:11:21.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/2/f/5/8/2f58d1f5cb11b996/strike_podcast.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Joe Biden Accused Of Sexual Assault!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200326_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-03-26T15:39:30.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/f/c/3/9/fc396f612f3057bc/rapist.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Trump Moves Left Of Democrats!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200319_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-03-19T14:55:26.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/d/b/4/7/db479a675d19fbc1/trump_moves_left_of_democrats.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "DemExit?",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200312_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-03-12T16:08:22.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/4/b/4/c/4b4c9b482d82af2c/demexit.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Super Tuesday Establishment Coup!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200305_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-03-05T18:16:39.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/7/0/3/9/70391cd323a59525/SUPER_TUESDAY.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Debate Crowd Rigged by Bloomberg!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_20200227_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-02-27T16:23:42.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/3/3/3/4/33341bda9efcd294/mikey.jpg",
+            "categories": [],
+            "keywords": []
+          },
+          {
+            "title": "Buttigieg Fabricating African American Support again!",
+            "url": "https://traffic.libsyn.com/secure/thejimmydoreshow/TJDS_202002020_Podcast.mp3?dest-id=19460",
+            "publishedAt": "2020-02-20T18:49:53.000Z",
+            "imageUrl": "https://ssl-static.libsyn.com/p/assets/c/6/1/6/c616c9c3604c9045/butti.jpg",
+            "categories": [],
+            "keywords": []
+          }
+        ]
+      },
+      "tags": {
+        "subscribeUrl": "https://thejimmydoreshow.libsyn.com/rss",
+        "title": "The Jimmy Dore Show",
+        "categories": [
+          "arts",
+          "comedy"
+        ],
+        "keywords": [
+          "jimmy",
+          "debate",
+          "dore",
+          "humor",
+          "politics",
+          "sketches"
+        ]
+      }
     }
   ]
 }
