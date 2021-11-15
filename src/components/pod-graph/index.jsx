@@ -36,22 +36,26 @@ function PodGraph() {
       if (!matches.length) return acc;
 
       // Tack dat on
-      return acc.concat(matches.map(match => ({
-        source: podcast.subscribeUrl,
-        target: match.subscribeUrl,
-        label: podcast.categories.filter(category => match.categories.includes(category))
-          .concat(podcast.keywords.filter(keyword => match.keywords.includes(keyword)))
-          .filter(isFirstInstance)
-          .join(', '),
-        isMatch: true, // There will be three different edge styles
-      })));
+      return acc.concat(matches.map(match => {
+        let EdgeStyle = 'dashed'; // TODO
+        return {
+          EdgeStyle,
+          source: podcast.subscribeUrl,
+          target: match.subscribeUrl,
+          label: podcast.categories.filter(category => match.categories.includes(category))
+            .concat(podcast.keywords.filter(keyword => match.keywords.includes(keyword)))
+            .filter(isFirstInstance)
+            .join(', '),
+        };
+      }));
     }, [])
     .reduce((acc, edge) => (
       acc.some(a => a.target === edge.source && a.source === edge.target)
         ? acc
         : acc.concat(edge)
     ), [])
-    .filter(edge => edge.target !== edge.source);
+    .filter(edge => edge.target !== edge.source)
+    .map(data => ({ data }));
 
   const elements = Cytoscape.normalizeElements({ nodes, edges });
 
