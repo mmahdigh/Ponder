@@ -28,9 +28,9 @@ async function seeder() {
         trx.addTag(`${process.env.TAG_PREFIX}-version`, process.env.VERSION);
         Object.entries(tags)
           .reduce(
-            (acc, [k, v]) => acc.concat(['categories', 'keywords'].includes(k)
-              ? v.map(a => [TAG_MAP[k], a])
-              : [[k, v]]),
+            (acc, [k, v]) => (['categories', 'keywords'].includes(k)
+              ? [...acc, ...v.map(a => [TAG_MAP[k], a])]
+              : [...acc, [k, v]]),
             [],
           )
           .forEach(([k, v]) => {
