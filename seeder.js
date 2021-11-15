@@ -15,14 +15,14 @@ const seeds = require('./seeds.json');
   });
 
   console.log('Begin seeding...');
-  await Promise.all(seeds
+  await Promise.all(seeds.podcasts
     .map(({ contents, tags }) => client.createTransaction({ data: JSON.stringify(contents) }, key)
       .then(trx => {
         trx.addTag('Content-Type', 'application/json');
         trx.addTag('Unix-Time', Math.floor(Date.now() / 1000));
         trx.addTag(`${process.env.TAG_PREFIX}-version`, process.env.VERSION);
         tags.forEach(([k, v]) => {
-          trx.addTag(k, v);
+          trx.addTag(`${process.env.TAG_PREFIX}-${k}`, v);
         });
         return client.transactions.sign(trx, key)
           .then(() => client.transactions.post(trx));
