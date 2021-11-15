@@ -5,7 +5,3 @@ export function unixTimestamp(date = new Date()) {
 export function episodeId(episode) {
   return `${episode.title}@${episode.publishedAt.getTime()}`;
 }
-
-export function isFirstInstance(a, i, xs) {
-  return xs.indexOf(a) === i;
-}
