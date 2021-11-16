@@ -13,6 +13,14 @@ const EpisodeList = styled.ol`
   padding-left: 0;
 `;
 
+// styling the Podcast image
+const podImageStyle = {
+  // height: 18.125 rem ;
+  minHeight: '18.125rem',
+  minWidth: '29.125rem',
+  borderRadius: '1rem',
+  marginBottom: '2px',
+};
 function PodcastDetails({
   isOpen,
   close,
@@ -26,14 +34,14 @@ function PodcastDetails({
   episodes,
 }) {
   return (
-    <Modal show={isOpen} onHide={close} animation centered scrollable>
-      <Modal.Header closeButton>{title}</Modal.Header>
+    <Modal show={isOpen} onHide={close} animation centered scrollable backdrop="static">
+      <Modal.Header>{title}</Modal.Header>
       <Modal.Body>
         {description && (
           <p>{description}</p>
         )}
         {imageUrl && (
-          <Image src={imageUrl} alt={imageTitle} fluid />
+          <Image src={imageUrl} alt={imageTitle} fluid style={podImageStyle} />
         )}
 
         <EpisodeList>

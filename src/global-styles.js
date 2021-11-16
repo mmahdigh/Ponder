@@ -41,4 +41,28 @@ export default createGlobalStyle`
     border: 1px solid #23476d;
 }
 
+// scroll bars
+/* width */
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(44, 43, 43);
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2b2c2b;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:#2b2c2b;
+}
+
+
 `;

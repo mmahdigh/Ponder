@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Badge from 'react-bootstrap/Badge';
+import { Badge, Image } from 'react-bootstrap';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import { MdMoreTime } from 'react-icons/md';
 
 const EpisodeLink = styled.a`
  color: #9c8f94;
@@ -23,37 +26,64 @@ const DetailsCard = styled.div`
     border-radius: 0.375rem;
 
 `;
-const NewBadge = styled.div`
-    top: 1px;
-    right: 9px;
-    transform: translate(25%, -25%);
-    position: absolute;
-    z-index: 1;
+const TimeBadge = styled.small`
     vertical-align: middle;
     line-height: 1;
     color: #fff;
 
-    /* background-color: #23476d;
-    display: inline-block;
-    padding: 0.35em 0.65em;
-    font-size: 0.75em; */
-
+`;
+const TimeIcon = styled(MdMoreTime)`
+	font-size: 12px;
 `;
 const CardBody = styled.div`
     padding: 1.5rem 1.25rem;
-    flex: 1 1 auto;
+    display: flex;
+    /* justify-content: space-between; */
     min-height: 1px;
 `;
+const EpisodeImage = styled.div`
+    display: inline-block;
+    position: relative;
+    line-height: 0;
+    margin-right: 1rem;
+`;
 
-function EpisodeDetails({ title, url, publishedAt }) {
+const Content = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+/* border: solid red 1px; */
+width: 100%;
+
+`;
+// styling the episode image
+const episodeImageStyle = {
+  height: '3.125rem',
+  minHeight: '3.125rem',
+  width: '3.125rem',
+  minWidth: '3.125rem',
+  borderRadius: '50%',
+};
+dayjs.extend(relativeTime);
+function EpisodeDetails({
+  title, url, publishedAt, imageUrl,
+}) {
   return (
     <EpisodeLink href={url}>
       <DetailsCard>
-        <NewBadge>
-          new
-        </NewBadge>
+
         <CardBody>
-          wtf
+          <EpisodeImage>
+            <Image src={imageUrl} alt={title} fluid style={episodeImageStyle} />
+          </EpisodeImage>
+
+          <Content>
+            <h5> {title}</h5>
+            <TimeBadge>
+              <TimeIcon /> {dayjs(publishedAt).fromNow()}
+            </TimeBadge>
+          </Content>
         </CardBody>
       </DetailsCard>
     </EpisodeLink>
