@@ -5,6 +5,7 @@ import { episodeId } from '../utils';
 export { createPodcast } from './arweave';
 
 async function fetchFeeds(subscribeUrl) {
+  console.log(subscribeUrl);
   return Promise.all([
     arweave.getPodcastFeed(subscribeUrl),
     rss.getPodcastFeed(subscribeUrl),
@@ -43,16 +44,18 @@ export async function getPodcast(subscribeUrl) {
 // }
 
 export async function getAllPodcasts(subscriptions) {
-  const xs = await arweave.getPodcastFeed(subscriptions
-    .map(subscription => subscription.subscribeUrl));
-  console.log(xs);
-  // const feeds = await fetchFeeds(subscriptions);
-  // const arweaveEpisodeIds = feeds.arweave.flatMap(podcast => podcast.episodes.map(episodeId));
+  const feeds = await Promise.all(subscriptions
+    .map(subscription => fetchFeeds(subscription.subscribeUrl)));
+  const arweaveEpisodeIds = feeds.flatMap(feed => feed.arweave.episodes.map(episodeId));
 
-  // return feeds.rss
-  //   .map(feed => ({
-  //     subscribeUrl: feed.subscribeUrl,
-  //     episodes: feed.episodes.filter(episode => !arweaveEpisodeIds.includes(episodeId(episode))),
-  //   }))
-  //   .filter(({ episodes }) => episodes.length);
+  return feeds
+    .map(feed => ({
+      ...feed.arweave,
+      ...feed.rss,
+      episodes: feed.rss.episodes
+        .concat(feed.arweave.episodes)
+        .filter(episode => !arweaveEpisodeIds.includes(episodeId(episode)))
+        .sort((a, b) => a.publishedAt - b.publishedAt),
+    }))
+    .filter(({ episodes }) => episodes.length);
 }
