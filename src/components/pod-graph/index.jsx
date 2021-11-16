@@ -18,9 +18,14 @@ function PodGraph() {
     data: {
       id: podcast.subscribeUrl,
       label: podcast.title,
-      categories: podcast.categories.join(',\n'),
+      categories: podcast.categories,
       bgImg: podcast.imageUrl,
       NodesBg: 'green', // TODO: Make 'grey' if not subscribed podcast
+      episodes: podcast.episodes,
+      description: podcast.description,
+      title: podcast.title,
+      imageUrl: podcast.imageUrl,
+      imageTitle: podcast.title,
     },
   }));
 
