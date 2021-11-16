@@ -37,7 +37,7 @@ function PodGraph() {
 
       // Tack dat on
       return acc.concat(matches.map(match => {
-        let EdgeStyle = 'dashed'; // TODO
+        const EdgeStyle = 'dashed'; // TODO
         return {
           EdgeStyle,
           source: podcast.subscribeUrl,
@@ -75,7 +75,11 @@ function PodGraph() {
         }}
       />
       <Legend />
-      <PodcastDetails isOpen={!!selectedPodcast} close={() => setSelectedPodcast(null)} />
+      <PodcastDetails
+        {...selectedPodcast}
+        isOpen={!!selectedPodcast}
+        close={() => setSelectedPodcast(null)}
+      />
     </>
   );
 }
