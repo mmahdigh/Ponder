@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ToastContext } from './toast';
 import useRerenderEffect from '../hooks/use-rerender-effect';
-import { getPodcast, getAllPodcast } from '../client';
+import { getPodcast, getAllPodcasts } from '../client';
 
 export const SubscriptionsContext = createContext();
 
@@ -41,11 +41,7 @@ function SubscriptionsProvider({ children }) {
   async function refresh() {
     setIsRefreshing(true);
     try {
-      setSubscriptions(await Promise.all(subscriptions.map(sub => getPodcast(sub.subscribeUrl)
-        .catch(ex => {
-          console.error(ex);
-          return sub;
-        }))));
+      setSubscriptions(await getAllPodcasts(subscriptions));
       toast('Refresh Success!', { variant: 'success' });
     } catch (ex) {
       console.error(ex);

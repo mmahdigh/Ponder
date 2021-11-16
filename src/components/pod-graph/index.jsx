@@ -46,8 +46,16 @@ function PodGraph() {
         return {
           source: podcast.subscribeUrl,
           target: match.subscribeUrl,
+<<<<<<< HEAD
           EdgeStyle: relations.length ? 'solid' : 'dashed', // havent tested yet with a different podcast categories dure to CORS issue...i told matt about it
           label: relations.join(', '),
+=======
+          label: podcast.categories
+            .filter(category => match.categories.includes(category))
+            .concat(podcast.keywords.filter(keyword => match.keywords.includes(keyword)))
+            .filter((a, i, ys) => ys.indexOf(a) === i) // Remove duplicates
+            .join(', '),
+>>>>>>> clean up arweave client
         };
       }));
     }, [])
