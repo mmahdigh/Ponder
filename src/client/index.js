@@ -46,16 +46,16 @@ export async function getPodcast(subscribeUrl) {
 export async function getAllPodcasts(subscriptions) {
   const feeds = await Promise.all(subscriptions
     .map(subscription => fetchFeeds(subscription.subscribeUrl)));
-  const arweaveEpisodeIds = feeds.flatMap(feed => feed.arweave.episodes.map(episodeId));
 
-  return feeds
-    .map(feed => ({
+  return feeds.map(feed => {
+    const arweaveEpisodeIds = feed.arweave.episodes.map(episodeId);
+    return {
       ...feed.arweave,
       ...feed.rss,
-      episodes: feed.rss.episodes
-        .concat(feed.arweave.episodes)
-        .filter(episode => !arweaveEpisodeIds.includes(episodeId(episode)))
-        .sort((a, b) => a.publishedAt - b.publishedAt),
-    }))
-    .filter(({ episodes }) => episodes.length);
+      episodes: feed.arweave.episodes
+        .concat(feed.rss.episodes
+          .filter(rssEpisode => arweaveEpisodeIds.includes(episodeId(rssEpisode))))
+        .sort((a, b) => b.publishedAt - a.publishedAt),
+    };
+  });
 }
