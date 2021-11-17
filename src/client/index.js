@@ -53,8 +53,8 @@ export async function getAllPodcasts(subscriptions) {
       ...feed.arweave,
       ...feed.rss,
       episodes: feed.arweave.episodes
-        .concat(feed.rss.episodes
-          .filter(rssEpisode => arweaveEpisodeIds.includes(episodeId(rssEpisode))))
+        .concat(feed.rss.episodes)
+        .filter(rssEpisode => !arweaveEpisodeIds.includes(episodeId(rssEpisode)))
         .sort((a, b) => b.publishedAt - a.publishedAt),
     };
   });
