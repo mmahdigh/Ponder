@@ -42,14 +42,13 @@ function PodGraph() {
 
       // Tack dat on
       return acc.concat(matches.map(match => {
-        const EdgeStyle = 'dashed'; // TODO
+        const relations = podcast.categories.filter(category => match.categories.includes(category))
+          .concat(podcast.keywords.filter(keyword => match.keywords.includes(keyword)));
         return {
-          EdgeStyle,
           source: podcast.subscribeUrl,
           target: match.subscribeUrl,
-          label: podcast.categories.filter(category => match.categories.includes(category))
-            .concat(podcast.keywords.filter(keyword => match.keywords.includes(keyword)))
-            .join(', '),
+          EdgeStyle: relations.length ? 'solid' : 'dashed', // havent tested yet with a different podcast categories dure to CORS issue...i told matt about it
+          label: relations.join(', '),
         };
       }));
     }, [])
