@@ -13,6 +13,11 @@ const EpisodeList = styled.ol`
   padding-left: 0;
 `;
 
+const PodImage = styled(Image)`
+  border-radius: 1rem;
+  margin-bottom: 2px;
+`;
+
 function PodcastDetails({
   isOpen,
   close,
@@ -26,23 +31,22 @@ function PodcastDetails({
   episodes,
 }) {
   return (
-    <Modal show={isOpen} onHide={close} animation centered scrollable>
-      <Modal.Header closeButton>{title}</Modal.Header>
+    <Modal show={isOpen} onHide={close} animation centered scrollable backdrop="static">
+      <Modal.Header>{title}</Modal.Header>
       <Modal.Body>
         {description && (
           <p>{description}</p>
         )}
         {imageUrl && (
-          <Image src={imageUrl} alt={imageTitle} fluid />
+          <PodImage src={imageUrl} alt={imageTitle} fluid />
         )}
 
         <EpisodeList>
-          {/* TODO: <EpisodeDetails {...episode} /> */}
-          {episodes.map(episode => (
-            <li key={episode.title}>
-              <a href={episode.url}>{episode.title}</a>
-            </li>
-          ))}
+          {episodes.slice()
+            .sort((a, b) => b.publishedAt - a.publishedAt)
+            .map(episode => (
+              <EpisodeDetails key={episode.title} {...episode} />
+            ))}
         </EpisodeList>
 
       </Modal.Body>

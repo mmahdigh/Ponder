@@ -7,7 +7,7 @@ import styles from './styles';
 import Legend from './legend';
 import { SubscriptionsContext } from '../../providers/subscriptions';
 import PodcastDetails from '../podcast-details';
-import { isFirstInstance } from '../../utils';
+// import { isFirstInstance } from '../../utils';
 
 function PodGraph() {
   const { setCytoscape } = useContext(CytoscapeContext);
@@ -18,9 +18,14 @@ function PodGraph() {
     data: {
       id: podcast.subscribeUrl,
       label: podcast.title,
-      categories: podcast.categories.join(',\n'),
+      categories: podcast.categories,
       bgImg: podcast.imageUrl,
       NodesBg: 'green', // TODO: Make 'grey' if not subscribed podcast
+      episodes: podcast.episodes,
+      description: podcast.description,
+      title: podcast.title,
+      imageUrl: podcast.imageUrl,
+      imageTitle: podcast.title,
     },
   }));
 
@@ -37,15 +42,13 @@ function PodGraph() {
 
       // Tack dat on
       return acc.concat(matches.map(match => {
-        let EdgeStyle = 'dashed'; // TODO
+        const relations = podcast.categories.filter(category => match.categories.includes(category))
+          .concat(podcast.keywords.filter(keyword => match.keywords.includes(keyword)));
         return {
-          EdgeStyle,
           source: podcast.subscribeUrl,
           target: match.subscribeUrl,
-          label: podcast.categories.filter(category => match.categories.includes(category))
-            .concat(podcast.keywords.filter(keyword => match.keywords.includes(keyword)))
-            .filter(isFirstInstance)
-            .join(', '),
+          EdgeStyle: relations.length ? 'solid' : 'dashed', // havent tested yet with a different podcast categories dure to CORS issue...i told matt about it
+          label: relations.join(', '),
         };
       }));
     }, [])
@@ -75,7 +78,11 @@ function PodGraph() {
         }}
       />
       <Legend />
-      <PodcastDetails isOpen={!!selectedPodcast} close={() => setSelectedPodcast(null)} />
+      <PodcastDetails
+        {...selectedPodcast}
+        isOpen={!!selectedPodcast}
+        close={() => setSelectedPodcast(null)}
+      />
     </>
   );
 }

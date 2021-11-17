@@ -1,11 +1,8 @@
+/* eslint-disable max-len */
 const layout = {
   fit: true, // whether to fit the viewport to the graph
   padding: 10, // the padding on fit
   name: 'klay',
-  klay: {
-    spacing: 40,
-    mergeEdges: false,
-  },
   nodeSep: undefined, // the separation between adjacent nodes in the same rank
   edgeSep: undefined, // the separation between adjacent edges in the same rank
   rankSep: undefined, // the separation between each rank in the layout
@@ -45,6 +42,33 @@ const layout = {
   ready() {}, // on layoutready
 
   stop() {}, // on layoutstop
+
+  klay: {
+    addUnnecessaryBendpoints: false, // Adds bend points even if an edge does not change direction.
+    borderSpacing: 20, // Minimal amount of space to be left to the border
+    compactComponents: false, // Tries to further compact components (disconnected sub-graphs).
+    crossingMinimization: 'LAYER_SWEEP', // Strategy for crossing minimization.
+    cycleBreaking: 'GREEDY', // Strategy for cycle breaking. Cycle breaking looks for cycles in the graph and determines which edges to reverse to break the cycles. Reversed edges will end up pointing to the opposite direction of regular edges (that is, reversed edges will point left if edges usually point right).
+    direction: 'LEFT', // Overall direction of edges: horizontal (right / left) or vertical (down / up)
+    edgeRouting: 'SPLINES', // Defines how edges are routed (POLYLINE, ORTHOGONAL, SPLINES)
+    edgeSpacingFactor: 4, // Factor by which the object spacing is multiplied to arrive at the minimal spacing between edges.
+    feedbackEdges: true, // Whether feedback edges should be highlighted by routing around the nodes.
+    fixedAlignment: 'BALANCED',
+
+    inLayerSpacingFactor: 3.0, // Factor by which the usual spacing is multiplied to determine the in-layer spacing between objects.
+    linearSegmentsDeflectionDampening: 3, // Dampens the movement of nodes to keep the diagram from getting too large.
+    mergeEdges: true, // Edges that have no ports are merged so they touch the connected nodes at the same points.
+    mergeHierarchyCrossingEdges: true, // If hierarchical layout is active, hierarchy-crossing edges use as few hierarchical ports as possible.
+    nodeLayering: 'INTERACTIVE', // Strategy for node layering.
+
+    nodePlacement: 'BRANDES_KOEPF', // Strategy for Node Placement
+
+    randomizationSeed: 1, // Seed used for pseudo-random number generators to control the layout algorithm; 0 means a new seed is generated
+    routeSelfLoopInside: true, // Whether a self-loop is routed around or inside its node.
+    thoroughness: 110, // How much effort should be spent to produce a nice layout..
+
+  },
+
 };
 
 export default layout;
