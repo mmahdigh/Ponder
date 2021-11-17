@@ -32,22 +32,28 @@ const LegendNav = styled.nav`
     font-size: 20px;
   }
 `;
+
 // styling the legend keys
-const newEpisode = { color: 'green' };
-const newDiscussion = { color: 'yellow' };
+const NewEpisode = styled.li`
+ color: green !important;
+`;
+const NewDiscussion = styled.li`
+color: yellow !important;
+
+`;
 
 function PodGraphLegend() {
   return (
     <LegendNav>
       <ul>
-        <li style={newEpisode}>
+        <NewEpisode>
           <AiOutlineStar />
           New Episode
-        </li>
-        <li style={newDiscussion}>
+        </NewEpisode>
+        <NewDiscussion>
           <AiOutlineStar />
           New Discussion
-        </li>
+        </NewDiscussion>
         <li>
           <AiOutlineLine />
           Subscribed

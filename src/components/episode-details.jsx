@@ -58,13 +58,13 @@ width: 100%;
 
 `;
 // styling the episode image
-const episodeImageStyle = {
-  height: '3.125rem',
-  minHeight: '3.125rem',
-  width: '3.125rem',
-  minWidth: '3.125rem',
-  borderRadius: '50%',
-};
+const EpisodeImageStyle = styled(Image)`
+  height: 3.125rem;
+  min-height: 3.125rem;
+  width: 3.125rem;
+  min-width: 3.125rem;
+  border-radius: 50%;
+`;
 dayjs.extend(relativeTime);
 function EpisodeDetails({
   title, url, publishedAt, imageUrl,
@@ -72,16 +72,15 @@ function EpisodeDetails({
   return (
     <EpisodeLink href={url}>
       <DetailsCard>
-
         <CardBody>
           <EpisodeImage>
-            <Image src={imageUrl} alt={title} fluid style={episodeImageStyle} />
+            <EpisodeImageStyle src={imageUrl} alt={title} fluid />
           </EpisodeImage>
-
           <Content>
-            <h5> {title}</h5>
+            <h5>{title}</h5>
             <TimeBadge>
-              <TimeIcon /> {dayjs(publishedAt).fromNow()}
+              <TimeIcon />
+              {dayjs(publishedAt).fromNow()}
             </TimeBadge>
           </Content>
         </CardBody>
@@ -100,8 +99,8 @@ EpisodeDetails.propTypes = {
 };
 
 EpisodeDetails.defaultProps = {
-  publishedAt: '',
-  imageUrl: 'string',
+  publishedAt: null,
+  imageUrl: null,
   categories: [],
   keywords: [],
 };

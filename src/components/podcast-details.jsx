@@ -13,14 +13,11 @@ const EpisodeList = styled.ol`
   padding-left: 0;
 `;
 
-// styling the Podcast image
-const podImageStyle = {
-  // height: 18.125 rem ;
-  minHeight: '18.125rem',
-  minWidth: '29.125rem',
-  borderRadius: '1rem',
-  marginBottom: '2px',
-};
+const PodImage = styled(Image)`
+  border-radius: 1rem;
+  margin-bottom: 2px;
+`;
+
 function PodcastDetails({
   isOpen,
   close,
@@ -41,7 +38,7 @@ function PodcastDetails({
           <p>{description}</p>
         )}
         {imageUrl && (
-          <Image src={imageUrl} alt={imageTitle} fluid style={podImageStyle} />
+          <PodImage src={imageUrl} alt={imageTitle} fluid />
         )}
 
         <EpisodeList>
