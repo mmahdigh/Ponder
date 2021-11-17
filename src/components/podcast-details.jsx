@@ -45,9 +45,11 @@ function PodcastDetails({
         )}
 
         <EpisodeList>
-          {episodes.map(episode => (
-            <EpisodeDetails key={episode.title} {...episode} />
-          ))}
+          {episodes.slice()
+            .sort((a, b) => b.publishedAt - a.publishedAt)
+            .map(episode => (
+              <EpisodeDetails key={episode.title} {...episode} />
+            ))}
         </EpisodeList>
 
       </Modal.Body>

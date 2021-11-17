@@ -49,7 +49,6 @@ function PodGraph() {
           target: match.subscribeUrl,
           label: podcast.categories.filter(category => match.categories.includes(category))
             .concat(podcast.keywords.filter(keyword => match.keywords.includes(keyword)))
-            // .filter(isFirstInstance)
             .join(', '),
         };
       }));
