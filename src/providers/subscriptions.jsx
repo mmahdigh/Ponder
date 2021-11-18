@@ -21,6 +21,7 @@ function SubscriptionsProvider({ children }) {
   const toast = useContext(ToastContext);
   const [subscriptions, setSubscriptions] = useState(readCachedPodcasts());
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isSyncing, setIsSyncing] = useState(false);
 
   async function subscribe(subscribeUrl) {
     if (subscriptions.some(subscription => subscription.subscribeUrl === subscribeUrl)) {
@@ -44,11 +45,24 @@ function SubscriptionsProvider({ children }) {
       const podcasts = await getAllPodcasts(subscriptions);
       setSubscriptions(podcasts);
       toast('Refresh Success!', { variant: 'success' });
+      return podcasts;
     } catch (ex) {
       console.error(ex);
       toast('Failed to refresh subscriptions.', { variant: 'danger' });
     } finally {
       setIsRefreshing(false);
+    }
+  }
+
+  async function sync() {
+    setIsSyncing(true);
+    try {
+      const toSync = JSON.parse(localStorage.getItems('toSync'));
+    } catch (ex) {
+      console.error(ex);
+      toast('Failed to sync with Arweave.', { variant: 'danger' });
+    } finally {
+      setIsSyncing(false);
     }
   }
 
@@ -71,7 +85,7 @@ function SubscriptionsProvider({ children }) {
                 ...episode,
                 publishedAt: episode.publishedAt && new Date(episode.publishedAt),
               }))
-              .sort((a, b) => a.publishedAt - b.publishedAt),
+              .sort((a, b) => b.publishedAt - a.publishedAt),
           }))
           .map(subscription => ({
             ...subscription,
