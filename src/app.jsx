@@ -5,31 +5,22 @@ import GlobalStyles from './global-styles';
 import Layout from './components/layout';
 import MasterErrorBoundary from './components/master-error-boundary';
 import Routes from './routes';
-import ToastProvider from './providers/toast';
-import SubscriptionsProvider from './providers/subscriptions';
-import ArweaveSyncProvider from './providers/arweave-sync';
-import CytoscapeProvider from './providers/cytoscape';
+import GlobalProviders from './providers';
 
 const history = createBrowserHistory();
 
 function App() {
   return (
-    <ToastProvider>
-      <SubscriptionsProvider>
-        <ArweaveSyncProvider>
-          <Router history={history}>
-            <MasterErrorBoundary>
-              <CytoscapeProvider>
-                <GlobalStyles />
-                <Layout>
-                  <Routes />
-                </Layout>
-              </CytoscapeProvider>
-            </MasterErrorBoundary>
-          </Router>
-        </ArweaveSyncProvider>
-      </SubscriptionsProvider>
-    </ToastProvider>
+    <GlobalProviders>
+      <Router history={history}>
+        <MasterErrorBoundary>
+          <GlobalStyles />
+          <Layout>
+            <Routes />
+          </Layout>
+        </MasterErrorBoundary>
+      </Router>
+    </GlobalProviders>
   );
 }
 
