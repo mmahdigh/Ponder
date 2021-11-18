@@ -15,14 +15,17 @@ async function fetchFeeds(subscribeUrl) {
   };
 }
 
-function mergeFeed(subscribeUrl, feed) {
+function feedDiff(feed) {
   const existingIds = feed.arweave.episodes.map(episodeId);
-  const newEpisodes = feed.rss.episodes
-    .filter(episode => !existingIds.includes(episodeId(episode)));
+  return feed.rss.episodes.filter(episode => !existingIds.includes(episodeId(episode)));
+}
+
+function mergeFeed(subscribeUrl, feed) {
+  const newEpisodes = feedDiff(feed);
 
   if (!newEpisodes.length) {
-    const podcastsToBeSynced = JSON.parse(localStorage.getItem('podcastsToBeSynced')) || [];
-    const newValue = podcastsToBeSynced.map(podcast => (
+    const toSync = JSON.parse(localStorage.getItem('toSync')) || [];
+    const newValue = toSync.podcasts.map(podcast => (
       subscribeUrl !== podcast.subscribeUrl ? podcast : {
         ...podcast,
         episodes: podcast.episodes
@@ -30,7 +33,7 @@ function mergeFeed(subscribeUrl, feed) {
           .sort((a, b) => b.publishedAt - a.publishedAt),
       }
     ));
-    localStorage.setItem('podcastsToBeSynced', JSON.stringify(newValue));
+    localStorage.setItem('toSync', JSON.stringify(newValue));
   }
 
   return {

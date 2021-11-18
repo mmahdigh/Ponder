@@ -2,16 +2,28 @@ import React, { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ToastContext } from './toast';
 import { createPodcast } from '../client';
-import { SubscriptionsContext } from './subscriptions';
 
 export const ArweaveSyncContext = createContext();
 
 function ArweaveSyncProvider({ children }) {
   const toast = useContext(ToastContext);
-  const { subscriptions } = useContext(SubscriptionsContext);
   const [isSyncing, setIsSyncing] = useState(false);
 
   async function sync() {
+    setIsSyncing(true);
+    try {
+      const podcastsToBeSynced = JSON.parse(localStorage.getItem('podcastsToBeSynced'));
+      if (!podcastsToBeSynced.length) toast('There are no podcasts to sync.');
+      else {
+        await Promise.all(podcastsToBeSynced.map(createPodcast));
+      }
+    } catch (ex) {
+      console.error(ex);
+      toast('Failed to sync with Arweave.', { variant: 'danger' });
+    } finally {
+      setIsSyncing(false);
+    }
+
     // setIsSyncing(true);
     // try {
     //   const podcastsToSync = await getNewEpisodes(subscriptions);
