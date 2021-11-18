@@ -32,7 +32,7 @@ export async function createPodcast({
 
 export async function createEpisodes(podcastSubscribeUrl, episodes, prevCount = 0) {
   return sendTransaction(episodes, [
-    ['podcastSubscribeUrl', podcastSubscribeUrl],
+    ['subscribeUrl', podcastSubscribeUrl],
     ['count', prevCount + episodes.length],
   ]);
 }
