@@ -10,15 +10,17 @@
     "devserver": "NODE_ENV=development webpack-dev-server",
     "arlocal": "concurrently 'arlocal' 'npm run seed'",
     "seed": "node ./seeder",
-    "test": "npm run lint && npm run jest",
+    "test": "npm run lint && npm run jest && npm run cy:run",
     "lint": "eslint .",
-    "jest": "NODE_ENV=test jest -i"
+    "jest": "NODE_ENV=test jest -i",
+    "e2e:open": "NODE_ENV=test docker-compose -f docker-compose.yml -f cy-open.yml up --exit-code-from cypress",
+    "cy:run": "NODE_ENV=test cypress run",
+    "cy:open": "NODE_ENV=test cypress open"
   },
   "keywords": [],
   "author": "",
   "license": "GPL-3",
   "dependencies": {
-    "@reduxjs/toolkit": "^1.6.2",
     "arweave": "^1.10.17",
     "bootstrap": "^5.1.2",
     "core-js": "^3.19.1",
@@ -58,6 +60,7 @@
     "brotli-webpack-plugin": "^1.1.0",
     "concurrently": "^6.3.0",
     "css-loader": "^6.3.0",
+    "cypress": "^9.0.0",
     "dotenv": "^10.0.0",
     "dotenv-webpack": "^7.0.3",
     "eslint": "^7.32.0",

@@ -1,8 +1,11 @@
 'use strict';
 
+const path = require('path');
+
 module.exports = {
   testEnvironment: 'jest-environment-jsdom',
-  setupFiles: ['<rootDir>/jest.setup.js'],
+  setupFilesAfterEnv: [path.resolve('jest.setup.js')],
+  testURL: 'https://thejimmydoreshow.libsyn.com/',
   transform: {
     '\\.jsx?$': 'babel-jest',
   },

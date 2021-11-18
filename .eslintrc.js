@@ -39,6 +39,8 @@ module.exports = {
         '**/*.test.js',
         '**/*.test.jsx',
         './tests/**/*',
+        '**/__mocks__/*.js',
+        'jest.setup.js',
       ],
       plugins: ['jest'],
       env: {

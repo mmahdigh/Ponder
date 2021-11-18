@@ -1,4 +1,4 @@
-import RssParser from 'rss-parser/dist/rss-parser.min';
+import RssParser from 'rss-parser';
 
 const rssParser = new RssParser();
 
@@ -13,10 +13,10 @@ export async function getPodcastFeed(subscribeUrl) {
   return {
     subscribeUrl,
     title: podcast.title,
-    description: podcast.description || podcast.itunes?.summary,
-    imageUrl: podcast.image?.url || podcast.itunes?.image,
-    imageTitle: podcast.image?.title,
-    language: podcast.language,
+    description: podcast.description || podcast.itunes?.summary || null,
+    imageUrl: podcast.image?.url || podcast.itunes?.image || null,
+    imageTitle: podcast.image?.title || null,
+    language: podcast.language || null,
     categories: mergeItunesData(podcast.categories, podcast.itunes?.categories),
     keywords: mergeItunesData(podcast.keywords, podcast.itunes?.keywords),
     episodes: items.map(episode => {
