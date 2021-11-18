@@ -10,11 +10,12 @@ function mergeItunesData(items, itunes) {
 
 export async function getPodcastFeed(subscribeUrl) {
   const { items, ...podcast } = await rssParser.parseURL(subscribeUrl);
+  const imageUrl = podcast.image?.url || podcast.itunes?.image || null;
   return {
     subscribeUrl,
     title: podcast.title,
     description: podcast.description || podcast.itunes?.summary || null,
-    imageUrl: podcast.image?.url || podcast.itunes?.image || null,
+    imageUrl,
     imageTitle: podcast.image?.title || null,
     language: podcast.language || null,
     categories: mergeItunesData(podcast.categories, podcast.itunes?.categories),
@@ -25,7 +26,7 @@ export async function getPodcastFeed(subscribeUrl) {
         title: episode.title,
         url: episode.enclosure?.url || episode.link || null,
         publishedAt: publishedAt ? new Date(publishedAt) : null,
-        imageUrl: episode.image?.url || episode.itunes?.image || null,
+        imageUrl: episode.image?.url || imageUrl,
         categories: mergeItunesData(episode.categories, episode.itunes?.categories),
         keywords: mergeItunesData(episode.keywords, episode.itunes?.keywords),
       };

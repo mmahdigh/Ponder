@@ -216,5 +216,98 @@ describe('getPodcastFeed', () => {
       await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].url))
         .resolves.toBe('https://cameronsworld.net/');
     });
+
+    test('publishedAt', async () => {
+      parseURL.mockResolvedValue({
+        ...BASE_MOCK_RESPONSE,
+        items: [BASE_EPISODE_RESPONSE],
+      });
+      await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].publishedAt))
+        .resolves.toBeNull();
+
+      parseURL.mockResolvedValue({
+        ...BASE_MOCK_RESPONSE,
+        items: [{
+          ...BASE_EPISODE_RESPONSE,
+          pubDate: new Date('1991-09-05'),
+        }],
+      });
+      await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].publishedAt))
+        .resolves.toEqual(new Date('1991-09-05'));
+
+      parseURL.mockResolvedValue({
+        ...BASE_MOCK_RESPONSE,
+        items: [{
+          ...BASE_EPISODE_RESPONSE,
+          isoDate: new Date('1995-02-12'),
+        }],
+      });
+      await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].publishedAt))
+        .resolves.toEqual(new Date('1995-02-12'));
+
+      parseURL.mockResolvedValue({
+        ...BASE_MOCK_RESPONSE,
+        items: [{
+          ...BASE_EPISODE_RESPONSE,
+          pubDate: new Date('1991-09-05'),
+          isoDate: new Date('1995-02-12'),
+        }],
+      });
+      await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].publishedAt))
+        .resolves.toEqual(new Date('1995-02-12'));
+    });
+
+    test('imageUrl', async () => {
+      parseURL.mockResolvedValue({
+        ...BASE_MOCK_RESPONSE,
+        items: [BASE_EPISODE_RESPONSE],
+      });
+      await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].imageUrl))
+        .resolves.toBeNull();
+    });
+
+    test('categories', async () => {
+      parseURL.mockResolvedValue({
+        ...BASE_MOCK_RESPONSE,
+        items: [BASE_EPISODE_RESPONSE],
+      });
+      await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].categories))
+        .resolves.toEqual([]);
+
+      parseURL.mockResolvedValue({
+        ...BASE_MOCK_RESPONSE,
+        items: [{
+          ...BASE_EPISODE_RESPONSE,
+          categories: ['a', 'b', 'd'],
+          itunes: {
+            categories: ['b', 'c', 'a'],
+          },
+        }],
+      });
+      await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].categories))
+        .resolves.toEqual(['a', 'b', 'd', 'c']);
+    });
+
+    test('keywords', async () => {
+      parseURL.mockResolvedValue({
+        ...BASE_MOCK_RESPONSE,
+        items: [BASE_EPISODE_RESPONSE],
+      });
+      await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].keywords))
+        .resolves.toEqual([]);
+
+      parseURL.mockResolvedValue({
+        ...BASE_MOCK_RESPONSE,
+        items: [{
+          ...BASE_EPISODE_RESPONSE,
+          keywords: ['ay', 'yo', 'guy'],
+          itunes: {
+            keywords: ['lets', 'juice', 'yo'],
+          },
+        }],
+      });
+      await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].keywords))
+        .resolves.toEqual(['ay', 'yo', 'guy', 'lets', 'juice']);
+    });
   });
 });
