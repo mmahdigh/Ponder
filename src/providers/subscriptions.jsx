@@ -70,7 +70,7 @@ function SubscriptionsProvider({ children }) {
                 ...episode,
                 publishedAt: episode.publishedAt && new Date(episode.publishedAt),
               }))
-              .sort((a, b) => a.publishedAt - b.publishedAt),
+              .sort((a, b) => b.publishedAt - a.publishedAt),
           }))
           .map(subscription => ({
             ...subscription,
