@@ -177,4 +177,44 @@ describe('getPodcastFeed', () => {
       await request().resolves.toEqual(['free', 'celebs', 'nudity', 'ramranch', 'unearthly']);
     });
   });
+
+  describe('episodes', () => {
+    const BASE_EPISODE_RESPONSE = {
+      title: 'Mr. Bean vs. Mike Tyson',
+    };
+
+    test('If not provided is an empty array', async () => {
+      parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
+      await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes))
+        .resolves.toEqual([]);
+    });
+
+    test('title', async () => {
+      parseURL.mockResolvedValue({
+        ...BASE_MOCK_RESPONSE,
+        items: [BASE_EPISODE_RESPONSE],
+      });
+      await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].title))
+        .resolves.toBe('Mr. Bean vs. Mike Tyson');
+    });
+
+    test('url', async () => {
+      parseURL.mockResolvedValue({
+        ...BASE_MOCK_RESPONSE,
+        items: [BASE_EPISODE_RESPONSE],
+      });
+      await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].url))
+        .resolves.toBeNull();
+
+      parseURL.mockResolvedValue({
+        ...BASE_MOCK_RESPONSE,
+        items: [{
+          ...BASE_EPISODE_RESPONSE,
+          link: 'https://cameronsworld.net/',
+        }],
+      });
+      await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].url))
+        .resolves.toBe('https://cameronsworld.net/');
+    });
+  });
 });

@@ -19,13 +19,13 @@ export async function getPodcastFeed(subscribeUrl) {
     language: podcast.language || null,
     categories: mergeItunesData(podcast.categories, podcast.itunes?.categories),
     keywords: mergeItunesData(podcast.keywords, podcast.itunes?.keywords),
-    episodes: items.map(episode => {
+    episodes: (items || []).map(episode => {
       const publishedAt = episode.isoDate || episode.pubDate || null;
       return {
         title: episode.title,
-        url: episode.enclosure?.url || episode.link,
-        publishedAt: publishedAt && new Date(publishedAt),
-        imageUrl: episode.image?.url || episode.itunes?.image,
+        url: episode.enclosure?.url || episode.link || null,
+        publishedAt: publishedAt ? new Date(publishedAt) : null,
+        imageUrl: episode.image?.url || episode.itunes?.image || null,
         categories: mergeItunesData(episode.categories, episode.itunes?.categories),
         keywords: mergeItunesData(episode.keywords, episode.itunes?.keywords),
       };
