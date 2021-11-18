@@ -25,6 +25,7 @@ module.exports = {
         'webpack.config.js',
         'jest.config.js',
         'seeder.js',
+        'cypress/**/*',
       ],
       parserOptions: {
         sourceType: 'script',
