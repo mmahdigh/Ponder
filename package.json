@@ -13,7 +13,7 @@
     "test": "npm run lint && npm run jest && npm run cy:run",
     "lint": "eslint .",
     "jest": "NODE_ENV=test jest -i",
-    "e2e:open": "NODE_ENV=test docker-compose -f docker-compose.yml -f cy-open.yml up --exit-code-from cypress",
+    "jest:watch": "npm run jest -- --watchAll",
     "cy:run": "NODE_ENV=test cypress run",
     "cy:open": "NODE_ENV=test cypress open"
   },
