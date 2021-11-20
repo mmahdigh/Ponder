@@ -15,10 +15,13 @@
 'use strict';
 
 const imageSnapshotsPlugin = require('./image-snapshots');
+const webpackPlugin = require('./webpack');
 
 /**
  * @type {Cypress.PluginConfig}
  */
 module.exports = function cypressPlugins(on, config) {
-  return imageSnapshotsPlugin(on, config);
+  imageSnapshotsPlugin(on, config);
+  webpackPlugin(on, config);
+  return config;
 };
