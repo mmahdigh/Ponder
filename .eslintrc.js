@@ -25,13 +25,21 @@ module.exports = {
         'webpack.config.js',
         'jest.config.js',
         'seeder.js',
-        'cypress/**/*',
+        'cypress/plugins/**/*',
       ],
       parserOptions: {
         sourceType: 'script',
       },
       rules: {
         strict: [2, 'global'],
+        'import/no-extraneous-dependencies': [2, { devDependencies: true }],
+      },
+    },
+    {
+      files: [
+        'cypress/support/commands.js',
+      ],
+      rules: {
         'import/no-extraneous-dependencies': [2, { devDependencies: true }],
       },
     },
@@ -46,6 +54,13 @@ module.exports = {
       plugins: ['jest'],
       env: {
         jest: true,
+      },
+    },
+    {
+      files: ['cypress/**/*'],
+      plugins: ['cypress'],
+      env: {
+        'cypress/globals': true,
       },
     },
   ],
