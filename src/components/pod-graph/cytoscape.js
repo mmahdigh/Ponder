@@ -1,9 +1,9 @@
 import cytoscape from 'cytoscape';
-import klay from 'cytoscape-klay';
+import dagre from 'cytoscape-dagre';
 import panzoom from 'cytoscape-panzoom';
 import applyEvents from './events';
 
-cytoscape.use(klay);
+cytoscape.use(dagre);
 panzoom(cytoscape);
 
 export default function applyCytoscape(setCytoscape, deps) {

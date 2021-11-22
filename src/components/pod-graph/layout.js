@@ -2,11 +2,11 @@
 const layout = {
   fit: true, // whether to fit the viewport to the graph
   padding: 10, // the padding on fit
-  name: 'klay',
+  name: 'dagre',
   nodeSep: undefined, // the separation between adjacent nodes in the same rank
   edgeSep: undefined, // the separation between adjacent edges in the same rank
   rankSep: undefined, // the separation between each rank in the layout
-  rankDir: 'TB', // 'TB' for top to bottom flow, 'LR' for left to right,
+  rankDir: 'LR', // 'TB' for top to bottom flow, 'LR' for left to right,
   ranker: 'network-simplex', // Type of algorithm to assign a rank to each node in the input graph. Possible values: 'network-simplex', 'tight-tree' or 'longest-path'
 
   minLen(edge) {
