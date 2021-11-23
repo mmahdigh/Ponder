@@ -1,4 +1,4 @@
-import RssParser from 'rss-parser';
+import RssParser from 'rss-parser/dist/rss-parser.min';
 
 const rssParser = new RssParser();
 
