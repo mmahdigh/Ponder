@@ -61,6 +61,7 @@ const base = {
       inject: 'head',
     }),
     new MiniCssExtract(),
+    new Dotenv(),
   ],
 };
 
@@ -80,9 +81,6 @@ const environments = {
       port: 8080,
       historyApiFallback: true,
     },
-    plugins: [
-      new Dotenv({ path: path.resolve('.env.dev') }),
-    ],
   },
 
   production: {
@@ -93,7 +91,6 @@ const environments = {
     },
     plugins: [
       new Brotli(),
-      new Dotenv(),
     ],
   },
 };

@@ -24,7 +24,7 @@ module.exports = {
         'babel.config.js',
         'webpack.config.js',
         'jest.config.js',
-        'seeder.js',
+        'seeders/**/*.js',
         'cypress/plugins/**/*',
       ],
       parserOptions: {
