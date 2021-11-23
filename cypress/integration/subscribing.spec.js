@@ -1,4 +1,4 @@
-import seeds from '../../seeds.json';
+import seeds from '../../seeders/seeds.json';
 
 before(() => {
   cy.clearLocalStorage();

@@ -15,19 +15,11 @@
 'use strict';
 
 const snapshots = require('cypress-plugin-snapshots/plugin');
-const webpackPreprocessor = require('@cypress/webpack-preprocessor');
-const webpackConfig = require('../../webpack.config');
 
 /**
  * @type {Cypress.PluginConfig}
  */
 module.exports = function cypressPlugins(on, config) {
   snapshots.initPlugin(on, config);
-
-  on('file:preprocessor', webpackPreprocessor({
-    webpackOptions: webpackConfig,
-    watchOptions: {},
-  }));
-
   return config;
 };
