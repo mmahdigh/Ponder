@@ -4,6 +4,7 @@ const path = require('path');
 
 module.exports = {
   testEnvironment: 'jest-environment-jsdom',
+  testPathIgnorePatterns: ['cypress'],
   setupFiles: [
     'jest-environment-jsdom',
     'jest-date-mock',

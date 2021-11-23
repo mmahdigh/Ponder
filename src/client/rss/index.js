@@ -1,6 +1,4 @@
-import RssParser from 'rss-parser/dist/rss-parser.min';
-
-const rssParser = new RssParser();
+import parser from './parser';
 
 function mergeItunesData(items, itunes) {
   return (items || []).concat(itunes || [])
@@ -9,7 +7,7 @@ function mergeItunesData(items, itunes) {
 }
 
 export async function getPodcastFeed(subscribeUrl) {
-  const { items, ...podcast } = await rssParser.parseURL(subscribeUrl);
+  const { items, ...podcast } = await parser.parseURL(subscribeUrl);
   const imageUrl = podcast.image?.url || podcast.itunes?.image || null;
   return {
     subscribeUrl,

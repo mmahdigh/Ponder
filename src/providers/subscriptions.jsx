@@ -57,7 +57,7 @@ function SubscriptionsProvider({ children }) {
   async function sync() {
     setIsSyncing(true);
     try {
-      const toSync = JSON.parse(localStorage.getItems('toSync'));
+      const toSync = JSON.parse(localStorage.getItems('subscriptions'));
     } catch (ex) {
       console.error(ex);
       toast('Failed to sync with Arweave.', { variant: 'danger' });
@@ -73,6 +73,8 @@ function SubscriptionsProvider({ children }) {
   return (
     <SubscriptionsContext.Provider
       value={{
+        sync,
+        isSyncing,
         subscribe,
         unsubscribe,
         refresh,

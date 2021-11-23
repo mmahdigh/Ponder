@@ -1,7 +1,7 @@
-import { parseURL } from 'rss-parser';
-import { getPodcastFeed } from '../rss';
+import parser from '../parser';
+import { getPodcastFeed } from '..';
 
-jest.mock('rss-parser');
+jest.mock('../parser');
 
 const TEST_URL = 'https://thejimmydoreshow.libsyn.com/rss';
 
@@ -19,12 +19,12 @@ describe('getPodcastFeed', () => {
     const request = createRequest(({ description }) => description);
 
     test('Null if provided with no value', async () => {
-      parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
+      parser.parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
       await request().resolves.toBeNull();
     });
 
     test('Uses itunes summary if description isn\'t available', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         itunes: { summary: 'Dowel me timbers' },
       });
@@ -32,7 +32,7 @@ describe('getPodcastFeed', () => {
     });
 
     test('Favours description over itunes summary', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         description: 'A clamping good time',
         itunes: { summary: 'Dowel me timbers' },
@@ -45,12 +45,12 @@ describe('getPodcastFeed', () => {
     const request = createRequest(({ imageUrl }) => imageUrl);
 
     test('Null if provided with no value', async () => {
-      parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
+      parser.parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
       await request().resolves.toBeNull();
     });
 
     test('Uses itunes image if image url isn\'t available', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         itunes: { image: 'https://nudecelebsforfree.net/steve-buscemi' },
       });
@@ -58,7 +58,7 @@ describe('getPodcastFeed', () => {
     });
 
     test('Favours description over itunes summary', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         itunes: {
           ...BASE_MOCK_RESPONSE.itunes,
@@ -76,16 +76,16 @@ describe('getPodcastFeed', () => {
   test('imageUrl', async () => {
     const request = createRequest(({ imageUrl }) => imageUrl);
 
-    parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
+    parser.parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
     await request().resolves.toBeNull();
 
-    parseURL.mockResolvedValue({
+    parser.parseURL.mockResolvedValue({
       ...BASE_MOCK_RESPONSE,
       itunes: { image: 'https://nudecelebsforfree.net/steve-buscemi' },
     });
     await request().resolves.toBe('https://nudecelebsforfree.net/steve-buscemi');
 
-    parseURL.mockResolvedValue({
+    parser.parseURL.mockResolvedValue({
       ...BASE_MOCK_RESPONSE,
       itunes: {
         ...BASE_MOCK_RESPONSE.itunes,
@@ -103,12 +103,12 @@ describe('getPodcastFeed', () => {
     const request = createRequest(({ imageTitle }) => imageTitle);
 
     test('Null if not defined', async () => {
-      parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
+      parser.parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
       await request().resolves.toBeNull();
     });
 
     test('Uses image title for value', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         image: {
           ...BASE_MOCK_RESPONSE.image,
@@ -123,12 +123,12 @@ describe('getPodcastFeed', () => {
     const request = createRequest(({ language }) => language);
 
     test('Null if not defined', async () => {
-      parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
+      parser.parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
       await request().resolves.toBeNull();
     });
 
     test('Uses language for value', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         language: 'Newfoundlandish',
       });
@@ -140,12 +140,12 @@ describe('getPodcastFeed', () => {
     const request = createRequest(({ categories }) => categories);
 
     test('Empty array if not defined', async () => {
-      parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
+      parser.parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
       await request().resolves.toEqual([]);
     });
 
     test('Merges values from categories and itunes categories', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         categories: ['free', 'celebs', 'nudity'],
         itunes: {
@@ -161,12 +161,12 @@ describe('getPodcastFeed', () => {
     const request = createRequest(({ keywords }) => keywords);
 
     test('Empty array if not defined', async () => {
-      parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
+      parser.parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
       await request().resolves.toEqual([]);
     });
 
     test('Merges values from categories and itunes categories', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         keywords: ['free', 'celebs', 'nudity'],
         itunes: {
@@ -184,13 +184,13 @@ describe('getPodcastFeed', () => {
     };
 
     test('If not provided is an empty array', async () => {
-      parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
+      parser.parseURL.mockResolvedValue(BASE_MOCK_RESPONSE);
       await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes))
         .resolves.toEqual([]);
     });
 
     test('title', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         items: [BASE_EPISODE_RESPONSE],
       });
@@ -199,14 +199,14 @@ describe('getPodcastFeed', () => {
     });
 
     test('url', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         items: [BASE_EPISODE_RESPONSE],
       });
       await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].url))
         .resolves.toBeNull();
 
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         items: [{
           ...BASE_EPISODE_RESPONSE,
@@ -218,14 +218,14 @@ describe('getPodcastFeed', () => {
     });
 
     test('publishedAt', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         items: [BASE_EPISODE_RESPONSE],
       });
       await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].publishedAt))
         .resolves.toBeNull();
 
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         items: [{
           ...BASE_EPISODE_RESPONSE,
@@ -235,7 +235,7 @@ describe('getPodcastFeed', () => {
       await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].publishedAt))
         .resolves.toEqual(new Date('1991-09-05'));
 
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         items: [{
           ...BASE_EPISODE_RESPONSE,
@@ -245,7 +245,7 @@ describe('getPodcastFeed', () => {
       await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].publishedAt))
         .resolves.toEqual(new Date('1995-02-12'));
 
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         items: [{
           ...BASE_EPISODE_RESPONSE,
@@ -258,7 +258,7 @@ describe('getPodcastFeed', () => {
     });
 
     test('imageUrl', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         items: [BASE_EPISODE_RESPONSE],
       });
@@ -267,14 +267,14 @@ describe('getPodcastFeed', () => {
     });
 
     test('categories', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         items: [BASE_EPISODE_RESPONSE],
       });
       await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].categories))
         .resolves.toEqual([]);
 
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         items: [{
           ...BASE_EPISODE_RESPONSE,
@@ -289,14 +289,14 @@ describe('getPodcastFeed', () => {
     });
 
     test('keywords', async () => {
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         items: [BASE_EPISODE_RESPONSE],
       });
       await expect(getPodcastFeed(TEST_URL).then(({ episodes }) => episodes[0].keywords))
         .resolves.toEqual([]);
 
-      parseURL.mockResolvedValue({
+      parser.parseURL.mockResolvedValue({
         ...BASE_MOCK_RESPONSE,
         items: [{
           ...BASE_EPISODE_RESPONSE,
