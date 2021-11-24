@@ -1,14 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import cytoscape from 'cytoscape';
 import { podcastPropType } from '../../prop-types';
 import createCytoscape from './cytoscape';
 import getElementsFromSubscriptions from './get-elements-from-subscriptions';
 
 const Wrapper = styled.div`
-  min-height: 80vh;
+  min-height: 600px;
   margin-top: .8rem;
+  background-color: #202022;
 `;
 
 function Cytoscape({ subscriptions }) {

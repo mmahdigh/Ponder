@@ -3,9 +3,9 @@ const styles = [
     selector: 'node',
     style: {
       shape: 'roundrectangle',
-      'background-color': 'data(NodesBg)',
+      'background-color': 'green',
       'background-opacity': 0.6,
-      'background-image': 'data(bgImg)',
+      'background-image': 'data(imageUrl)',
       'background-fit': 'cover cover',
       'background-image-opacity': 0.1,
       width: 250,
@@ -20,7 +20,7 @@ const styles = [
       'font-family': 'Helvetica',
       'font-weight': 400,
       'font-size': 20,
-      label: 'data(label)',
+      label: 'data(title)',
       'text-halign': 'center',
       'text-valign': 'center',
       'text-max-width': '200px',
@@ -63,7 +63,7 @@ const styles = [
       'text-background-color': '#ebebeb', // A colour to apply on the text background.
       'text-background-opacity': '1', // The opacity of the label background; the background is disabled for 0 (default value).
       'text-background-padding': '3px',
-      'line-style': 'data(EdgeStyle)',
+      'line-style': 'data(edgeStyle)',
     },
   },
 ];

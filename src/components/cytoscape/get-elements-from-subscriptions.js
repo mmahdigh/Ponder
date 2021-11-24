@@ -1,4 +1,8 @@
+import styles from './cytoscape/styles';
+
 function normalizeElements(elements) {
+  const isArray = elements.length != null;
+  if (isArray) return elements;
   let { nodes, edges } = elements;
   if (nodes == null) nodes = [];
   if (edges == null) edges = [];
@@ -19,6 +23,7 @@ export default function getElementsFromSubscriptions(subscriptions) {
       imageUrl: podcast.imageUrl,
       imageTitle: podcast.title,
     },
+    styles: styles.find(({ selector }) => selector === 'node'),
   }));
 
   const edges = subscriptions
@@ -50,7 +55,10 @@ export default function getElementsFromSubscriptions(subscriptions) {
         : acc.concat(edge)
     ), [])
     .filter(edge => edge.target !== edge.source)
-    .map(data => ({ data }));
+    .map(data => ({
+      data,
+      styles: styles.find(({ selector }) => selector === 'edge'),
+    }));
 
   return normalizeElements({ nodes, edges });
 }
