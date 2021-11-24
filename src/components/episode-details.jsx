@@ -58,12 +58,13 @@ const EpisodeImageStyle = styled(Image)`
     min-width: 3.125rem;
     border-radius: 50%;
 `;
-const TimeBadge = styled.small`
+const TimeBadge = styled.p`
     display: flex;
     align-items: center;
     line-height: 1;
     font-size: xx-small;
     color: #9c8f94;
+    margin-bottom: 0;
     /* border: solid  yellow 1px; */
 `;
 const TimeIcon = styled(MdMoreTime)`

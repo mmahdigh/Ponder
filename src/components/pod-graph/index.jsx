@@ -1,4 +1,7 @@
-import React, { useContext, useState } from 'react';
+/* eslint-disable no-underscore-dangle */
+import React, {
+  useContext, useState, useRef, useEffect,
+} from 'react';
 import Cytoscape from 'react-cytoscapejs';
 import applyCytoscape from './cytoscape';
 import { CytoscapeContext } from '../../providers/cytoscape';
@@ -13,22 +16,7 @@ function PodGraph() {
   const { setCytoscape } = useContext(CytoscapeContext);
   const { subscriptions } = useContext(SubscriptionsContext);
   const [selectedPodcast, setSelectedPodcast] = useState(null);
-
-  const nodes = subscriptions.map(podcast => ({
-    data: {
-      id: podcast.subscribeUrl,
-      label: podcast.title,
-      categories: podcast.categories,
-      bgImg: podcast.imageUrl,
-      NodesBg: 'green', // TODO: Make 'grey' if not subscribed podcast
-      episodes: podcast.episodes,
-      description: podcast.description,
-      title: podcast.title,
-      imageUrl: podcast.imageUrl,
-      imageTitle: podcast.title,
-    },
-  }));
-
+  const myCyref = useRef();
   const edges = subscriptions
     .reduce((acc, podcast, _, xs) => {
       // A match is any other podcast that has one same category or keyword
@@ -60,6 +48,31 @@ function PodGraph() {
     .filter(edge => edge.target !== edge.source)
     .map(data => ({ data }));
 
+  // TODO
+  /**
+       After initializing the Cytoscape graph, we need to find:
+    for each node, find https://js.cytoscape.org/#nodes.connectedEdges
+    then log the bounding box around the set of edges with:
+    console.log(j.connectedEdges())
+    console.log(j.connectedEdges().boundingBox())
+    then maybe we can draw a bounding box around the returned (x1, y1, x2, y2) values?
+   */
+  const nodes = subscriptions.map(podcast => ({
+    data: {
+      id: podcast.subscribeUrl,
+      label: podcast.title,
+      categories: podcast.categories,
+      bgImg: podcast.imageUrl,
+      NodesBg: 'green', // TODO: Make 'grey' if not subscribed podcast
+      episodes: podcast.episodes,
+      description: podcast.description,
+      title: podcast.title,
+      imageUrl: podcast.imageUrl,
+      imageTitle: podcast.title,
+      parent: '',
+    },
+  }));
+
   const elements = Cytoscape.normalizeElements({ nodes, edges });
 
   return (
@@ -71,6 +84,7 @@ function PodGraph() {
         cy={applyCytoscape(setCytoscape, {
           setSelectedPodcast,
         })}
+        // ref={myCyref}
         style={{
           minWidth: '100%',
           minHeight: 600,

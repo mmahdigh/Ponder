@@ -7,8 +7,8 @@ cytoscape.use(dagre);
 panzoom(cytoscape);
 
 export default function applyCytoscape(setCytoscape, deps) {
-  const DEFAULT_LAYOUT_ZOOM_LEVEL = '';
-  const MAXIMUM_ZOOM_LEVEL = '';
+  // const DEFAULT_LAYOUT_ZOOM_LEVEL = '';
+  // const MAXIMUM_ZOOM_LEVEL = '';
   return cy => {
     cy.panzoom({
       zoomFactor: 0.05, // zoom factor per zoom tick

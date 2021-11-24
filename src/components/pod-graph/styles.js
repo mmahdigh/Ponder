@@ -34,7 +34,7 @@ const styles = [
     selector: 'edge',
     style: {
       'line-color': '#79797a',
-      color: '#9e9e9e',
+      color: 'white',
       'source-arrow-color': '#79797a',
       label: 'data(label)',
       'curve-style': 'straight',
@@ -49,20 +49,19 @@ const styles = [
       'text-overflow-wrap': 'anywhere',
       'text-justification': 'center',
       // 'text-rotation': 'autorotate',
-      // 'text-background-color': '#79797a',
+      'text-background-color': '#79797a',
       'text-background-shape': 'roundrectangle',
       // 'text-border-color': '#000',
       'text-border-width': 2,
       'text-border-opacity': 1,
       // 'text-background-opacity': 0.6,
-      // 'text-background-padding': '6px',
+      'text-background-padding': '6px',
       width: 3,
       'text-margin-x': '-10px', // A margin that shifts the label along the x-axis.
       'text-margin-y': '-2px',
 
-      'text-background-color': '#ebebeb', // A colour to apply on the text background.
+      // 'text-background-color': '#ebebeb', // A colour to apply on the text background.
       'text-background-opacity': '1', // The opacity of the label background; the background is disabled for 0 (default value).
-      'text-background-padding': '3px',
       'line-style': 'data(EdgeStyle)',
     },
   },
