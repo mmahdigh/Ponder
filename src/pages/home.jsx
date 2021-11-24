@@ -41,7 +41,9 @@ function HomePage() {
     <Container>
       <SearchPodcasts onSubmit={search} />
       {/* <PodGraph /> */}
-      <Cytoscape />
+      {subscriptions && (
+        <Cytoscape subscriptions={subscriptions} />
+      )}
 
       {subscriptions.length ? (
         <Table variant="dark" striped bordered>
