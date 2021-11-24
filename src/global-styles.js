@@ -22,6 +22,7 @@ export default createGlobalStyle`
     top: 1rem;
       left: 1rem;
       color: #666;
+      z-index: 100;
 }
 .cy-panzoom-panner {
     background: #121213;
@@ -64,5 +65,17 @@ export default createGlobalStyle`
   background:#2b2c2b;
 }
 
+// styling the modal
+.modal-content {
+    background-color: #16181a;
+    color: #868686;
 
+}
+.modal-header {
+    border-bottom: 1px solid #2c2c2c;
+}
+
+.modal-footer {
+  border-top: 1px solid #2c2c2c;
+}
 `;

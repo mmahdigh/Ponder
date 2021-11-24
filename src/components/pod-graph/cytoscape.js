@@ -1,13 +1,15 @@
 import cytoscape from 'cytoscape';
-import klay from 'cytoscape-klay';
+import dagre from 'cytoscape-dagre';
 import panzoom from 'cytoscape-panzoom';
 import applyEvents from './events';
 import applyNodeGroups from './node-groups';
 
-cytoscape.use(klay);
+cytoscape.use(dagre);
 panzoom(cytoscape);
 
 export default function applyCytoscape(setCytoscape, deps) {
+  const DEFAULT_LAYOUT_ZOOM_LEVEL = '';
+  const MAXIMUM_ZOOM_LEVEL = '';
   return cy => {
     cy.panzoom({
       zoomFactor: 0.05, // zoom factor per zoom tick
@@ -44,5 +46,6 @@ export default function applyCytoscape(setCytoscape, deps) {
     applyNodeGroups(cy, deps);
     setCytoscape(cy);
     if (process.env.NODE_ENV !== 'production') window.cy = cy;
+    // cy.fit();
   };
 }
