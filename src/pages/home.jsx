@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { Table, Container } from 'react-bootstrap';
 import { SubscriptionsContext } from '../providers/subscriptions';
 import { ToastContext } from '../providers/toast';
-import PodGraph from '../components/pod-graph';
+// import PodGraph from '../components/pod-graph';
+import Cytoscape from '../components/cytoscape';
 import SearchPodcasts from '../components/search-podcasts';
 import RssButton from '../components/rss-button';
 import SyncButton from '../components/sync-button';
@@ -39,7 +40,8 @@ function HomePage() {
   return (
     <Container>
       <SearchPodcasts onSubmit={search} />
-      <PodGraph />
+      {/* <PodGraph /> */}
+      <Cytoscape />
 
       {subscriptions.length ? (
         <Table variant="dark" striped bordered>
