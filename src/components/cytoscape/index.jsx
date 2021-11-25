@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   background-color: #202022;
 `;
 
-function Cytoscape({ subscriptions }) {
+function PodGraph({ subscriptions }) {
   const el = useRef();
   const [cy, setCy] = useState(null);
   const [selectedPodcast, setSelectedPodcast] = useState(null);
@@ -32,8 +32,8 @@ function Cytoscape({ subscriptions }) {
   );
 }
 
-Cytoscape.propTypes = {
+PodGraph.propTypes = {
   subscriptions: PropTypes.arrayOf(PropTypes.shape(podcastPropType).isRequired).isRequired,
 };
 
-export default Cytoscape;
+export default PodGraph;

@@ -4,7 +4,7 @@ import { Table, Container } from 'react-bootstrap';
 import { SubscriptionsContext } from '../providers/subscriptions';
 import { ToastContext } from '../providers/toast';
 // import PodGraph from '../components/pod-graph';
-import Cytoscape from '../components/cytoscape';
+import PodGraph from '../components/cytoscape';
 import SearchPodcasts from '../components/search-podcasts';
 import RssButton from '../components/rss-button';
 import SyncButton from '../components/sync-button';
@@ -42,7 +42,7 @@ function HomePage() {
       <SearchPodcasts onSubmit={search} />
       {/* <PodGraph /> */}
       {subscriptions && (
-        <Cytoscape subscriptions={subscriptions} />
+        <PodGraph subscriptions={subscriptions} />
       )}
 
       {subscriptions.length ? (

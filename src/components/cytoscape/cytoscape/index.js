@@ -12,8 +12,8 @@ export default function createCytoscape(container, elements, deps) {
   const cy = cytoscape({
     container,
     elements,
-    styles,
     layout,
+    styles: styles(),
   });
   applyPanzoom(cy, deps);
   applyEvents(cy, deps);

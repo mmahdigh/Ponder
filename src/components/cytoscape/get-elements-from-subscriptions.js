@@ -23,7 +23,6 @@ export default function getElementsFromSubscriptions(subscriptions) {
       imageUrl: podcast.imageUrl,
       imageTitle: podcast.title,
     },
-    styles: styles.find(({ selector }) => selector === 'node'),
   }));
 
   const edges = subscriptions
@@ -57,7 +56,6 @@ export default function getElementsFromSubscriptions(subscriptions) {
     .filter(edge => edge.target !== edge.source)
     .map(data => ({
       data,
-      styles: styles.find(({ selector }) => selector === 'edge'),
     }));
 
   return normalizeElements({ nodes, edges });

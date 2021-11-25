@@ -1,7 +1,9 @@
-const styles = [
-  {
-    selector: 'node',
-    style: {
+import cytoscape from 'cytoscape';
+
+export default function styles() {
+  return cytoscape.stylesheet()
+    .selector('node')
+    .style({
       shape: 'roundrectangle',
       'background-color': 'green',
       'background-opacity': 0.6,
@@ -28,11 +30,9 @@ const styles = [
       'text-overflow-wrap': 'anywhere',
       'text-justification': 'center',
       'line-height': 1.5,
-    },
-  },
-  {
-    selector: 'edge',
-    style: {
+    })
+    .selector('edge')
+    .style({
       'line-color': '#79797a',
       color: '#9e9e9e',
       'source-arrow-color': '#79797a',
@@ -64,8 +64,5 @@ const styles = [
       'text-background-opacity': '1', // The opacity of the label background; the background is disabled for 0 (default value).
       'text-background-padding': '3px',
       'line-style': 'data(edgeStyle)',
-    },
-  },
-];
-
-export default styles;
+    });
+}
