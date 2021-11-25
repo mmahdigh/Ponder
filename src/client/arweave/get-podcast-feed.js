@@ -2,7 +2,7 @@ import gql from 'fake-tag';
 import client from './client';
 import { toTag, fromTag } from './utils';
 
-export default async function getPodcastFeed(subscribeUrls) {
+export default async function getPodcastFeed(subscribeUrl) {
   const transaction = await client.api.post('/graphql', {
     query: gql`
       query GetPodcast($tags: [TagFilter!]!) {
@@ -23,7 +23,7 @@ export default async function getPodcastFeed(subscribeUrls) {
       tags: [
         {
           name: toTag('subscribeUrl'),
-          values: subscribeUrls,
+          values: subscribeUrl,
         },
       ],
     },
