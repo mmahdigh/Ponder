@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { podcastPropType } from '../../prop-types';
 import createCytoscape from './cytoscape';
 import getElementsFromSubscriptions from './get-elements-from-subscriptions';
+import Legend from './legend';
+import PodcastDetails from '../podcast-details';
 
 const Wrapper = styled.div`
   min-height: 600px;
@@ -28,7 +30,15 @@ function PodGraph({ subscriptions }) {
   }, []);
 
   return (
-    <Wrapper ref={el} />
+    <>
+      <Wrapper ref={el} />
+      <Legend />
+      <PodcastDetails
+        {...selectedPodcast}
+        isOpen={!!selectedPodcast}
+        close={() => setSelectedPodcast(null)}
+      />
+    </>
   );
 }
 
