@@ -6,8 +6,8 @@ export default function styles(cy) {
     'background-image': 'data(imageUrl)',
     'background-fit': 'cover cover',
     'background-image-opacity': 0.1,
-    width: 250,
-    height: 250,
+    width: 50,
+    height: 50,
     avoidOverlap: true, // if true, prevents overlap of node bounding boxes
     // whether labels should be included in determining the space used by a node
     nodeDimensionsIncludeLabels: true,
@@ -17,7 +17,7 @@ export default function styles(cy) {
     color: 'white',
     'font-family': 'Helvetica',
     'font-weight': 400,
-    'font-size': 20,
+    'font-size': 21,
     label: 'data(title)',
     'text-halign': 'center',
     'text-valign': 'center',
