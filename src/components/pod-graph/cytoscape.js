@@ -2,6 +2,7 @@ import cytoscape from 'cytoscape';
 import dagre from 'cytoscape-dagre';
 import panzoom from 'cytoscape-panzoom';
 import applyEvents from './events';
+import applyNodeGroups from './node-groups';
 
 cytoscape.use(dagre);
 panzoom(cytoscape);
@@ -42,7 +43,9 @@ export default function applyCytoscape(setCytoscape, deps) {
     });
 
     applyEvents(cy, deps);
+    applyNodeGroups(cy, deps);
     setCytoscape(cy);
     // cy.fit();
+    if (process.env.NODE_ENV !== 'production') window.cy = cy;
   };
 }

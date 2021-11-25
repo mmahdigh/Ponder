@@ -96,5 +96,6 @@ const environments = {
 };
 
 module.exports = function webpackConfig() {
-  return merge(base, environments[process.env.NODE_ENV] || environments.production);
+  const nodeEnv = process.env.NODE_ENV === 'test' ? 'development' : process.env.NODE_ENV;
+  return merge(base, environments[nodeEnv] || environments.production);
 };

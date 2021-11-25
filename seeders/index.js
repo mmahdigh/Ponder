@@ -2,15 +2,19 @@
 
 require('dotenv').config();
 const Arweave = require('arweave');
-const key = require('./src/client/arweave/key.json');
-const seeds = require('./seeds.json');
+const key = require('../src/client/arweave/key.json');
 
 const TAG_MAP = {
   categories: 'category',
   keywords: 'keyword',
 };
 
-async function seeder() {
+async function delay(ms = 5000) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+module.exports = async function seed(seeds, ms = 5000) {
+  await delay(ms);
   const client = Arweave.init({
     host: 'localhost',
     port: 1984,
@@ -40,6 +44,4 @@ async function seeder() {
           .then(() => client.transactions.post(trx));
       })));
   console.log('Seeding successful!');
-}
-
-setTimeout(seeder, 5000);
+};

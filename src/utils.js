@@ -1,4 +1,4 @@
-export function unixTimestamp(date = new Date()) {
+export function unixTimestamp(date) {
   return Math.floor(date ? date.getTime() : Date.now() / 1000);
 }
 

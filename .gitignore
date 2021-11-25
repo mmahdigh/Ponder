@@ -67,3 +67,5 @@ yarn-error.log
 # Built assets
 /dist
 /ponder-kagz
+/cypress/videos
+/cypress/screenshots

@@ -5,40 +5,52 @@ import { episodeId } from '../utils';
 export { createPodcast } from './arweave';
 
 async function fetchFeeds(subscribeUrl) {
-  return Promise.all([
+  const [arweaveFeed, rssFeed] = await Promise.all([
     arweave.getPodcastFeed(subscribeUrl),
     rss.getPodcastFeed(subscribeUrl),
-  ])
-    .then(([arweaveFeed, rssFeed]) => ({
-      arweave: arweaveFeed,
-      rss: rssFeed,
-    }));
-}
-
-export async function getPodcast(subscribeUrl) {
-  const feeds = await fetchFeeds(subscribeUrl);
-
+  ]);
   return {
-    ...feeds.arweave,
-    ...feeds.rss,
-    episodes: !feeds.arweave ? feeds.rss.episodes : feeds.arweave.episodes.concat(feeds.rss.episodes
-      .filter(rssEpisode => feeds.arweave.episodes
-        .every(arweaveEpisode => episodeId(arweaveEpisode) !== episodeId(rssEpisode)))),
+    arweave: arweaveFeed,
+    rss: rssFeed,
   };
 }
 
-export async function getAllPodcasts(podcasts) {
-  return Promise.all(podcasts.map(podcast => getPodcast(podcast.subscribeUrl)));
+function feedDiff(feed) {
+  const existingIds = feed.arweave.episodes.map(episodeId);
+  return feed.rss.episodes.filter(episode => !existingIds.includes(episodeId(episode)));
 }
 
-export async function getNewEpisodes(subscriptions) {
-  const feeds = await fetchFeeds(subscriptions);
-  const arweaveEpisodeIds = feeds.arweave.flatMap(podcast => podcast.episodes.map(episodeId));
+function mergeFeed(subscribeUrl, feed) {
+  const newEpisodes = feedDiff(feed);
 
-  return feeds.rss
-    .map(feed => ({
-      subscribeUrl: feed.subscribeUrl,
-      episodes: feed.episodes.filter(episode => !arweaveEpisodeIds.includes(episodeId(episode))),
-    }))
-    .filter(({ episodes }) => episodes.length);
+  if (!newEpisodes.length) {
+    const toSync = JSON.parse(localStorage.getItem('toSync')) || [];
+    const newValue = toSync.podcasts.map(podcast => (
+      subscribeUrl !== podcast.subscribeUrl ? podcast : {
+        ...podcast,
+        episodes: podcast.episodes
+          .concat(newEpisodes)
+          .sort((a, b) => b.publishedAt - a.publishedAt),
+      }
+    ));
+    localStorage.setItem('toSync', JSON.stringify(newValue));
+  }
+
+  return {
+    ...feed.arweave,
+    ...feed.rss,
+    episodes: feed.arweave.episodes
+      .concat(newEpisodes)
+      .sort((a, b) => b.publishedAt - a.publishedAt),
+  };
+}
+
+export async function getPodcast(subscribeUrl) {
+  return mergeFeed(subscribeUrl, await fetchFeeds(subscribeUrl));
+}
+
+export async function getAllPodcasts(subscriptions) {
+  return Promise.all(subscriptions
+    .map(subscription => fetchFeeds(subscription.subscribeUrl)
+      .then(feed => mergeFeed(subscription.subscribeUrl, feed))));
 }
