@@ -63,5 +63,11 @@ module.exports = {
         'cypress/globals': true,
       },
     },
+    {
+      files: ['src/components/cytoscape/cytoscape/**/*.js'],
+      rules: {
+        'no-underscore-dangle': 0,
+      },
+    },
   ],
 };
