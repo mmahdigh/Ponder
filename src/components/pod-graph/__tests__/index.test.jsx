@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'util';
+import { render } from '@testing-library/react';
 import PodGraph from '..';
 
 const BASE_SUBSCRIPTIONS = [
@@ -74,4 +74,5 @@ const BASE_SUBSCRIPTIONS = [
 
 test('Initializes Cytoscape and attaches reference onto window', () => {
   render(<PodGraph subscriptions={BASE_SUBSCRIPTIONS} />);
+  expect(window.cy).not.toBeUndefined();
 });

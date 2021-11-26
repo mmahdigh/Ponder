@@ -8,6 +8,7 @@ module.exports = {
   setupFiles: [
     'jest-environment-jsdom',
     'jest-date-mock',
+    'jest-canvas-mock',
   ],
   setupFilesAfterEnv: [path.resolve('jest.setup.js')],
   testRegex: '__tests__/.*\\.test\\.jsx?$',

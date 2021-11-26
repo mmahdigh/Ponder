@@ -80,6 +80,7 @@
     "html-webpack-plugin": "^5.3.2",
     "https-browserify": "^1.0.0",
     "jest": "^27.3.1",
+    "jest-canvas-mock": "^2.3.1",
     "jest-date-mock": "^1.0.8",
     "jest-environment-jsdom": "^27.3.1",
     "mini-css-extract-plugin": "^2.4.2",
