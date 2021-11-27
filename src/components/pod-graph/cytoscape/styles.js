@@ -1,13 +1,13 @@
 export default function styles(cy) {
   Object.entries({
     shape: 'roundrectangle',
-    'background-color': 'green',
+    'background-color': 'data(NodesBg)',
     'background-opacity': 0.6,
-    'background-image': 'data(imageUrl)',
+    'background-image': 'data(bgImg)',
     'background-fit': 'cover cover',
     'background-image-opacity': 0.1,
-    width: 50,
-    height: 50,
+    width: 250,
+    height: 250,
     avoidOverlap: true, // if true, prevents overlap of node bounding boxes
     // whether labels should be included in determining the space used by a node
     nodeDimensionsIncludeLabels: true,
@@ -17,8 +17,8 @@ export default function styles(cy) {
     color: 'white',
     'font-family': 'Helvetica',
     'font-weight': 400,
-    'font-size': 21,
-    label: 'data(title)',
+    'font-size': 20,
+    label: 'data(label)',
     'text-halign': 'center',
     'text-valign': 'center',
     'text-max-width': '200px',
