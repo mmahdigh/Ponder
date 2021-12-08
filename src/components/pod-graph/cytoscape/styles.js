@@ -3,7 +3,7 @@ export default function styles(cy) {
     shape: 'roundrectangle',
     'background-color': 'data(NodesBg)',
     'background-opacity': 0.6,
-    'background-image': 'data(bgImg)',
+    'background-image': 'data(imageUrl)',
     'background-fit': 'cover cover',
     'background-image-opacity': 0.1,
     width: 250,

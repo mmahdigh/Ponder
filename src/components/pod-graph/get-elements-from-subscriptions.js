@@ -15,7 +15,6 @@ export default function getElementsFromSubscriptions(subscriptions) {
       id: podcast.subscribeUrl,
       label: podcast.title,
       categories: podcast.categories,
-      bgImg: podcast.imageUrl,
       NodesBg: 'green', // TODO: Make 'grey' if not subscribed podcast
       episodes: podcast.episodes,
       description: podcast.description,

@@ -3,8 +3,8 @@ import 'cytoscape-panzoom/cytoscape.js-panzoom.css';
 
 export default createGlobalStyle`
   :root {
-    --color-body: #202022;
-    --color-label: #797979; // Unsure if named well
+    --color-body: #000000fc;
+    --color-label: #797979; // Unsure if named well #000000
   }
 
   html,
@@ -17,10 +17,38 @@ export default createGlobalStyle`
     background-color: var(--color-body);
   }
 
+// bootstrap override
+.form-control{
+  outline: 2px solid transparent;
+    outline-offset: 2px;
+    color: #fff;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    background-color: rgba(26, 26, 26, 0);
+    border-style: none;
+    border-color: #6b7280;
+    border-width: 1px;
+    border-radius: 0px;
+    padding-top: 0.5rem;
+    padding-right: 0.75rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    appearance: none;
+    text-overflow: ellipsis;
+    box-shadow: none;
+    &:focus{
+    outline: 0;
+    box-shadow: none;
+    color: #fff;
+    background-color: rgba(26, 26, 26, 0);
+    border: none;
+    }
+}
+
   // panzoom controller
 .cy-panzoom{
     top: 1rem;
-      left: 1rem;
+      /* left: 1rem; */
       color: #666;
       z-index: 100;
 }

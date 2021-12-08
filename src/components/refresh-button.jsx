@@ -7,7 +7,7 @@ function RefreshButton() {
   const { refresh, isRefreshing } = useContext(SubscriptionsContext);
 
   return (
-    <SpinButton variant="info" disabled={isRefreshing} onClick={refresh}>
+    <SpinButton disabled={isRefreshing} onClick={refresh}>
       <FaSync />
     </SpinButton>
   );

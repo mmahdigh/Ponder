@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Header from './header';
+import {
+  Container,
+} from 'react-bootstrap';
 import Footer from './footer';
 
 const Page = styled.div`
@@ -9,19 +11,31 @@ const Page = styled.div`
   flex-direction: column;
   min-height: 100vh;
 
-  > main {
+`;
+const CenterComponents = styled(Container)`
+    display: flex;
+    justify-content: center;
+`;
+
+const MainContent = styled.div`
+    /* border: solid yellow 2px; */
     flex-grow: 1;
+    max-width: 72rem;
     padding-top: 1rem;
-  }
+    padding-bottom: 1rem;
+
 `;
 
 function Layout({ children }) {
   return (
     <Page>
-      <Header />
-      <main>
-        {children}
-      </main>
+      <CenterComponents>
+
+        <MainContent>
+          {children}
+        </MainContent>
+      </CenterComponents>
+
       <Footer />
     </Page>
   );

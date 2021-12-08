@@ -17,6 +17,29 @@ const MinusIcon = styled(FaMinus)`
   top: 4px;
   font-size: .7rem;
 `;
+const CustomBtn = styled(Button)`
+
+    padding: 0.25rem 0.5rem;
+    line-height: 1.75rem;
+    border-radius: 50%;
+    background: transparent !important;
+    border: 1px solid transparent !important;
+    color: #fff ;
+    box-shadow: none !important;
+    &:hover {
+    color: #4b9b73;
+    background: transparent;
+      border: 1px solid transparent !important;
+}
+&:focus {
+    color: #4b9b73;
+    background: transparent;
+      border: 1px solid transparent !important;
+}
+
+
+`;
+
 
 function RssButton({
   className,
@@ -26,7 +49,7 @@ function RssButton({
   ...props
 }) {
   return (
-    <Button
+    <CustomBtn
       className={className}
       type={onClick ? 'button' : 'submit'}
       variant={removeButton ? 'danger' : 'info'}
@@ -39,7 +62,7 @@ function RssButton({
       ) : (
         <PlusIcon />
       )}
-    </Button>
+    </CustomBtn>
   );
 }
 
