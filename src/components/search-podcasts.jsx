@@ -37,12 +37,7 @@ function SearchPodcasts({ onSubmit }) {
         toast('Could not find podcast.', { variant: 'danger' });
       } finally {
         setIsSearching(false);
-        // here we refresh the cytoscape graph
-        
       }
-
-      //
-
     }
   }
 
