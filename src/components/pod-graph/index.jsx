@@ -26,7 +26,7 @@ function PodGraph({ subscriptions }) {
     return () => {
       cyto.destroy();
     };
-  }, []);
+  }, [subscriptions]);
 
   return (
     <div>
