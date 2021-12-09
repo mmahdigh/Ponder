@@ -57,7 +57,6 @@ const PodAlert = styled.div`
 
 const FormWrapper = styled.div`
     width: 100%;
-
 `;
 
 const CallToActions = styled.div`
@@ -70,14 +69,11 @@ const CallToActions = styled.div`
     display: flex;
     align-items: center;
     height: 2.5rem;
-
-
 `;
 
 function HeaderComponent({ onSubmit }) {
   const toast = useContext(ToastContext);
   const [isSearching, setIsSearching] = useState(false);
-
   async function handleSubmit(event) {
     event.preventDefault();
     const fd = new FormData(event.target);
@@ -97,9 +93,7 @@ function HeaderComponent({ onSubmit }) {
   }
 
   return (
-
     <HeaderContainer>
-
       <ImageWrapper>
         <ImageLogo
           alt=""
@@ -108,7 +102,6 @@ function HeaderComponent({ onSubmit }) {
           height="54"
         />{' '}
       </ImageWrapper>
-
       <FormLayer>
         <PodAlert>
           {/* <SiGooglepodcasts /> */}
@@ -122,22 +115,15 @@ function HeaderComponent({ onSubmit }) {
                   disabled={isSearching}
                   placeholder="https://feeds.simplecast.com/dHoohVNH"
                 />
-                {/* <SearchButton> */}
                 <RssButton disabled={isSearching} />
-                {/* </SearchButton> */}
               </InputGroup>
             </Form.Group>
           </Form>
         </FormWrapper>
-
       </FormLayer>
-
       <CallToActions>
         <SyncButton />
         <RefreshButton />
-        {/* <div>
-          <VscSettingsGear />
-        </div> */}
       </CallToActions>
     </HeaderContainer>
 
