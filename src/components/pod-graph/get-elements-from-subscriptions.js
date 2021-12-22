@@ -1,3 +1,6 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-restricted-syntax */
 function normalizeElements(elements) {
   const isArray = elements.length != null;
   if (isArray) return elements;
@@ -8,21 +11,6 @@ function normalizeElements(elements) {
 }
 
 export default function getElementsFromSubscriptions(subscriptions) {
-  const nodes = subscriptions.map(podcast => ({
-    group: 'nodes',
-    classes: 'customNodes',
-    data: {
-      id: podcast.subscribeUrl,
-      label: podcast.title,
-      categories: podcast.categories,
-      episodes: podcast.episodes,
-      description: podcast.description,
-      title: podcast.title,
-      imageUrl: podcast.imageUrl,
-      imageTitle: podcast.title,
-    },
-  }));
-
   const edges = subscriptions
     .reduce((acc, podcast, _, xs) => {
       // A match is any other podcast that has one same category or keyword
@@ -55,6 +43,21 @@ export default function getElementsFromSubscriptions(subscriptions) {
     .map(data => ({
       data,
     }));
-
+  const nodes = subscriptions.map(podcast => ({
+    group: 'nodes',
+    classes: 'customNodes',
+    data: {
+      id: podcast.subscribeUrl,
+      label: podcast.title,
+      categories: podcast.categories,
+      keywords: podcast.keywords,
+      episodes: podcast.episodes,
+      description: podcast.description,
+      title: podcast.title,
+      imageUrl: podcast.imageUrl,
+      imageTitle: podcast.title,
+      parent: '',
+    },
+  }));
   return normalizeElements({ nodes, edges });
 }

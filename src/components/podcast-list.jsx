@@ -16,11 +16,17 @@ const EventWrapper = styled.div`
     min-width: 100%;
     display: flex;
     padding: 0 16px;
+@media (min-width: 320px) and (max-width: 480px) {
+    flex-direction: column;
+}
 `;
 
 const LeftPane = styled.div`
     display: inline;
     max-width: 270px;
+    @media (min-width: 320px) and (max-width: 480px) {
+    max-width: 100%;
+}
 `;
 
 const RightPane = styled.div`
@@ -68,8 +74,11 @@ const ListContainer = styled.div`
     background-color: rgba(13, 13, 13, 1);
     border: 2px solid rgba(38, 38, 38, 1);
     border-radius: 1rem;
-    width: 830px;
+    max-width: 830px;
     height: 24rem;
+    @media (min-width: 320px) and (max-width: 480px) {
+      /* max-width: 360px; */
+}
 `;
 
 const ListItem = styled.div`
@@ -98,6 +107,10 @@ const PodcastImage = styled(Image)`
     width: 3rem;
     height: 3rem;
     margin-right: 0.75rem;
+    @media (min-width: 320px) and (max-width: 480px) {
+    width: 2rem;
+    height: 2rem;
+}
 `;
 
 const TitleHeader = styled.h2`
@@ -108,7 +121,7 @@ const TitleHeader = styled.h2`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 450px;
+    /* width: 450px; */
     margin: 0;
 `;
 
@@ -135,7 +148,7 @@ const TimeRelease = styled.small`
 const CallToAction = styled.div`
     display: flex;
     align-items: center;
-    margin-left: 5rem;
+    /* margin-left: 5rem; */
 `;
 
 const ActionBtn = styled.div`
@@ -145,8 +158,12 @@ const ActionBtn = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    width: 85px;
+    /* width: 85px; */
     height: 2.5rem;
+    @media (min-width: 320px) and (max-width: 480px) {
+    padding: 0;
+    border: none;
+}
 `;
 
 function PodcastList({ subscriptions, unsubscribe }) {
