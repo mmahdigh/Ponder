@@ -14,8 +14,8 @@ const Wrapper = styled.div`
   border-radius: 1rem;
   padding: 16px;
   @media (min-width: 320px) and (max-width: 480px) {
-  min-height: 400px;
-}
+      min-height: 400px;
+    }
 `;
 
 function PodGraph({ subscriptions }) {

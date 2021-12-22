@@ -16,17 +16,17 @@ const EventWrapper = styled.div`
     min-width: 100%;
     display: flex;
     padding: 0 16px;
-@media (min-width: 320px) and (max-width: 480px) {
-    flex-direction: column;
-}
+    @media (min-width: 320px) and (max-width: 480px) {
+     flex-direction: column;
+    }
 `;
 
 const LeftPane = styled.div`
     display: inline;
     max-width: 270px;
     @media (min-width: 320px) and (max-width: 480px) {
-    max-width: 100%;
-}
+      max-width: 100%;
+    }
 `;
 
 const RightPane = styled.div`
@@ -78,7 +78,7 @@ const ListContainer = styled.div`
     height: 24rem;
     @media (min-width: 320px) and (max-width: 480px) {
       /* max-width: 360px; */
-}
+    }
 `;
 
 const ListItem = styled.div`
@@ -110,7 +110,7 @@ const PodcastImage = styled(Image)`
     @media (min-width: 320px) and (max-width: 480px) {
     width: 2rem;
     height: 2rem;
-}
+    }
 `;
 
 const TitleHeader = styled.h2`
@@ -121,8 +121,10 @@ const TitleHeader = styled.h2`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    /* width: 450px; */
     margin: 0;
+    @media (min-width: 320px) and (max-width: 480px) {
+    width: auto;
+    }
 `;
 
 const MetaDetail = styled.div`
@@ -148,7 +150,10 @@ const TimeRelease = styled.small`
 const CallToAction = styled.div`
     display: flex;
     align-items: center;
-    /* margin-left: 5rem; */
+    margin-left: 5rem;
+    @media (min-width: 320px) and (max-width: 480px) {
+    margin-left: auto;
+  }
 `;
 
 const ActionBtn = styled.div`
@@ -158,12 +163,13 @@ const ActionBtn = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    /* width: 85px; */
+    width: 85px;
     height: 2.5rem;
     @media (min-width: 320px) and (max-width: 480px) {
     padding: 0;
     border: none;
-}
+    width: auto;
+    }
 `;
 
 function PodcastList({ subscriptions, unsubscribe }) {

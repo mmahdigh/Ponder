@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useContext } from 'react';
 import { SubscriptionsContext } from '../providers/subscriptions';
 import { ToastContext } from '../providers/toast';
@@ -9,7 +8,8 @@ import getCustomStuff from '../components/pod-graph/data';
 
 function HomePage() {
   const toast = useContext(ToastContext);
-  const subscriptions = getCustomStuff(); // TODO: remove this static data and use the subsription context
+  // TODO: remove this static data and use the subsription context
+  const subscriptions = getCustomStuff();
   const { subscribe, unsubscribe } = useContext(SubscriptionsContext);
 
   async function search({ query }) {
