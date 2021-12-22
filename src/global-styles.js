@@ -107,7 +107,7 @@ export default createGlobalStyle`
   border-top: 1px solid #2c2c2c;
 }
 
-/* =================== Card =========================*/
+/* =================== Nodes Card =========================*/
 
 .card-front__heading {
   background: black;

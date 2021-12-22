@@ -11,7 +11,7 @@ import {
 import NavButton from './nav-button';
 
 const Footer = styled.footer`
-    background-color: #0d0d0d;
+    background-color: #0d0d0ded;
     padding: 0.625rem 1.25rem;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
