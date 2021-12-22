@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 export default function getCustomStuff() {
   return FAKE_DATA;
 }

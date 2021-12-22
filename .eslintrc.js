@@ -1,5 +1,15 @@
 'use strict';
 
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable max-len */
+/* eslint-disable indent */
+/* eslint-disable max-len */
+/* eslint-disable max-len */
+/* eslint-disable no-use-before-define */
+
 module.exports = {
   root: true,
   parser: '@babel/eslint-parser',

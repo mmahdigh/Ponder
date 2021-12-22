@@ -1,11 +1,10 @@
-/* eslint-disable max-len */
 export default function styles(cy) {
   Object.entries({
     'background-color': '#020202',
-  })
-    .forEach(([k, v]) => {
-      cy.style().selector('node').style(k, v).update();
-    });
+  }).forEach(([k, v]) => {
+    cy.style().selector('node').style(k, v).update();
+  });
+
   // EDGES
   Object.entries({
     'line-color': '#262626',
@@ -17,21 +16,17 @@ export default function styles(cy) {
     'source-arrow-shape': 'square',
     'target-arrow-shape': 'triangle',
     width: 3,
-  })
-    .forEach(([k, v]) => {
-      cy.style().selector('edge').style(k, v).update();
-    });
+  }).forEach(([k, v]) => {
+    cy.style().selector('edge').style(k, v).update();
+  });
 
   // COLAPSE NODES
   Object.entries({
     width: 56,
     height: 56,
-
-  })
-    .forEach(([k, v]) => {
-      cy.style().selector('node.cy-expand-collapse-collapsed-node').style(k, v).update();
-    });
-
+  }).forEach(([k, v]) => {
+    cy.style().selector('node.cy-expand-collapse-collapsed-node').style(k, v).update();
+  });
   Object.entries({
     'background-color': 'yellow',
     'background-opacity': '1',
@@ -49,18 +44,15 @@ export default function styles(cy) {
     'padding-left': '16px',
     'padding-bottom': '16px',
     'padding-right': '16px',
+  }).forEach(([k, v]) => {
+    cy.style().selector('$node > node').style(k, v).update();
+  });
 
-  })
-    .forEach(([k, v]) => {
-      cy.style().selector('$node > node').style(k, v).update();
-    });
   // parent
   Object.entries({
     'text-valign': 'bottom',
     'text-halign': 'center',
-
-  })
-    .forEach(([k, v]) => {
-      cy.style().selector(':parent').style(k, v).update();
-    });
+  }).forEach(([k, v]) => {
+    cy.style().selector(':parent').style(k, v).update();
+  });
 }

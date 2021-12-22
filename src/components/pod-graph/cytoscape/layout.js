@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 const layout = {
   fit: true, // whether to fit the viewport to the graph
   padding: 80, // the padding on fit
