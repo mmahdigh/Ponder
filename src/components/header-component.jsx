@@ -69,7 +69,7 @@ const CallToActions = styled.div`
     display: flex;
     align-items: center;
     height: 2.5rem;
-    @media (min-width: 320px) and (max-width: 480px) {
+   @media only screen and (max-width: 960px) {
     padding: 0;
     border: none;
 }
