@@ -1,15 +1,5 @@
 'use strict';
 
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-plusplus */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable max-len */
-/* eslint-disable indent */
-/* eslint-disable max-len */
-/* eslint-disable max-len */
-/* eslint-disable no-use-before-define */
-
 module.exports = {
   root: true,
   parser: '@babel/eslint-parser',
@@ -26,6 +16,10 @@ module.exports = {
     'react/static-property-placement': [2, 'static public field'],
     'consistent-return': 0,
     'no-console': 0,
+    'no-use-before-define': 'off',
+    'no-plusplus': 'off',
+    'no-underscore-dangle': 'off',
+    'max-len': 'off',
   },
   overrides: [
     {
