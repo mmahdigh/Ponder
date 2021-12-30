@@ -52,7 +52,6 @@ const PodAlert = styled.div`
     animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     width: 1rem;
     height: 1rem;
-
 `;
 
 const FormWrapper = styled.div`
@@ -69,10 +68,10 @@ const CallToActions = styled.div`
     display: flex;
     align-items: center;
     height: 2.5rem;
-     @media only screen and (max-width: 960px) {
-    padding: 0;
-    border: none;
-}
+    @media only screen and (max-width: 960px) {
+        padding: 0;
+        border: none;
+    }
 `;
 
 function HeaderComponent({ onSubmit }) {

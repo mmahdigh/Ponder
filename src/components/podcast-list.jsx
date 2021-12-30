@@ -17,7 +17,7 @@ const EventWrapper = styled.div`
     display: flex;
     padding: 0 16px;
     @media only screen and (max-width: 960px) {
-     flex-direction: column;
+        flex-direction: column;
     }
 `;
 
@@ -25,7 +25,7 @@ const LeftPane = styled.div`
     display: inline;
     max-width: 270px;
     @media only screen and (max-width: 960px) {
-      max-width: 100%;
+        max-width: 100%;
     }
 `;
 
@@ -76,9 +76,6 @@ const ListContainer = styled.div`
     border-radius: 1rem;
     max-width: 830px;
     height: 24rem;
-    @media only screen and (max-width: 960px) {
-      /* max-width: 360px; */
-    }
 `;
 
 const ListItem = styled.div`
@@ -92,7 +89,7 @@ const ListItem = styled.div`
     cursor: default;
     display: flex;
     &:hover {
-      background-color: #030303;
+       background-color: #030303;
     }
 `;
 
@@ -108,8 +105,8 @@ const PodcastImage = styled(Image)`
     height: 3rem;
     margin-right: 0.75rem;
     @media only screen and (max-width: 960px) {
-    width: 2rem;
-    height: 2rem;
+        width: 2rem;
+        height: 2rem;
     }
 `;
 
@@ -123,7 +120,7 @@ const TitleHeader = styled.h2`
     white-space: nowrap;
     margin: 0;
     @media only screen and (max-width: 960px) {
-    width: auto;
+        width: auto;
     }
 `;
 
@@ -152,7 +149,7 @@ const CallToAction = styled.div`
     align-items: center;
     margin-left: 5rem;
     @media only screen and (max-width: 960px) {
-    margin-left: auto;
+       margin-left: auto;
   }
 `;
 
@@ -166,9 +163,9 @@ const ActionBtn = styled.div`
     width: 85px;
     height: 2.5rem;
     @media only screen and (max-width: 960px) {
-    padding: 0;
-    border: none;
-    width: auto;
+        padding: 0;
+        border: none;
+        width: auto;
     }
 `;
 
