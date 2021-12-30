@@ -13,14 +13,14 @@ const NavBtn = styled(Button)`
     color: #fff ;
     box-shadow: none !important;
     &:hover {
-    color: #4b9b73;
-    background: transparent;
-      border: 1px solid transparent !important;
-}
+        color: #4b9b73;
+        background: transparent;
+        border: 1px solid transparent !important;
+    }
     &:focus {
         color: #4b9b73;
         background: transparent;
-          border: 1px solid transparent !important;
+        border: 1px solid transparent !important;
     }
 `;
 

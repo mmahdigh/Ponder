@@ -14,10 +14,10 @@ const EpisodeLink = styled.a`
     text-decoration: none;
     &:hover,
     &:focus {
-      color: palevioletred;
+        color: palevioletred;
     }
     &:active {
-      color: red;
+        color: red;
     }
 `;
 const DetailsCard = styled.div`
@@ -64,7 +64,6 @@ const TimeBadge = styled.small`
     line-height: 1;
     font-size: xx-small;
     color: #9c8f94;
-    /* border: solid  yellow 1px; */
 `;
 const TimeIcon = styled(MdMoreTime)`
     font-size: 12px;
@@ -81,7 +80,6 @@ const PodcastDetails = styled.div`
     font-size: xx-small;
     color: #9c8f94;
     margin-top: 1px;
-    /* border-bottom: solid  red 1px; */
 `;
 dayjs.extend(relativeTime);
 function EpisodeDetails({
