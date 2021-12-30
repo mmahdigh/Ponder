@@ -16,7 +16,7 @@ const EventWrapper = styled.div`
     min-width: 100%;
     display: flex;
     padding: 0 16px;
-   @media only screen and (max-width: 960px) {
+    @media only screen and (max-width: 960px) {
      flex-direction: column;
     }
 `;
@@ -24,7 +24,7 @@ const EventWrapper = styled.div`
 const LeftPane = styled.div`
     display: inline;
     max-width: 270px;
-   @media only screen and (max-width: 960px) {
+    @media only screen and (max-width: 960px) {
       max-width: 100%;
     }
 `;
@@ -76,7 +76,7 @@ const ListContainer = styled.div`
     border-radius: 1rem;
     max-width: 830px;
     height: 24rem;
-   @media only screen and (max-width: 960px) {
+    @media only screen and (max-width: 960px) {
       /* max-width: 360px; */
     }
 `;
@@ -107,7 +107,7 @@ const PodcastImage = styled(Image)`
     width: 3rem;
     height: 3rem;
     margin-right: 0.75rem;
-   @media only screen and (max-width: 960px) {
+    @media only screen and (max-width: 960px) {
     width: 2rem;
     height: 2rem;
     }
@@ -122,7 +122,7 @@ const TitleHeader = styled.h2`
     text-overflow: ellipsis;
     white-space: nowrap;
     margin: 0;
-   @media only screen and (max-width: 960px) {
+    @media only screen and (max-width: 960px) {
     width: auto;
     }
 `;
@@ -151,7 +151,7 @@ const CallToAction = styled.div`
     display: flex;
     align-items: center;
     margin-left: 5rem;
-   @media only screen and (max-width: 960px) {
+    @media only screen and (max-width: 960px) {
     margin-left: auto;
   }
 `;
@@ -165,7 +165,7 @@ const ActionBtn = styled.div`
     cursor: pointer;
     width: 85px;
     height: 2.5rem;
-   @media only screen and (max-width: 960px) {
+    @media only screen and (max-width: 960px) {
     padding: 0;
     border: none;
     width: auto;

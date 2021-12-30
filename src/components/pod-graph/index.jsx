@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   border: 2px solid rgba(38,38,38,1);
   border-radius: 1rem;
   padding: 16px;
- @media only screen and (max-width: 960px) {
+  @media only screen and (max-width: 960px) {
       min-height: 400px;
     }
 `;

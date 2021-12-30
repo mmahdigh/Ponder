@@ -1,7 +1,6 @@
 import cytoscape from 'cytoscape';
 import expandCollapse from 'cytoscape-expand-collapse';
 
-expandCollapse(cytoscape);
 if (typeof cytoscape('core', 'expandCollapse') === 'undefined') {
   expandCollapse(cytoscape);
 }
