@@ -13,15 +13,15 @@ const Page = styled.div`
 
 `;
 const CenterComponents = styled(Container)`
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 `;
 
 const MainContent = styled.div`
-    flex-grow: 1;
-    max-width: 72rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+  flex-grow: 1;
+  max-width: 72rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
 `;
 
