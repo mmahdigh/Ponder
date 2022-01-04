@@ -20,7 +20,7 @@ const DeleteBtn = styled(Button)`
     color: #641c0f;
     background: transparent;
     border: 1px solid transparent;
-}
+  }
 `;
 
 function RemoveBtn({
