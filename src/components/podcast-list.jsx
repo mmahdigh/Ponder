@@ -6,7 +6,7 @@ import { RiMapPinTimeLine } from 'react-icons/ri';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { podcastPropType } from '../prop-types';
-import RssButton from './rss-button';
+// import RssButton from './rss-button';
 import RemoveBtn from './remove-button';
 
 dayjs.extend(relativeTime);
@@ -150,7 +150,7 @@ const CallToAction = styled.div`
   margin-left: 5rem;
   @media only screen and (max-width: 960px) {
     margin-left: auto;
-}
+  }
 `;
 
 const ActionBtn = styled.div`
