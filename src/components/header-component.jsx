@@ -15,6 +15,13 @@ const HeaderContainer = styled.div`
   color: white;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  margin-bottom: 2rem;
+  background-color: #030303;
 `;
 
 const ImageWrapper = styled.div`
