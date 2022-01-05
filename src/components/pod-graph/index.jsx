@@ -8,7 +8,7 @@ import PodcastDetails from '../podcast-details';
 
 const Wrapper = styled.div`
   min-height: 600px;
-  margin: .8rem;
+  margin: 3rem .8rem .8rem .8rem;
   background-color: rgba(13, 13, 13, 1);
   border: 2px solid rgba(38,38,38,1);
   border-radius: 1rem;
