@@ -21,9 +21,19 @@ export default function getElementsFromSubscriptions(subscriptions) {
       title: podcast.title,
       imageUrl: podcast.imageUrl,
       imageTitle: podcast.title,
-      parent: '',
+      parent: 'comedy',
     },
   }));
+  const group = {
+    group: 'nodes',
+    data: {
+      id: 'comedy',
+      name: 'comedy',
+    },
+    classes: 'customGroup',
+  };
+  // ;
+  nodes.push(group);
   const edges = subscriptions
     .reduce((acc, podcast, _, xs) => {
       // A match is any other podcast that has one same category or keyword

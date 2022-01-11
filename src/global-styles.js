@@ -20,54 +20,54 @@ export default createGlobalStyle`
 
 /* =================== global boot strap =========================*/
 .form-control{
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    color: #fff;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    background-color: rgba(26, 26, 26, 0);
-    border-style: none;
-    border-color: #6b7280;
-    border-width: 1px;
-    border-radius: 0px;
-    padding-top: 0.5rem;
-    padding-right: 0.75rem;
-    padding-bottom: 0.5rem;
-    padding-left: 0.75rem;
-    appearance: none;
-    text-overflow: ellipsis;
-    box-shadow: none;
-    &:focus{
-    outline: 0;
-    box-shadow: none;
-    color: #fff;
-    background-color: rgba(26, 26, 26, 0);
-    border: none;
-    }
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  background-color: rgba(26, 26, 26, 0);
+  border-style: none;
+  border-color: #6b7280;
+  border-width: 1px;
+  border-radius: 0px;
+  padding-top: 0.5rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  appearance: none;
+  text-overflow: ellipsis;
+  box-shadow: none;
+  &:focus{
+  outline: 0;
+  box-shadow: none;
+  color: #fff;
+  background-color: rgba(26, 26, 26, 0);
+  border: none;
+  }
 }
 
 /* =================== panzoom  =========================*/
 .cy-panzoom{
-    top: 1rem;
-     color: #666;
-     z-index: 100;
+  top: 1rem;
+  color: #666;
+  z-index: 9999;
 }
 .cy-panzoom-panner {
-    background: #030303;
-    border: 1px solid #262626;
+  background: #030303;
+  border: 1px solid #262626;
 }
 .cy-panzoom-slider-background {
-    background: #030303;
-    border-left: 1px solid #262626;
-    border-right: 1px solid #262626;
+  background: #030303;
+  border-left: 1px solid #262626;
+  border-right: 1px solid #262626;
 }
 .cy-panzoom-slider-handle {
-    background: #030303;
-    border: 1px solid #262626;
+  background: #030303;
+  border: 1px solid #262626;
 }
 .cy-panzoom-zoom-button {
-    background: #030303;
-    border: 1px solid #262626;
+  background: #030303;
+  border: 1px solid #262626;
 }
 
 /* =================== scroll bar =========================*/
@@ -95,12 +95,12 @@ export default createGlobalStyle`
 
 /* =================== Modal =========================*/
 .modal-content {
-    background-color: #16181a;
-    color: #868686;
+  background-color: #16181a;
+  color: #868686;
 
 }
 .modal-header {
-    border-bottom: 1px solid #2c2c2c;
+  border-bottom: 1px solid #2c2c2c;
 }
 
 .modal-footer {
@@ -147,8 +147,8 @@ export default createGlobalStyle`
 
 .card-front {
   background-color: #000000d4;
-  height: 19rem;
-  width: 19rem;
+  height: 10rem;
+  width: 10rem;
   padding: 5px;
   border-radius: 0.5rem;
 }
@@ -200,4 +200,24 @@ export default createGlobalStyle`
   color: #ffd433;
   margin: 1px;
 }
+
+/* =================== GROUPS Nodes Card ========================= */
+.group {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  border: solid red 2px;
+  background-color: #00b97d;
+}
+
+.group.hide {
+  display: none;
+}
+
+.group.show {
+  display: inline-flex;
+}
+
+/* =================== GROUPS TOGGLE BTN ========================= */
+
 `;

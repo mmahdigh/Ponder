@@ -5,10 +5,14 @@ import { podcastPropType } from '../../prop-types';
 import createCytoscape from './cytoscape';
 import getElementsFromSubscriptions from './get-elements-from-subscriptions';
 import PodcastDetails from '../podcast-details';
+import ToggleBtn from '../toggle-button';
 
+const MainCont = styled.div`
+  position: relative;
+`;
 const Wrapper = styled.div`
   min-height: 600px;
-  margin: 3rem .8rem .8rem .8rem;
+  margin: 3.5rem .8rem .8rem .8rem;
   background-color: rgba(13, 13, 13, 1);
   border: 2px solid rgba(38,38,38,1);
   border-radius: 1rem;
@@ -22,7 +26,7 @@ function PodGraph({ subscriptions }) {
   const el = useRef();
   const [cy, setCy] = useState(null);
   const [selectedPodcastId, setSelectedPodcastId] = useState(null);
-
+  const [toggle, setToggle] = useState(false);
   const selectedPodcast = subscriptions
     .find(subscription => subscription.subscribeUrl === selectedPodcastId);
 
@@ -49,15 +53,31 @@ function PodGraph({ subscriptions }) {
     };
   }, [subscriptions]);
 
+  // toggle btn
+  const collapseGroups = () => {
+    setToggle(!toggle);
+    const api = cy.expandCollapse();
+    api.collapseAll();
+  };
+  const expandGroups = () => {
+    setToggle(!toggle);
+    const api = cy.expandCollapse();
+    api.expandAll();
+  };
   return (
-    <div>
+    <MainCont>
       <Wrapper ref={el} />
+      <ToggleBtn
+        collapseGroups={collapseGroups}
+        expandGroups={expandGroups}
+        toggle={toggle}
+      />
       <PodcastDetails
         {...selectedPodcast}
         isOpen={!!selectedPodcast}
         close={() => setSelectedPodcastId(null)}
       />
-    </div>
+    </MainCont>
   );
 }
 

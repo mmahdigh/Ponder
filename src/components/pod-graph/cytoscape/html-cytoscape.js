@@ -14,7 +14,7 @@ export default function applyHtmlLabel(cy) {
       valignBox: 'center',
       tpl(data) {
         return `
-          <div class="pod-graph-card card-front" data-id="${sanitizeHtml(data.id)}">
+          <div class="card-front" data-id="${sanitizeHtml(data.id)}">
             <div class="card-front__tp">
               <img class="image-bg" src="${sanitizeHtml(data.imageUrl)}" alt="" />
               <h2 class="card-front__heading">
@@ -43,17 +43,14 @@ export default function applyHtmlLabel(cy) {
       valignBox: 'center',
       tpl(data) {
         return `
-          <div class="pod-graph-card card-front" data-id="${sanitizeHtml(data.id)}">
-            <div class="card-front__tp">
-              <img class="image-bg" src="${sanitizeHtml(data.imageUrl)}" alt="" />
-            </div>
-            <div class="card-front-btn">
+          <div class="group ${data.collapsedChildren ? 'show' : 'hide'}" data-id="${sanitizeHtml(data.id)}">
+             <div class="card-front-btn">
               <div class="card-front__details">
                 <span class="cardStats_stat cardStats_stat-likes">
-                  5 <i class="fas fa-headset"></i>
+                  69 <i class="fas fa-headset"></i>
                 </span>
                 <span class='cardStats_stat cardStats_stat-comments'>
-                  54 <i class='far fa-comment fa-fw'></i>
+                  69 <i class='far fa-comment fa-fw'></i>
                 </span>
               </div>
             </div>

@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import {
-  InputGroup, Form, Image,
+  InputGroup, Form, Image, Container,
 } from 'react-bootstrap';
 import { ToastContext } from '../providers/toast';
 import RssButton from './rss-button';
@@ -10,18 +10,23 @@ import Logo from './assets/img/pot.svg';
 import SyncButton from './sync-button';
 import RefreshButton from './refresh-button';
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled(Container)`
   display: flex;
   color: white;
   align-items: center;
   justify-content: space-between;
+  padding-top: 0.75rem;
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
-  z-index: 999;
-  margin-bottom: 2rem;
+  z-index: 99999;
   background-color: #030303;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1140px;
+  padding-right: 15px;
+  padding-left: 15px;
 `;
 
 const ImageWrapper = styled.div`

@@ -1,6 +1,8 @@
 export default function styles(cy) {
   Object.entries({
     'background-color': '#020202',
+    width: '38px',
+    height: '38px',
   }).forEach(([k, v]) => {
     cy.style().selector('node').style(k, v).update();
   });
@@ -28,10 +30,10 @@ export default function styles(cy) {
     cy.style().selector('node.cy-expand-collapse-collapsed-node').style(k, v).update();
   });
   Object.entries({
-    'background-color': 'yellow',
+    'background-color': '#030303',
     'background-opacity': '1',
     'border-width': '1px',
-    'border-color': '#dcdcdc',
+    'border-color': '#262626',
     color: '#000',
     shape: 'roundrectangle',
     'text-opacity': '0.56',

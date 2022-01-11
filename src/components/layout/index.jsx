@@ -13,6 +13,9 @@ const Page = styled.div`
 const CenterComponents = styled(Container)`
   display: flex;
   justify-content: center;
+  margin-left: auto;
+	margin-right: auto;
+	max-width: 1140px;
 `;
 
 const MainContent = styled.div`
