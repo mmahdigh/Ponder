@@ -18,11 +18,6 @@ const layout = {
   transform(node, pos) { return pos; }, // a function that applies a transform to the final node position
   ready() {}, // on layoutready
   stop() {}, // on layoutstop
-
-  // TODO: with dave
-  // boundingBox: {
-  //   // x1, y1, x2, y2,
-  // }, // constrain layout bounds; or { x1, y1, w, h }
 };
 
 export default layout;
