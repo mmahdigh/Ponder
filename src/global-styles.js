@@ -46,6 +46,11 @@ export default createGlobalStyle`
   }
 }
 
+/* =================== graph canvas  =========================*/
+canvas{
+  max-height: 540px !important; // not working well
+}
+
 /* =================== panzoom  =========================*/
 .cy-panzoom{
   top: 1rem;
