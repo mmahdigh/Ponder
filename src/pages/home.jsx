@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { SubscriptionsContext } from '../providers/subscriptions';
 import { ToastContext } from '../providers/toast';
 import PodGraph from '../components/pod-graph';
-import HeaderComponent from '../components/header-component';
+import HeaderComponent from '../components/layout/header-component';
 import PodcastList from '../components/podcast-list';
 import getCustomStuff from '../components/pod-graph/data';
 

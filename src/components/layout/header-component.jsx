@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import {
   InputGroup, Form, Image, Container,
 } from 'react-bootstrap';
-import { ToastContext } from '../providers/toast';
-import RssButton from './rss-button';
-import Logo from './assets/img/pot.svg';
-import SyncButton from './sync-button';
-import RefreshButton from './refresh-button';
+import { ToastContext } from '../../providers/toast';
+import RssButton from '../rss-button';
+import Logo from '../assets/img/pot.svg';
+import SyncButton from '../sync-button';
+import RefreshButton from '../refresh-button';
 
 const HeaderContainer = styled(Container)`
   display: flex;
