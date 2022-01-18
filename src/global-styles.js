@@ -48,7 +48,7 @@ export default createGlobalStyle`
 
 /* =================== graph canvas  =========================*/
 canvas{
-  max-height: 540px !important; // not working well
+  /* max-height: 540px !important; // not working well */
 }
 
 /* =================== panzoom  =========================*/
@@ -174,7 +174,7 @@ canvas{
 }
 
 .cardStats {
-  font-size: 0.7em;
+  /* font-size: 0.7em; */
   text-align: center;
   width: 100%;
 }
@@ -183,6 +183,7 @@ canvas{
   display: inline-block;
   white-space: nowrap;
   margin-top: 5px;
+  font-size: 0.7em;
 }
 
 .image-bg {
@@ -199,11 +200,14 @@ canvas{
 .cardStats_stat-likes {
   color: #b2d9a6;
   margin: 1px;
+  text-align: center;
 }
 
 .cardStats_stat-comments {
   color: #ffd433;
   margin: 1px;
+  text-align:center;
+
 }
 
 /* =================== GROUPS Nodes Card ========================= */
@@ -211,10 +215,15 @@ canvas{
   display: none;
   flex-direction: column;
   align-items: center;
-  border: solid red 2px;
-  background-color: #00b97d;
+  background-color: #020202;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 11px 11px 11px 11px rgba(0, 0, 0, 0.3);
 }
-
+.group-header{
+  margin-bottom: 0;
+  font-size: smaller;
+}
 .group.hide {
   display: none;
 }
@@ -223,6 +232,23 @@ canvas{
   display: inline-flex;
 }
 
+.group-graphic {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  width: 56px;
+  height: 56px;
+  background: #020202;
+  margin-top: 16px;
+  border: 1px solid #262626;
+}
+.group-label{
+  font-size: 8px;
+  color: #797979;
+  text-transform: capitalize;
+}
 /* =================== GROUPS TOGGLE BTN ========================= */
 
 `;

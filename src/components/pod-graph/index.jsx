@@ -11,6 +11,7 @@ const MainCont = styled.div`
   position: relative;
 `;
 const Wrapper = styled.div`
+  max-height: 600px;
   min-height: 600px;
   margin: 3.5rem .8rem .8rem .8rem;
   background-color: rgba(13, 13, 13, 1);
@@ -58,11 +59,23 @@ function PodGraph({ subscriptions }) {
     setToggle(!toggle);
     const api = cy.expandCollapse();
     api.collapseAll();
+    cy.fit();
+    // cy.resize();
+    cy.zoom({
+      level: 1.0, // the zoom level
+      position: { x: 0, y: 0 },
+    });
   };
   const expandGroups = () => {
     setToggle(!toggle);
     const api = cy.expandCollapse();
     api.expandAll();
+    cy.fit();
+    // cy.resize();
+    cy.zoom({
+      level: 1.0, // the zoom level
+      position: { x: 0, y: 0 },
+    });
   };
   return (
     <MainCont>
