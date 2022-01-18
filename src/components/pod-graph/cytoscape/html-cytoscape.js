@@ -24,10 +24,10 @@ export default function applyHtmlLabel(cy) {
             <div class="card-front-btn">
               <div class="card-front__details">
                 <span class="cardStats_stat cardStats_stat-likes">
-                 5 <i class="fas fa-headset"></i>
+                <i class="fas fa-headset"></i> 5
                 </span>
                 <span class='cardStats_stat cardStats_stat-comments'>
-                 54 <i class='far fa-comment fa-fw'></i>
+               <i class='far fa-comment fa-fw'></i>  54
                 </span>
               </div>
             </div>
@@ -44,15 +44,23 @@ export default function applyHtmlLabel(cy) {
       tpl(data) {
         return `
           <div class="group ${data.collapsedChildren ? 'show' : 'hide'}" data-id="${sanitizeHtml(data.id)}">
-             <div class="card-front-btn">
-              <div class="card-front__details">
-                <span class="cardStats_stat cardStats_stat-likes">
-                  69 <i class="fas fa-headset"></i>
-                </span>
-                <span class='cardStats_stat cardStats_stat-comments'>
-                  69 <i class='far fa-comment fa-fw'></i>
-                </span>
-              </div>
+          <h5 class="group-header">Favourites</h5>
+            <span class="group-graphic ">
+              <i class="fa fa-heart" aria-hidden="true"></i>
+            </span>
+            <div class="card-front__details">
+              <span class="cardStats_stat cardStats_stat-likes">
+                <label class="group-label "> episodes</label>
+               <div>
+                 <i class="fas fa-headset"></i> 69
+               </div>
+              </span>
+              <span class='cardStats_stat cardStats_stat-comments'>
+              <label class="group-label ">comments</label>
+                <div>
+                <i class='far fa-comment fa-fw'></i> 66
+                </div>
+              </span>
             </div>
           </div>
         `;

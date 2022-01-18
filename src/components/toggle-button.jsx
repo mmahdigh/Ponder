@@ -28,6 +28,22 @@ const Btn = styled(Button)`
   width: 40px;
   z-index: 9999;
   top: 250px;
+  animation: glowing 1300ms infinite;
+  @keyframes glowing {
+  0% {
+    background-color: #030303;
+    box-shadow: 0 0 3px #030303;
+  }
+  50% {
+    background-color: #0f0f0f;
+    box-shadow: 0 0 10px #0d0d0d;
+    border-color: #212529;
+  }
+  100% {
+    background-color: #030303;
+    box-shadow: 0 0 3px #030303;
+  }
+}
 `;
 function ToggleBtn({
   collapseGroups,

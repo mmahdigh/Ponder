@@ -61,7 +61,6 @@ const PodAlert = styled.div`
   border: 2px solid gray;
   border-radius: 9999px;
   flex-shrink: 0;
-  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   width: 1rem;
   height: 1rem;
 `;

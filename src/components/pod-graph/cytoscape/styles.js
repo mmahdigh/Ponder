@@ -1,8 +1,8 @@
 export default function styles(cy) {
   Object.entries({
     'background-color': '#020202',
-    width: '38px',
-    height: '38px',
+    // width: '38px',
+    // height: '38px',
   }).forEach(([k, v]) => {
     cy.style().selector('node').style(k, v).update();
   });

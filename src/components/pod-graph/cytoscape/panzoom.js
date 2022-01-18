@@ -5,10 +5,14 @@ panzoom(cytoscape);
 
 export default function applyPanzoom(cy) {
   cy.panzoom({
+    // fitPadding: 10,
+    fitSelector: ':visible',
+    animateOnFit: true,
+    animateOnZoom: true,
     zoomFactor: 0.05, // zoom factor per zoom tick
     zoomDelay: 45, // how many ms between zoom ticks
-    minZoom: 0.1, // min zoom level
-    maxZoom: 10, // max zoom level
+    minZoom: 3, // min zoom level
+    maxZoom: 5, // max zoom level
     fitPadding: 50, // padding when fitting
     panSpeed: 10, // how many ms in between pan ticks
     panDistance: 10, // max pan distance per tick
@@ -22,10 +26,10 @@ export default function applyPanzoom(cy) {
     // a minimal version of the ui only with zooming
     // (useful on systems with bad mousewheel resolution)
     zoomOnly: false,
-    fitSelector: undefined, // selector of elements to fit
-    animateOnFit() { // whether to animate on fit
-      return false;
-    },
+    // fitSelector: undefined, // selector of elements to fit
+    // animateOnFit() { // whether to animate on fit
+    //   return false;
+    // },
     fitAnimationDuration: 1000, // duration of animation on fit
 
     // icon class names
