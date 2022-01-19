@@ -156,6 +156,7 @@ canvas{
   width: 10rem;
   padding: 5px;
   border-radius: 0.5rem;
+  z-index: 6666;
 }
 
 .card-front-btn {
@@ -218,7 +219,7 @@ canvas{
   background-color: #020202;
   border-radius: 25px;
   padding: 10px;
-  box-shadow: 11px 11px 11px 11px rgba(0, 0, 0, 0.3);
+  box-shadow: 11px 11px 11px  rgba(0, 0, 0, 0.3);
 }
 .group-header{
   margin-bottom: 0;

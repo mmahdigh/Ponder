@@ -54,13 +54,12 @@ function PodGraph({ subscriptions }) {
     };
   }, [subscriptions]);
 
-  // toggle btn
+  // toggle btn ONLY  USED FOR DEBUGGING
   const collapseGroups = () => {
     setToggle(!toggle);
     const api = cy.expandCollapse();
     api.collapseAll();
     cy.fit();
-    // cy.resize();
     cy.zoom({
       level: 1.0, // the zoom level
       position: { x: 0, y: 0 },
@@ -71,7 +70,6 @@ function PodGraph({ subscriptions }) {
     const api = cy.expandCollapse();
     api.expandAll();
     cy.fit();
-    // cy.resize();
     cy.zoom({
       level: 1.0, // the zoom level
       position: { x: 0, y: 0 },
