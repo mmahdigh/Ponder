@@ -1,8 +1,8 @@
 /* eslint-disable camelcase */
 // TODO: Andrew - Write the code to apply bounding boxes here :)
 export default function applyNodeGroups(cy) {
-  fitGraph(cy);
   initializeZoomExtrema(cy);
+  fitGraph(cy);
 }
 // function to center the graph by default
 function fitGraph(cy) {
@@ -27,5 +27,6 @@ function initializeZoomExtrema(cy) {
     min_zoom *= 0.5;
   }
   cy.minZoom(min_zoom);
+  cy.maxZoom(MAXIMUM_ZOOM_LEVEL);
   cy.panzoom({ maxZoom: MAXIMUM_ZOOM_LEVEL, minZoom: min_zoom });
 }

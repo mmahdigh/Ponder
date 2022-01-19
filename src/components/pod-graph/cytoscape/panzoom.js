@@ -11,8 +11,8 @@ export default function applyPanzoom(cy) {
     animateOnZoom: true,
     zoomFactor: 0.05, // zoom factor per zoom tick
     zoomDelay: 45, // how many ms between zoom ticks
-    minZoom: 3, // min zoom level
-    maxZoom: 5, // max zoom level
+    minZoom: 0.5, // min zoom level
+    maxZoom: 3, // max zoom level
     fitPadding: 50, // padding when fitting
     panSpeed: 10, // how many ms in between pan ticks
     panDistance: 10, // max pan distance per tick

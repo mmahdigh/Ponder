@@ -1,8 +1,8 @@
 export default function styles(cy) {
   Object.entries({
     'background-color': '#020202',
-    // width: '38px',
-    // height: '38px',
+    width: '160px',
+    height: '160px',
   }).forEach(([k, v]) => {
     cy.style().selector('node').style(k, v).update();
   });
@@ -10,13 +10,29 @@ export default function styles(cy) {
   // EDGES
   Object.entries({
     'line-color': '#262626',
-    color: '#9e9e9e',
-    'source-arrow-color': '#262626',
+    color: 'white',
+    'source-arrow-color': '#79797a',
+    label: 'data(label)',
     'curve-style': 'straight',
     'font-weight': 200,
     'font-size': '20px',
     'source-arrow-shape': 'square',
     'target-arrow-shape': 'triangle',
+    'text-halign': 'center',
+    'text-valign': 'center',
+    'text-max-width': 120,
+    'text-wrap': 'wrap',
+    'text-overflow-wrap': 'anywhere',
+    'text-justification': 'center',
+    'text-rotation': 'autorotate',
+    'text-background-color': '#101010',
+    'text-background-shape': 'roundrectangle',
+    'text-border-color': '#000',
+    'text-border-width': 1,
+    'text-border-opacity': 1,
+    // padding: 80,
+    'text-background-opacity': 0.6,
+    'text-background-padding': '6px',
     width: 3,
   }).forEach(([k, v]) => {
     cy.style().selector('edge').style(k, v).update();
