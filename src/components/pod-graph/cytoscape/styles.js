@@ -30,7 +30,7 @@ export default function styles(cy) {
     'text-border-color': '#000',
     'text-border-width': 1,
     'text-border-opacity': 1,
-    // padding: 80,
+    padding: 0,
     'text-background-opacity': 0.6,
     'text-background-padding': '6px',
     width: 3,
