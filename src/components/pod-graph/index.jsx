@@ -7,10 +7,10 @@ import getElementsFromSubscriptions from './get-elements-from-subscriptions';
 import PodcastDetails from '../podcast-details';
 import ToggleBtn from '../toggle-button';
 
-const MainCont = styled.div`
+const PodGraphContainer = styled.div`
   position: relative;
 `;
-const Wrapper = styled.div`
+const PodGraphInnerContainer = styled.div`
   max-height: 600px;
   min-height: 600px;
   margin: 3.5rem .8rem .8rem .8rem;
@@ -54,7 +54,7 @@ function PodGraph({ subscriptions }) {
     };
   }, [subscriptions]);
 
-  // toggle btn ONLY  USED FOR DEBUGGING
+  // toggle btn ONLY  USED FOR DEBUGGING TODO:REMOVE
   const collapseGroups = () => {
     setToggle(!toggle);
     const api = cy.expandCollapse();
@@ -76,8 +76,8 @@ function PodGraph({ subscriptions }) {
     });
   };
   return (
-    <MainCont>
-      <Wrapper ref={el} />
+    <PodGraphContainer>
+      <PodGraphInnerContainer ref={el} />
       <ToggleBtn
         collapseGroups={collapseGroups}
         expandGroups={expandGroups}
@@ -88,7 +88,7 @@ function PodGraph({ subscriptions }) {
         isOpen={!!selectedPodcast}
         close={() => setSelectedPodcastId(null)}
       />
-    </MainCont>
+    </PodGraphContainer>
   );
 }
 

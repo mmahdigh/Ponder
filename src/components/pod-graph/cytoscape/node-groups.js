@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-// TODO: Andrew - Write the code to apply bounding boxes here :)
 export default function applyNodeGroups(cy) {
   initializeZoomExtrema(cy);
   fitGraph(cy);

@@ -19,7 +19,7 @@ export default createGlobalStyle`
   }
 
 /* =================== global boot strap =========================*/
-.form-control{
+.form-control {
   outline: 2px solid transparent;
   outline-offset: 2px;
   color: #fff;
@@ -37,22 +37,19 @@ export default createGlobalStyle`
   appearance: none;
   text-overflow: ellipsis;
   box-shadow: none;
-  &:focus{
-  outline: 0;
-  box-shadow: none;
-  color: #fff;
-  background-color: rgba(26, 26, 26, 0);
-  border: none;
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+    color: #fff;
+    background-color: rgba(26, 26, 26, 0);
+    border: none;
   }
 }
 
 /* =================== graph canvas  =========================*/
-canvas{
-  /* max-height: 540px !important; // not working well */
-}
 
 /* =================== panzoom  =========================*/
-.cy-panzoom{
+.cy-panzoom {
   top: 1rem;
   color: #666;
   z-index: 9999;
@@ -221,7 +218,7 @@ canvas{
   padding: 10px;
   box-shadow: 11px 11px 11px  rgba(0, 0, 0, 0.3);
 }
-.group-header{
+.group-header {
   margin-bottom: 0;
   font-size: smaller;
 }
@@ -245,11 +242,11 @@ canvas{
   margin-top: 16px;
   border: 1px solid #262626;
 }
-.group-label{
+.group-label {
   font-size: 8px;
   color: #797979;
   text-transform: capitalize;
 }
-/* =================== GROUPS TOGGLE BTN ========================= */
+/* =================== ***** ========================= */
 
 `;
