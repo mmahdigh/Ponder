@@ -26,6 +26,5 @@ export default function createCytoscape(container, elements, deps) {
   applyHtmlLabel(cy, deps);
   applyExpandColapse(cy, deps);
   cy.fit();
-  cy.resize();
   return cy;
 }
